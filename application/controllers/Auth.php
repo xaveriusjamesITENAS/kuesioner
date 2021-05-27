@@ -42,7 +42,7 @@ class Auth extends CI_Controller
         $nrpmhs = $this->input->post('nrp'); #'nrp' = name di view
         $pinmhs = $this->input->post('pin');
 
-        $this->load->model('user_model', 'datamhs'); #'datamhs' disini alias dari nama modelnya
+        $this->load->model('User_model', 'datamhs'); #'datamhs' disini alias dari nama modelnya
 
         $user = $this->datamhs->userCheckLogin($nrpmhs);
 
