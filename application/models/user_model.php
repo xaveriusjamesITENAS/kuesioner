@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class User_model extends CI_Model
+class user_model extends CI_Model
 {
     // Users Data
     public function getUserData()
