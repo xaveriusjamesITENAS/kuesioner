@@ -24,7 +24,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |
 */
 // $config['base_url'] = 'http://localhost/nik/';
-$config['base_url'] = 'http://kuesioner.itenas.ac.id/';
+$config['base_url'] = 'https://kuesioner.itenas.ac.id/';
 
 /*
 |--------------------------------------------------------------------------
