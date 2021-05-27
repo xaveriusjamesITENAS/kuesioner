@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class User_model extends CI_Model
 {
-    // Users Data
+    // Users Data test
     public function getUserData()
     {
         $query = $this->db->get_where('datamhs', ['nrpmhs' => $this->session->userdata('nrpmhs')]);
