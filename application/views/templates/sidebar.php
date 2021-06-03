@@ -35,7 +35,7 @@
               <p>Notifications</p>
             </a>
           </li> -->
-          <li method="post" action="<?= base_url("User"); ?>" class="active">
+          <li method="post" action="<?= base_url("User"); ?>" class="">
             <a href="<?= base_url('user/edit'); ?>">
               <i class="now-ui-icons users_single-02"></i>
               <p>Profil Mahasiswa</p>

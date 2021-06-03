@@ -87,12 +87,41 @@ class User extends CI_Controller
         //$data['user'] = $this->db->get_where('datamhs', ['pinmhs' => $this->session->userdata('pin')])->row_array();
         // var_dump($data['matkul']);
         // die;
+        $this->form_validation->set_rules('nrpmhs', 'NRP', 'required|trim');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('user/kuesioner', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $jml = $this->input->post('jwb1') + $this->input->post('jwb2') + $this->input->post('jwb3') + $this->input->post('jwb4') + $this->input->post('jwb5') + $this->input->post('jwb6') +
+                $this->input->post('jwb7') + $this->input->post('jwb8') + $this->input->post('jwb9') + $this->input->post('jwb10') + $this->input->post('jwb11') + $this->input->post('jwb12');
+            $indeks_kml = $jml / 12;
+            $data = [
+                'nrpmhs' => $this->input->post('nrpmhs'),
+                'kode_mk' => $this->input->post('kode_mk'),
+                'kelas' => $this->input->post('kelas'),
+                'jwb1' => $this->input->post('jwb1'),
+                'jwb2' => $this->input->post('jwb2'),
+                'jwb3' => $this->input->post('jwb3'),
+                'jwb4' => $this->input->post('jwb4'),
+                'jwb5' => $this->input->post('jwb5'),
+                'jwb6' => $this->input->post('jwb6'),
+                'jwb7' => $this->input->post('jwb7'),
+                'jwb8' => $this->input->post('jwb8'),
+                'jwb9' => $this->input->post('jwb9'),
+                'jwb10' => $this->input->post('jwb10'),
+                'jwb11' => $this->input->post('jwb11'),
+                'jwb12' => $this->input->post('jwb12'),
+                'indeks_kml' => $indeks_kml,
+                'saran' => $this->input->post('saran'),
+            ];
+            $this->db->insert('submit_mhs', $data);
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('user/kuesioner', $data);
-        $this->load->view('templates/footer');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
+            redirect('user/kuesioner_mhs');
+        }
     }
     public function kuesioner_dsn()
     {
@@ -114,44 +143,40 @@ class User extends CI_Controller
         // var_dump($data['user']);
         // die;
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar_dsn', $data);
-        $this->load->view('templates/topbar_dsn', $data);
-        $this->load->view('user/kuesioner_dsn', $data);
-        $this->load->view('templates/footer');
-    }
-    public function jwb_mhs()
-    {
-        //$data['title'] = 'Edit Profil';
-        $data['user'] = $this->db->get_where('datamhs', ['nrpmhs' => $this->session->userdata('nrp')])->row_array();
-        //$data['user'] = $this->db->get_where('datamhs', ['pinmhs' => $this->session->userdata('pin')])->row_array();
-        // var_dump($data['user']);
-        // die;
-
-        $this->form_validation->set_rules('noktpmhs', 'NIK', 'required|trim');
-        $this->form_validation->set_rules('nohpmhs', 'No.Handphone', 'required|trim');
-
+        $this->form_validation->set_rules('id_dsn', 'NIP', 'required|trim');
         if ($this->form_validation->run() == false) {
-            $data['title'] = 'Edit Profil';
             $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('user/kuesioner', $data);
+            $this->load->view('templates/sidebar_dsn', $data);
+            $this->load->view('templates/topbar_dsn', $data);
+            $this->load->view('user/kuesioner_dsn', $data);
             $this->load->view('templates/footer');
         } else {
-            $noktp = $this->input->post('noktpmhs');
-            $jkmhs = $this->input->post('jkmhs');
-            $hpmhs = $this->input->post('nohpmhs');
-            $nrpmhs = $this->input->post('nrpmhs');
+            $jml_dsn = $this->input->post('jwb13') + $this->input->post('jwb14') + $this->input->post('jwb15') + $this->input->post('jwb16') + $this->input->post('jwb17') + $this->input->post('jwb18') +
+                $this->input->post('jwb19') + $this->input->post('jwb20') + $this->input->post('jwb21') + $this->input->post('jwb22') + $this->input->post('jwb23') + $this->input->post('jwb24');
+            $indeks_kml_dsn = $jml_dsn / 12;
+            $data = [
+                'id_dsn' => $this->input->post('id_dsn'),
+                'kode_mk' => $this->input->post('kode_mk'),
+                'kelas' => $this->input->post('kelas'),
+                'jwb13' => $this->input->post('jwb13'),
+                'jwb14' => $this->input->post('jwb14'),
+                'jwb15' => $this->input->post('jwb15'),
+                'jwb16' => $this->input->post('jwb16'),
+                'jwb17' => $this->input->post('jwb17'),
+                'jwb18' => $this->input->post('jwb18'),
+                'jwb19' => $this->input->post('jwb19'),
+                'jwb20' => $this->input->post('jwb20'),
+                'jwb21' => $this->input->post('jwb21'),
+                'jwb22' => $this->input->post('jwb22'),
+                'jwb23' => $this->input->post('jwb23'),
+                'jwb24' => $this->input->post('jwb24'),
+                'indeks_kml' => $indeks_kml_dsn,
+                'saran' => $this->input->post('saran'),
+            ];
+            $this->db->insert('submit_dsn', $data);
 
-            $this->db->set('noktpmhs', $noktp);
-            $this->db->set('jkmhs', $jkmhs);
-            $this->db->set('nohpmhs', $hpmhs);
-            $this->db->where('nrpmhs', $nrpmhs);
-            $this->db->update('datamhs');
-
-            $this->session->set_flashdata('message', '<div class="alert alert-success" style="margin: 15px 15px" role="alert">Profil Anda berhasil di Update</div>');
-            redirect('user/edit');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
+            redirect('user/kuesioner_dsn');
         }
     }
 
@@ -164,16 +189,19 @@ class User extends CI_Controller
             ->where('jadwal.kode_mk', $idmatkul)->where('jadwal.nrpmhs', $this->session->userdata('nrp'))->get()->first_row();
         echo json_encode($matakuliah);
     }
-
-    // public function getNamaMatkul_dsn()
-    // {
-    //     $idmatkul = $this->input->post('idmatkul');
-    //     $matakuliah = $this->db->select('*')->from('matkul')
-    //         ->join('jadwal', 'jadwal.kode_mk=matkul.kode_mk')
-    //         ->join('dosen', 'dosen.id_dsn = jadwal.id_dsn')
-    //         ->where('jadwal.kode_mk', $idmatkul)->where('jadwal.id_dsn', $this->session->userdata('nip'))->get()->first_row();
-    //     echo json_encode($matakuliah);
-    // }
+    public function getNamaMatkul_dsn()
+    {
+        $idmatkul = $this->input->post('idmatkul');
+        // $idmatkul = 'IFA303-AA';
+        $string = explode('-', $idmatkul);
+        $kode_mk = $string[0];
+        $kelas_mk = $string[1];
+        $matakuliah = $this->db->select('*')->from('matkul')
+            ->join('jadwal', 'jadwal.kode_mk=matkul.kode_mk')
+            ->join('dosen', 'dosen.id_dsn = jadwal.id_dsn')
+            ->where('jadwal.kode_mk', $kode_mk)->where('jadwal.kelas', $kelas_mk)->where('jadwal.id_dsn', $this->session->userdata('nip'))->get()->first_row();
+        echo json_encode($matakuliah);
+    }
 
     public function logout()
     {
