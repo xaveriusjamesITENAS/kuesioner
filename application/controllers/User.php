@@ -79,7 +79,12 @@ class User extends CI_Controller
             ->join('dosen', 'dosen.id_dsn = jadwal.id_dsn', 'left')
             ->where('datamhs.nrpmhs=' . $this->session->userdata('nrp') . '')
             ->get()->result();
-        // var_dump($data['matkul']);
+
+        // $data['isi'] = $this->db->select('submit_mhs.*')->from('datamhs')
+        //     ->join('submit_mhs', 'submit_mhs.nrpmhs = datamhs.nrpmhs', 'left')
+        //     ->where('submit_mhs.nrpmhs = ' . $this->session->userdata('nrp') . '')
+        //     ->get()->result();
+        // var_dump($data['isi']);
         // die();
         $data['pertanyaan'] = $this->db->select('*')
             ->from('pertanyaan')->where('level', 'mahasiswa')

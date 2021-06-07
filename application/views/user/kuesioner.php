@@ -59,30 +59,30 @@
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-sm col-form-label">Petunjuk Pengisian:</label>
+                                <label class="col-sm col-form-label" style="color: red">Petunjuk Pengisian:</label>
                                 <div class="col-sm-10">
-                                    <label readonly class="form-control-plaintext">Kuesioner ini terdiri dari 12 butir pertanyaan dengan bentuk jawaban pilihan ganda yang terdiri dari 4 (empat) pilihan jawaban. Anda dapat memilih satu pilihan sesuai pendapat pribadi.</label>
+                                    <label readonly class="form-control-plaintext" style="color: red">Kuesioner ini terdiri dari 12 butir pertanyaan dengan bentuk jawaban pilihan ganda yang terdiri dari 4 (empat) pilihan jawaban. Anda dapat memilih satu pilihan sesuai pendapat pribadi.</label>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" disabled>
-                                        <label class="form-check-label" for="flexRadioDisabled">
+                                        <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" style="color: red" disabled>
+                                        <label class="form-check-label" for="flexRadioDisabled" style="color: red">
                                             Kurang (Tidak Puas)
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" disabled>
-                                        <label class="form-check-label" for="flexRadioCheckedDisabled">
+                                        <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" style="color: red" disabled>
+                                        <label class="form-check-label" for="flexRadioCheckedDisabled" style="color: red">
                                             Cukup (Kurang Puas)
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" checked disabled>
-                                        <label class="form-check-label" for="flexRadioDisabled">
+                                        <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" style="color: red" checked disabled>
+                                        <label class="form-check-label" for="flexRadioDisabled" style="color: red">
                                             Baik (Puas)
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" disabled>
-                                        <label class="form-check-label" for="flexRadioCheckedDisabled">
+                                        <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" style="color: red" disabled>
+                                        <label class="form-check-label" for="flexRadioCheckedDisabled" style="color: red">
                                             Sangat Baik (Sangat Puas)
                                         </label>
                                     </div>
