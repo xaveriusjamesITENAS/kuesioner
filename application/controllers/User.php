@@ -69,7 +69,7 @@ class User extends CI_Controller
     public function kuesioner_mhs()
     {
         $data['title'] = 'Kuesioner Mahasiswa';
-        $this->load->model('pertanyaan_model');
+        $this->load->model('Pertanyaan_model');
         //$data['title'] = 'Edit Profil';
         $data['user'] = $this->db->get_where('datamhs', ['nrpmhs' => $this->session->userdata('nrp')])->row_array();
         //$data['pertanyaan'] = $this->pertanyaan_model->getPertanyaan();
@@ -126,7 +126,7 @@ class User extends CI_Controller
     public function kuesioner_dsn()
     {
         $data['title'] = 'Kuesioner Dosen';
-        $this->load->model('pertanyaan_model');
+        $this->load->model('Pertanyaan_model');
         //$data['title'] = 'Edit Profil';
         $data['user'] = $this->db->get_where('dosen', ['id_dsn' => $this->session->userdata('nip')])->row_array();
         //$data['pertanyaan'] = $this->pertanyaan_model->getPertanyaan();
