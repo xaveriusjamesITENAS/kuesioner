@@ -73,18 +73,20 @@ class User extends CI_Controller
         //$data['title'] = 'Edit Profil';
         $data['user'] = $this->db->get_where('datamhs', ['nrpmhs' => $this->session->userdata('nrp')])->row_array();
         //$data['pertanyaan'] = $this->pertanyaan_model->getPertanyaan();
-        $data['matkul'] = $this->db->select('jadwal.*, matkul.*, dosen.*')->from('datamhs')
+        $data['matkul'] = $this->db->distinct()->select('jadwal.*, matkul.*, dosen.*')->from('datamhs')
             ->join('jadwal', 'jadwal.nrpmhs = datamhs.nrpmhs', 'inner')
             ->join('matkul', 'matkul.kode_mk = jadwal.kode_mk', 'left')
             ->join('dosen', 'dosen.id_dsn = jadwal.id_dsn', 'left')
+            ->join('submit_mhs', 'submit_mhs.nrpmhs = datamhs.nrpmhs')
             ->where('datamhs.nrpmhs=' . $this->session->userdata('nrp') . '')
+            ->where("dosen.nama_dsn != 'DOSEN BARU/DOSEN BELUM ADA'")
+            ->where("jadwal.kode_mk NOT IN (SELECT submit_mhs.kode_mk FROM submit_mhs WHERE submit_mhs.nrpmhs = " . $this->session->userdata('nrp') . ")")
             ->get()->result();
-
         // $data['isi'] = $this->db->select('submit_mhs.*')->from('datamhs')
         //     ->join('submit_mhs', 'submit_mhs.nrpmhs = datamhs.nrpmhs', 'left')
         //     ->where('submit_mhs.nrpmhs = ' . $this->session->userdata('nrp') . '')
         //     ->get()->result();
-        // var_dump($data['isi']);
+        // var_dump($data['matkul']);
         // die();
         $data['pertanyaan'] = $this->db->select('*')
             ->from('pertanyaan')->where('level', 'mahasiswa')
