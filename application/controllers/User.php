@@ -150,12 +150,33 @@ class User extends CI_Controller
         //$data['title'] = 'Edit Profil';
         $data['user'] = $this->db->get_where('dosen', ['id_dsn' => $this->session->userdata('nip')])->row_array();
         //$data['pertanyaan'] = $this->pertanyaan_model->getPertanyaan();
-        $data['matkul'] = $this->db->select('distinct jadwal.kode_mk, jadwal.kelas', false)->from('dosen')
-            ->join('jadwal', 'jadwal.id_dsn = dosen.id_dsn', 'inner')
-            ->join('matkul', 'matkul.kode_mk = jadwal.kode_mk', 'left')
-            // ->join('dosen', 'dosen.id_dsn = jadwal.id_dsn', 'left')
-            ->where('dosen.id_dsn=' . $this->session->userdata('nip') . '')
-            ->get()->result();
+        // $data['matkul'] = $this->db->select('distinct jadwal.kode_mk, jadwal.kelas', false)->from('dosen')
+        //     ->join('jadwal', 'jadwal.id_dsn = dosen.id_dsn', 'inner')
+        //     ->join('matkul', 'matkul.kode_mk = jadwal.kode_mk', 'left')
+        //     // ->join('dosen', 'dosen.id_dsn = jadwal.id_dsn', 'left')
+        //     ->where('dosen.id_dsn=' . $this->session->userdata('nip') . '')
+        //     ->get()->result();
+        $submit = $this->db->get_where('submit_dsn', ['id_dsn' => $this->session->userdata('nip')])->row_array();
+        if ($submit != NULL) {
+            $data['matkul'] = $this->db->distinct()->select('jadwal.kode_mk, jadwal.kelas')->from('dosen')
+                ->join('jadwal', 'jadwal.id_dsn = dosen.id_dsn', 'inner')
+                ->join('matkul', 'matkul.kode_mk = jadwal.kode_mk', 'left')
+                // ->join('dosen', 'dosen.id_dsn = jadwal.id_dsn', 'left')
+                ->join('submit_dsn', 'submit_dsn.id_dsn = dosen.id_dsn')
+                ->where('dosen.id_dsn=' . $this->session->userdata('nip') . '')
+                // ->where("dosen.nama_dsn != 'DOSEN BARU/DOSEN BELUM ADA'")
+                ->where("jadwal.kelas NOT IN (SELECT submit_dsn.kelas FROM submit_dsn WHERE submit_dsn.id_dsn = " . $this->session->userdata('nip') . ")")
+                ->get()->result();
+        } else {
+            $data['matkul'] = $this->db->distinct()->select('jadwal.kode_mk, jadwal.kelas')->from('dosen')
+                ->join('jadwal', 'jadwal.id_dsn = dosen.id_dsn', 'inner')
+                ->join('matkul', 'matkul.kode_mk = jadwal.kode_mk', 'left')
+                // ->join('dosen', 'dosen.id_dsn = jadwal.id_dsn', 'left')
+                ->join('submit_dsn', 'submit_dsn.id_dsn = dosen.id_dsn', 'left')
+                ->where('dosen.id_dsn=' . $this->session->userdata('nip') . '')
+                // ->where("dosen.nama_dsn != 'DOSEN BARU/DOSEN BELUM ADA'")
+                ->get()->result();
+        }
         $data['pertanyaan'] = $this->db->select('*')
             ->from('pertanyaan')->where('level', 'dosen')
             ->get()->result_array();

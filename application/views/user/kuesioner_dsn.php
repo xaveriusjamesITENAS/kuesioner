@@ -36,7 +36,7 @@
                                 <label for="kodemk" class="col-sm-2 col-form-label">Kode Matakuliah</label>
                                 <div class="col-sm-10">
                                     <select class="form-control" aria-label=".form-select-sm example" name="kode_mk" id="pilihmatkul">
-                                        <option>Pilih Kode Matakuliah</option>
+                                        <option>--Pilih Kode Matakuliah--</option>
                                         <?php foreach ($matkul as $mtk) { ?>
                                             <option value="<?= $mtk->kode_mk . '-' . $mtk->kelas ?>"><?= $mtk->kode_mk ?> - <?= $mtk->kelas ?></option>
                                         <?php } ?>

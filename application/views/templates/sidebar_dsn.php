@@ -41,7 +41,7 @@
                             <p>Profil Mahasiswa</p>
                         </a>
                     </li> -->
-          <li method="post" action="<?= base_url("User"); ?>" class="active">
+          <li method="post" action="<?= base_url("User"); ?>">
             <a href="<?= base_url('user/kuesioner_dsn'); ?>">
               <i class="now-ui-icons education_paper"></i>
               <p>Kuesioner</p>
