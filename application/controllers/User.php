@@ -158,15 +158,17 @@ class User extends CI_Controller
         //     ->get()->result();
         $submit = $this->db->get_where('submit_dsn', ['id_dsn' => $this->session->userdata('nip')])->row_array();
         if ($submit != NULL) {
-            $data['matkul'] = $this->db->distinct()->select('jadwal.kode_mk, jadwal.kelas')->from('dosen')
-                ->join('jadwal', 'jadwal.id_dsn = dosen.id_dsn', 'inner')
-                ->join('matkul', 'matkul.kode_mk = jadwal.kode_mk', 'left')
-                // ->join('dosen', 'dosen.id_dsn = jadwal.id_dsn', 'left')
-                ->join('submit_dsn', 'submit_dsn.id_dsn = dosen.id_dsn')
-                ->where('dosen.id_dsn=' . $this->session->userdata('nip') . '')
+            $data['matkul'] = $this->db->distinct()->select('jadwal.kode_mk, jadwal.kelas')->from('jadwal')
+                ->where('jadwal.id_dsn=' . $this->session->userdata('nip') . '')
                 // ->where("dosen.nama_dsn != 'DOSEN BARU/DOSEN BELUM ADA'")
-                ->where("jadwal.kelas NOT IN (SELECT submit_dsn.kelas FROM submit_dsn WHERE submit_dsn.id_dsn = " . $this->session->userdata('nip') . ")")
+                // ->where("jadwal.kode_mk NOT IN (SELECT submit_dsn.kode_mk FROM submit_dsn WHERE submit_dsn.id_dsn = " . $this->session->userdata('nip') . ")")
+                // ->where("jadwal.kelas NOT IN (SELECT submit_dsn.kelas FROM submit_dsn WHERE submit_dsn.id_dsn = " . $this->session->userdata('nip') . ")")
+                ->where("NOT EXISTS 
+                (SELECT submit_dsn.kode_mk, submit_dsn.kelas from submit_dsn 
+                WHERE submit_dsn.kelas = jadwal.kelas AND submit_dsn.kode_mk = jadwal.kode_mk AND jadwal.id_dsn=" . $this->session->userdata('nip') . ")")
                 ->get()->result();
+            // var_dump($this->db->last_query($data['matkul']));
+            // die;
         } else {
             $data['matkul'] = $this->db->distinct()->select('jadwal.kode_mk, jadwal.kelas')->from('dosen')
                 ->join('jadwal', 'jadwal.id_dsn = dosen.id_dsn', 'inner')
@@ -177,12 +179,13 @@ class User extends CI_Controller
                 // ->where("dosen.nama_dsn != 'DOSEN BARU/DOSEN BELUM ADA'")
                 ->get()->result();
         }
+        // var_dump($data['matkul']);
+        // die;
         $data['pertanyaan'] = $this->db->select('*')
             ->from('pertanyaan')->where('level', 'dosen')
             ->get()->result_array();
         //$data['user'] = $this->db->get_where('datamhs', ['pinmhs' => $this->session->userdata('pin')])->row_array();
-        // var_dump($data['user']);
-        // die;
+
 
         $this->form_validation->set_rules('id_dsn', 'NIP', 'required|trim');
         if ($this->form_validation->run() == false) {

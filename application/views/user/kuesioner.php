@@ -131,7 +131,7 @@
 
                             <div class="form-group row">
                                 <label class="col-sm col-form-label">Saran:</label>
-                                <div class="col-sm-10">
+                                <div class="col-md-10">
                                     <label readonly class="form-control-plaintext">Berikan saran anda mengenai kendala utama dalam pembelajaran daring.</label>
                                     <textarea rows="4" cols="80" class="form-control" placeholder="" name="saran" value="saran"></textarea>
                                 </div>
