@@ -17,7 +17,7 @@
 
           <div class="row">
             <div class="col-md-4 pr-1">
-              <?= form_open_multipart('user/edit_mhs'); ?>
+              <?= form_open_multipart('user/edit'); ?>
               <div class="form-group">
                 <label>NRP Mahasiswa</label>
                 <input type="text" class="form-control" readonly placeholder="NRP" name="nrpmhs" value="<?= $this->session->userdata('nrp'); ?>">

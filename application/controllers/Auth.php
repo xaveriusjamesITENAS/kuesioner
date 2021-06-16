@@ -21,111 +21,43 @@ class Auth extends CI_Controller
      */
     public function index()
     {
-        $data['title'] = 'Vaksinasi | ITENAS';
-        $this->load->view('auth/home_login');
+        $data['title'] = 'Kuesioner Itenas';
+        $this->load->view('auth/login_kuesioner');
     }
-
-    public function index_dsn()
-    {
-        $data['title'] = 'Login Dosen Itenas';
-        $this->form_validation->set_rules('nip', 'NIP', 'required|trim');
-        $this->form_validation->set_rules('pin', 'PIN', 'required|trim');
-
-        if ($this->form_validation->run() == false) {
-            $this->load->view('auth/login_dsn');
-        } else {
-            $this->_logindsn();
-        }
-    }
-
-    public function index_kry()
-    {
-        $data['title'] = 'Login Karyawan Itenas';
-        $this->form_validation->set_rules('nip', 'NIP', 'required|trim');
-        $this->form_validation->set_rules('pin', 'PIN', 'required|trim');
-
-        if ($this->form_validation->run() == false) {
-            $this->load->view('auth/login_kry');
-        } else {
-            $this->_loginkry();
-        }
-    }
-
     public function index_mhs()
     {
         if ($this->session->has_userdata('nrp')) {
-            redirect('user/data_ortu');
+            redirect('user/edit');
         }
         $data['title'] = 'Login Mahasiswa Itenas';
         $this->form_validation->set_rules('nrp', 'NRP', 'required|trim');
         $this->form_validation->set_rules('pin', 'PIN', 'required|trim');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('auth/login_mhs');
+            // $this->load->view('templates/auth_header', $data);
+            $this->load->view('auth/login');
+            // $this->load->view('templates/auth_footer');
         } else {
             $this->_loginmhs();
         }
     }
-
-    private function _logindsn()
+    public function index_dsn()
     {
-        $id_dsn = $this->input->post('nip'); #'nrp' = name di view
-        $passw_dsn = $this->input->post('pin');
+        // if ($this->session->has_userdata('nip')) {
+        //     redirect('user/kuesioner_dsn');
+        // }
+        $data['title'] = 'Login Dosen Itenas';
+        $this->form_validation->set_rules('nip', 'NIP', 'required|trim');
+        $this->form_validation->set_rules('pin', 'PIN', 'required|trim');
 
-        $this->load->model('user_model_dsn', 'dosen'); #'datamhs' disini alias dari nama modelnya
-
-        $user = $this->dosen->userCheckLogin($id_dsn);
-
-        $user = $this->db->get_where('dosen', ['id_dsn' => $id_dsn])->row_array(); #'datamhs' disini nama tabel dari db
-        // var_dump($user);
-        // die;
-        if ($user != null) {
-            if ($passw_dsn == $user['passw_dsn']) {
-                $data = [
-                    'nip' => $user['id_dsn'],
-                    'nama_dsn' => $user['nama_dsn'],
-                ];
-                $this->session->set_userdata($data);
-                redirect('user/data_dsn');
-            } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" style="max-width:326px" role="alert">Password salah.</div>');
-                redirect('auth/index_dsn');
-            }
+        if ($this->form_validation->run() == false) {
+            // $this->load->view('templates/auth_header', $data);
+            $this->load->view('auth/login_dsn');
+            // $this->load->view('templates/auth_footer');
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" style="max-width:326px" role="alert">NIP anda tidak ditemukan.</div>');
-            redirect('auth/index_dsn');
+            $this->_logindsn();
         }
     }
-
-    // private function _loginkry()
-    // {
-    //     $id_dsn = $this->input->post('nip'); #'nrp' = name di view
-    //     $passw_dsn = $this->input->post('pin');
-
-    //     $this->load->model('user_model_dsn', 'karyawan'); #'datamhs' disini alias dari nama modelnya
-
-    //     $user = $this->karyawan->userCheckLogin($id_kry);
-
-    //     $user = $this->db->get_where('karyawan', ['id_kry' => $id_kry])->row_array(); #'datamhs' disini nama tabel dari db
-    //     // var_dump($user);
-    //     // die;
-    //     if ($user != null) {
-    //         if ($passw_kry == $user['passw_kry']) {
-    //             $data = [
-    //                 'nip' => $user['id_kry'],
-    //                 'nama_kry' => $user['nama_kry'],
-    //             ];
-    //             $this->session->set_userdata($data);
-    //             redirect('user/kuesioner_kry');
-    //         } else {
-    //             $this->session->set_flashdata('message', '<div class="alert alert-danger" style="max-width:326px" role="alert">Password salah.</div>');
-    //             redirect('auth/index_kry');
-    //         }
-    //     } else {
-    //         $this->session->set_flashdata('message', '<div class="alert alert-danger" style="max-width:326px" role="alert">NIP anda tidak ditemukan.</div>');
-    //         redirect('auth/index_kry');
-    //     }
-    // }
 
     private function _loginmhs()
     {
@@ -148,7 +80,7 @@ class Auth extends CI_Controller
                     'nohp' => $user['nohpmhs']
                 ];
                 $this->session->set_userdata($data);
-                redirect('user/edit_mhs');
+                redirect('user/edit');
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" style="max-width:326px" role="alert">Password salah.</div>');
                 redirect('auth/index_mhs');
@@ -158,24 +90,51 @@ class Auth extends CI_Controller
             redirect('auth/index_mhs');
         }
     }
+    private function _logindsn()
+    {
+        $id_dsn = $this->input->post('nip'); #'nrp' = name di view
+        $passw_dsn = $this->input->post('pin');
 
+        $this->load->model('user_model_dsn', 'dosen'); #'datamhs' disini alias dari nama modelnya
+
+        $user = $this->dosen->userCheckLogin($id_dsn);
+
+        $user = $this->db->get_where('dosen', ['id_dsn' => $id_dsn])->row_array(); #'datamhs' disini nama tabel dari db
+        // var_dump($user);
+        // die;
+        if ($user != null) {
+            if ($passw_dsn == $user['passw_dsn']) {
+                $data = [
+                    'nip' => $user['id_dsn'],
+                    'nama_dsn' => $user['nama_dsn'],
+                ];
+                $this->session->set_userdata($data);
+                redirect('user/kuesioner_dsn');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" style="max-width:326px" role="alert">Password salah.</div>');
+                redirect('auth/index_dsn');
+            }
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" style="max-width:326px" role="alert">NIP anda tidak ditemukan.</div>');
+            redirect('auth/index_dsn');
+        }
+    }
+
+    public function logout()
+    {
+        $this->session->unset_userdata('nrp');
+        // $this->session->unset_userdata('nama');
+        // $this->session->unset_userdata('noktp');
+        // $this->session->unset_userdata('nohp');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" style="max-width:326px" role="alert">Berhasil Logout</div>');
+        redirect('auth');
+    }
     public function logout_dsn()
     {
         $this->session->unset_userdata('nip');
-        $this->session->set_flashdata('message', '<div class="alert alert-success" style="max-width:326px" role="alert">Berhasil Logout</div>');
-        redirect('auth');
-    }
-
-    public function logout_kry()
-    {
-        $this->session->unset_userdata('nip');
-        $this->session->set_flashdata('message', '<div class="alert alert-success" style="max-width:326px" role="alert">Berhasil Logout</div>');
-        redirect('auth');
-    }
-
-    public function logout_mhs()
-    {
-        $this->session->unset_userdata('nrp');
+        // $this->session->unset_userdata('nama_dsn');
+        // $this->session->unset_userdata('noktp');
+        // $this->session->unset_userdata('nohp');
         $this->session->set_flashdata('message', '<div class="alert alert-success" style="max-width:326px" role="alert">Berhasil Logout</div>');
         redirect('auth');
     }

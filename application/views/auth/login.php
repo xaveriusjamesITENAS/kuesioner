@@ -6,7 +6,7 @@
   <link rel="icon" type="image/png" href="<?= base_url('assets/'); ?>img/icons/itenas-w.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Login Dosen Itenas</title>
+  <title>Login Mahasiswa Itenas</title>
   <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -27,17 +27,17 @@
                 <img src="<?= base_url('assets/'); ?>img/logo.png" alt="logo" class="logo">
               </div>
 
-              <p class="login-card-description">Login Dosen Itenas</p>
+              <p class="login-card-description">Login Mahasiswa Itenas</p>
               <?= $this->session->flashdata('message'); ?>
-              <form method="post" action="<?= base_url("Auth/index_dsn"); ?>" class="user">
+              <form method="post" action="<?= base_url("Auth/index_mhs"); ?>" class="user">
                 <div class="form-group">
-                  <label for="email" class="sr-only">NIP</label>
-                  <input type="text" class="form-control form-control-user" id="nip" name="nip" placeholder="Masukkan NIP" value="<?= set_value('nip'); ?>">
-                  <?= form_error('nip', '<small class="text-danger pl-3">', '</small>'); ?>
+                  <label for="email" class="sr-only">NRP</label>
+                  <input type="text" class="form-control form-control-user" id="nrp" name="nrp" placeholder="Masukkan NRP" value="<?= set_value('nrp'); ?>">
+                  <?= form_error('nrp', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group mb-4">
-                  <label for="password" class="sr-only">Password</label>
-                  <input type="password" class="form-control form-control-user" id="pin" name="pin" placeholder="Masukkan Password">
+                  <label for="password" class="sr-only">PIN</label>
+                  <input type="password" class="form-control form-control-user" id="pin" name="pin" placeholder="Masukkan PIN">
                   <?= form_error('pin', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <!-- <input name="login" id="login" class="btn btn-block login-btn mb-4" type="button" value="Login"> -->

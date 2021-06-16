@@ -6,7 +6,7 @@
   <link rel="icon" type="image/png" href="<?= base_url('assets/'); ?>img/icons/itenas-w.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Login | Institut Teknologi Nasional</title>
+  <title>Kuesioner</title>
   <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -27,7 +27,7 @@
                 <img src="<?= base_url('assets/'); ?>img/logo.png" alt="logo" class="logo">
               </div>
 
-              <p class="login-card-description">Vaksinasi CoViD-19</p>
+              <p class="login-card-description">Kuesioner</p>
               <?= $this->session->flashdata('message'); ?>
               <form method="post" action="<?= base_url("Auth"); ?>" class="user">
                 <!-- <div class="form-group">
@@ -42,7 +42,6 @@
                 </div> -->
                 <!-- <input name="login" id="login" class="btn btn-block login-btn mb-4" type="button" value="Login"> -->
                 <a type="submit" class="btn btn-block login-btn mb-4" href="<?= base_url('auth/index_dsn'); ?>">Login Dosen</a>
-                <a type="submit" class="btn btn-block login-btn mb-4" href="<?= base_url('auth/index_kry'); ?>">Login Karyawan</a>
                 <a type="submit" class="btn btn-block login-btn mb-4" href="<?= base_url('auth/index_mhs'); ?>">Login Mahasiswa</a>
               </form>
               <!-- <a href="#!" class="forgot-password-link">Forgot password?</a>

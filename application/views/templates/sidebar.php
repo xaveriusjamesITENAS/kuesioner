@@ -36,23 +36,17 @@
             </a>
           </li> -->
           <li method="post" action="<?= base_url("User"); ?>" class="">
-            <a href="<?= base_url('user/edit_mhs'); ?>">
+            <a href="<?= base_url('user/edit'); ?>">
               <i class="now-ui-icons users_single-02"></i>
               <p>Profil Mahasiswa</p>
             </a>
           </li>
           <li method="post" action="<?= base_url("User"); ?>" class="">
-            <a href="<?= base_url('user/data_ortu'); ?>">
-              <i class="now-ui-icons users_single-02"></i>
-              <p>Data Orangtua</p>
-            </a>
-          </li>
-          <!-- <li method="post" action="<?= base_url("User"); ?>" class="">
             <a href="<?= base_url('user/kuesioner_mhs'); ?>">
               <i class="now-ui-icons education_paper"></i>
               <p>Kuesioner</p>
             </a>
-          </li> -->
+          </li>
           <!-- <li>
             <a href="./typography.html">
               <i class="now-ui-icons text_caps-small"></i>
