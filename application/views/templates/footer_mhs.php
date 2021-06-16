@@ -47,7 +47,7 @@
             <div class="modal-body">Pilih "Logout" jika anda yakin akan keluar dari sesi ini.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                <a class="btn btn-primary" href="<?= base_url('auth/logout'); ?>">Logout</a>
+                <a class="btn btn-primary" href="<?= base_url('auth/logout_mhs'); ?>">Logout</a>
             </div>
         </div>
     </div>
