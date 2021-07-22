@@ -8,7 +8,7 @@
                     <h5 class="title">Kuesioner Mahasiswa</h5>
                 </div>
                 <div class="card-body ">
-                    <h1 class="h3 mb-4 text-gray-800">Instrumen Penilaian Efektivitas Proses Pembelajaran Online</h1>
+                    <h6 class="h3 mb-4 text-gray-800">Instrumen Penilaian Efektivitas Proses Pembelajaran Online</h6>
                     <div class="form-group row">
                         <label for="namamhs" class="col-sm-10">Kuesioner ini menanyakan pendapat anda mengenai pembelajaran daring selama semester ini. Pengumpulan data menggunakan kuesioner ini bertujuan mengukur keefektifan kegiatan belajar daring yang telah dilakukan. Berikan tanggapan berdasarkan pendapat sendiri dan bukan pandangan/pendapat orang lain. Kami mengucapkan banyak terima kasih atas partisipasinya dalam pengisian kuesioner ini. </label>
                     </div>
