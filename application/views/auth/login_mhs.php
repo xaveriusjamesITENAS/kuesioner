@@ -15,7 +15,8 @@
     <div class="forms-container">
       <div class="signin-signup">
         <form method="post" action="<?= base_url("Auth/index_mhs"); ?>" class="sign-in-form">
-          <h1 class="title" style="color: green; font-size:medium"><?= $this->session->flashdata('message'); ?></h1>
+          <h1 class="title" style="color: green; font-size:medium">
+            <?= $this->session->flashdata('message_logoutmhs'); ?></h1>
           <h2 class="title">Login Mahasiswa</h2>
           <!-- <div class="col-lg-8">
             <div class="card">

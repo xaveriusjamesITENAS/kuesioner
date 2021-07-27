@@ -7,24 +7,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/style_2.css" />
-  <title>Kuesioner Karyawan | Institut Teknologi Nasional</title>
+  <title>Kuesioner Dosen | Institut Teknologi Nasional</title>
 </head>
 
 <body>
   <div class="container">
     <div class="forms-container">
       <div class="signin-signup">
-        <form method="post" action="<?= base_url("auth/index_kry"); ?>" class="sign-in-form">
-          <h1 class="title" style="color: green; font-size:medium">
-            <?= $this->session->flashdata('message'); ?></h1>
-          <h2 class="title">Login Karyawan</h2>
+        <form method="post" action="<?= base_url("Auth/index_dsn"); ?>" class="sign-in-form">
+          <h1 class="title" style="color: green; font-size:medium"><?= $this->session->flashdata('message'); ?></h1>
+          <h2 class="title">Login Dosen</h2>
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input type="text" class="form-control form-control-user" id="nik" name="nik" placeholder="Username" value="<?= set_value('nik'); ?>">
+            <input type="text" class="form-control form-control-user" id="nip" name="nip" placeholder="Username" value="<?= set_value('nip'); ?>">
           </div>
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input type="password" class="form-control form-control-user" id="nik" name="nik" placeholder="Password">
+            <input type="password" class="form-control form-control-user" id="pin" name="pin" placeholder="Password">
           </div>
           <button type="submit" class="btn btn-block login-btn mb-4">Login</button>
         </form>

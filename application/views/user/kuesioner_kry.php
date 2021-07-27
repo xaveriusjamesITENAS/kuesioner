@@ -76,7 +76,7 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li class="active">
-                            <a class="js-arrow" href="<?= base_url('user/kuesioner_dsn'); ?>">
+                            <a class="js-arrow" href="<?= base_url('user/kuesioner_kry'); ?>">
                                 <i class="fas fa-copy"></i>Kuesioner</a>
                         </li>
                     </ul>
@@ -93,123 +93,9 @@
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="" action="" method="">
-                                <!-- <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                <button class="au-btn--submit" type="submit">
-                  <i class="zmdi zmdi-search"></i>
-                </button> -->
                             </form>
                             <div class="header-button">
                                 <div class="noti-wrap">
-                                    <!-- <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-comment-more"></i>
-                                        <span class="quantity">1</span>
-                                        <div class="mess-dropdown js-dropdown">
-                                            <div class="mess__title">
-                                                <p>You have 2 news message</p>
-                                            </div>
-                                            <div class="mess__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/avatar-06.jpg" alt="Michelle Moreno" />
-                                                </div>
-                                                <div class="content">
-                                                    <h6>Michelle Moreno</h6>
-                                                    <p>Have sent a photo</p>
-                                                    <span class="time">3 min ago</span>
-                                                </div>
-                                            </div>
-                                            <div class="mess__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/avatar-04.jpg" alt="Diane Myers" />
-                                                </div>
-                                                <div class="content">
-                                                    <h6>Diane Myers</h6>
-                                                    <p>You are now connected on message</p>
-                                                    <span class="time">Yesterday</span>
-                                                </div>
-                                            </div>
-                                            <div class="mess__footer">
-                                                <a href="#">View all messages</a>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <!-- <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-email"></i>
-                                        <span class="quantity">1</span>
-                                        <div class="email-dropdown js-dropdown">
-                                            <div class="email__title">
-                                                <p>You have 3 New Emails</p>
-                                            </div>
-                                            <div class="email__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/avatar-06.jpg" alt="Cynthia Harvey" />
-                                                </div>
-                                                <div class="content">
-                                                    <p>Meeting about new dashboard...</p>
-                                                    <span>Cynthia Harvey, 3 min ago</span>
-                                                </div>
-                                            </div>
-                                            <div class="email__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/avatar-05.jpg" alt="Cynthia Harvey" />
-                                                </div>
-                                                <div class="content">
-                                                    <p>Meeting about new dashboard...</p>
-                                                    <span>Cynthia Harvey, Yesterday</span>
-                                                </div>
-                                            </div>
-                                            <div class="email__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/avatar-04.jpg" alt="Cynthia Harvey" />
-                                                </div>
-                                                <div class="content">
-                                                    <p>Meeting about new dashboard...</p>
-                                                    <span>Cynthia Harvey, April 12,,2018</span>
-                                                </div>
-                                            </div>
-                                            <div class="email__footer">
-                                                <a href="#">See all emails</a>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <!-- <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-notifications"></i>
-                                        <span class="quantity">3</span>
-                                        <div class="notifi-dropdown js-dropdown">
-                                            <div class="notifi__title">
-                                                <p>You have 3 Notifications</p>
-                                            </div>
-                                            <div class="notifi__item">
-                                                <div class="bg-c1 img-cir img-40">
-                                                    <i class="zmdi zmdi-email-open"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>You got a email notification</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
-                                                </div>
-                                            </div>
-                                            <div class="notifi__item">
-                                                <div class="bg-c2 img-cir img-40">
-                                                    <i class="zmdi zmdi-account-box"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>Your account has been blocked</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
-                                                </div>
-                                            </div>
-                                            <div class="notifi__item">
-                                                <div class="bg-c3 img-cir img-40">
-                                                    <i class="zmdi zmdi-file-text"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>You got a new file</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
-                                                </div>
-                                            </div>
-                                            <div class="notifi__footer">
-                                                <a href="#">All notifications</a>
-                                            </div>
-                                        </div>
-                                    </div> -->
                                 </div>
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
@@ -217,7 +103,7 @@
                                             <img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/avatar-01.jpg" alt="John Doe" />
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#"><?= $this->session->userdata('nip'); ?></a>
+                                            <a class="js-acc-btn" href="#"><?= $this->session->userdata('nik'); ?></a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -228,7 +114,7 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#"><?= $this->session->userdata('nama_dsn'); ?></a>
+                                                        <a href="#"><?= $this->session->userdata('namapegawai'); ?></a>
                                                     </h5>
                                                     <span class="email">Karyawan</span>
                                                 </div>
@@ -259,9 +145,6 @@
                                     </div>
                                     <?= $this->session->flashdata('message'); ?>
                                     <div class="card-body">
-                                        <!-- <div class="typo-headers">
-                                            <h1 class="pb-2 display-5" style="font-size: 25px;">Instrumen Penilaian Pelayanan Fakultas Terhadap Dosen</h1>
-                                        </div> -->
                                         <div class="typo-articles">
                                             <p>
                                                 Angket ini bertujuan untuk memperoleh masukan tentang hal-hal yang berkaitan dengan kepuasan karyawan terhadap beberapa kriteria berikut:
@@ -285,7 +168,8 @@
                                         </div>
                                     </div>
                                     <div class="card-body card-block">
-                                        <?= form_open('user/kuelp2m_kry'); ?>
+                                        <?= form_open('user/kuesioner_kry'); ?>
+                                        <input type="hidden" name="idpegawai" value="<?= $this->session->userdata('nik') ?>" />
                                         <div class="row form-group">
                                             <div class="col col-md-3">
                                                 <label class=" form-control-label" style="color:green; font-weight:bold">Petunjuk Pengisian</label>
@@ -378,16 +262,12 @@
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <textarea name="saran" id="textarea-input" rows="9" value="saran" placeholder="Berikan saran anda mengenai kendala utama dalam pelayanan fakultas." class="form-control"></textarea>
-                                                <!-- <textarea rows="4" cols="80" class="form-control" placeholder="" name="saran" value="saran"></textarea> -->
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <!-- <div class="form-group"> -->
                                         <button type="submit" class="btn btn-success btn-sm">
-                                            <i type="submit" class=""></i>Submit
-                                            <!-- <button type="submit" class="btn btn-primary">Simpan Data</button> -->
-                                        </button>
+                                            <i type="submit" class=""></i>Submit</button>
                                         </form>
                                     </div>
                                 </div>
