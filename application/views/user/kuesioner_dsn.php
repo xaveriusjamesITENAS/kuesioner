@@ -209,8 +209,8 @@
                                             <div class="col col-md-3">
                                                 <label for="text-input" class=" form-control-label">Nama Matakuliah</label>
                                             </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="text" class="form-control-static" id="namamk" name="namamk" readonly>
+                                            <div class="col-12 col-md-6">
+                                                <input type="text" class="form-control" readonly id="namamk" name="namamk" readonly>
                                                 <small class="form-text text-muted"></small>
                                             </div>
                                         </div>
@@ -218,8 +218,8 @@
                                             <div class="col col-md-3">
                                                 <label for="text-input" class=" form-control-label">Kelas</label>
                                             </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="text" class="form-control-static" id="kelas" name="kelas" value="" readonly>
+                                            <div class="col-12 col-md-6">
+                                                <input type="text" class="form-control" readonly id="kelas" name="kelas" value="" readonly>
                                                 <small class="form-text text-muted"></small>
                                             </div>
                                         </div>
