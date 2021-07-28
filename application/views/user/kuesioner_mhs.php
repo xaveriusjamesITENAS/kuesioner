@@ -58,12 +58,12 @@
         <div class="container-fluid">
           <ul class="navbar-mobile__list list-unstyled">
             <li>
-              <a href="form.html">
-                <i class="far fa-check-square"></i>Profil Mahasiswa</a>
+              <a href="<?= base_url('user/editprofil_mhs'); ?>">
+                <i class="far fa-id-card"></i>Profil Mahasiswa</a>
             </li>
             <li class="has-sub">
               <a class="js-arrow" href="<?= base_url('user/kuesioner_mhs'); ?>">
-                <i class="fas fa-copy"></i>Kuesioner</a>
+                <i class="far fa-file-alt"></i>Kuesioner</a>
             </li>
           </ul>
         </div>
