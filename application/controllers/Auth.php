@@ -19,6 +19,12 @@ class Auth extends CI_Controller
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/user_guide/general/urls.html
      */
+    public function index()
+    {
+
+        $this->load->view('auth/home_login');
+    }
+
     public function index_mhs()
     {
         if ($this->session->has_userdata('nrp')) {
