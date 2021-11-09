@@ -76,16 +76,16 @@ class User extends CI_Controller
                 ->where("dosen.nama_dsn != 'DOSEN BARU/DOSEN BELUM ADA'")
                 ->get()->result();
         }
-        $matkul = $this->db->distinct()->select('jadwal.*, matkul.*, dosen.*')->from('datamhs')
-        ->join('jadwal', 'jadwal.nrpmhs = datamhs.nrpmhs', 'inner')
-        ->join('matkul', 'matkul.kode_mk = jadwal.kode_mk', 'left')
-        ->join('dosen', 'dosen.id_dsn = jadwal.id_dsn', 'left')
-        ->join('submit_mhs', 'submit_mhs.nrpmhs = datamhs.nrpmhs', 'left')
-        ->where('datamhs.nrpmhs=' . $this->session->userdata('nrp') . '')
-        ->where("dosen.nama_dsn != 'DOSEN BARU/DOSEN BELUM ADA'")
-        ->get()->result();
-        var_dump($this->db->last_query());
-        die();
+        // $matkul = $this->db->distinct()->select('jadwal.*, matkul.*, dosen.*')->from('datamhs')
+        // ->join('jadwal', 'jadwal.nrpmhs = datamhs.nrpmhs', 'inner')
+        // ->join('matkul', 'matkul.kode_mk = jadwal.kode_mk', 'left')
+        // ->join('dosen', 'dosen.id_dsn = jadwal.id_dsn', 'left')
+        // ->join('submit_mhs', 'submit_mhs.nrpmhs = datamhs.nrpmhs', 'left')
+        // ->where('datamhs.nrpmhs=' . $this->session->userdata('nrp') . '')
+        // ->where("dosen.nama_dsn != 'DOSEN BARU/DOSEN BELUM ADA'")
+        // ->get()->result();
+        // var_dump($this->db->last_query());
+        // die();
         $data['pertanyaan'] = $this->db->select('*')
             ->from('pertanyaan')->where('level', 'mahasiswa')
             ->get()->result_array();
