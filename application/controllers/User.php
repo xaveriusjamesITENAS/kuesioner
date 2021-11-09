@@ -76,7 +76,16 @@ class User extends CI_Controller
                 ->where("dosen.nama_dsn != 'DOSEN BARU/DOSEN BELUM ADA'")
                 ->get()->result();
         }
-
+        $matkul = $this->db->distinct()->select('jadwal.*, matkul.*, dosen.*')->from('datamhs')
+        ->join('jadwal', 'jadwal.nrpmhs = datamhs.nrpmhs', 'inner')
+        ->join('matkul', 'matkul.kode_mk = jadwal.kode_mk', 'left')
+        ->join('dosen', 'dosen.id_dsn = jadwal.id_dsn', 'left')
+        ->join('submit_mhs', 'submit_mhs.nrpmhs = datamhs.nrpmhs', 'left')
+        ->where('datamhs.nrpmhs=' . $this->session->userdata('nrp') . '')
+        ->where("dosen.nama_dsn != 'DOSEN BARU/DOSEN BELUM ADA'")
+        ->get()->result();
+        var_dump($this->db->last_query());
+        die();
         $data['pertanyaan'] = $this->db->select('*')
             ->from('pertanyaan')->where('level', 'mahasiswa')
             ->get()->result_array();
@@ -131,13 +140,14 @@ class User extends CI_Controller
                 WHERE submit_dsn.kelas = jadwal.kelas AND submit_dsn.kode_mk = jadwal.kode_mk AND jadwal.id_dsn=" . $this->session->userdata('nip') . ")")
                 ->get()->result();
         } else {
-            $data['matkul'] = $this->db->distinct()->select('jadwal.kode_mk, jadwal.kelas')->from('dosen')
-                ->join('jadwal', 'jadwal.id_dsn = dosen.id_dsn', 'inner')
-                ->join('matkul', 'matkul.kode_mk = jadwal.kode_mk', 'left')
-                ->join('submit_dsn', 'submit_dsn.id_dsn = dosen.id_dsn', 'left')
-                ->where('dosen.id_dsn=' . $this->session->userdata('nip') . '')
-                ->get()->result();
+            $data['matkul'] = $this->db->select('matkul.nama_mk, matkul.kode_mk, jadwal.kelas')->from('matkul')
+            ->join('jadwal', 'jadwal.kode_mk = matkul.kode_mk', 'left')
+            ->where('jadwal.id_dsn=' . $this->session->userdata('nip') . '')
+            ->group_by('matkul.kode_mk, jadwal.kelas')
+            ->order_by('matkul.kode_mk, jadwal.kelas')
+            ->get()->result();
         }
+        
         $data['pertanyaan'] = $this->db->select('*')
             ->from('pertanyaan')->where('level', 'dosen')
             ->get()->result_array();
