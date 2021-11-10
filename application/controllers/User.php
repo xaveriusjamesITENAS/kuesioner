@@ -63,7 +63,7 @@ class User extends CI_Controller
                 ->join('dosen', 'dosen.id_dsn = jadwal.id_dsn', 'left')
                 ->join('submit_mhs', 'submit_mhs.nrpmhs = datamhs.nrpmhs')
                 ->where('datamhs.nrpmhs=' . $this->session->userdata('nrp') . '')
-                ->where("dosen.nama_dsn != 'DOSEN BARU/DOSEN BELUM ADA'")
+                // ->where("dosen.nama_dsn != 'DOSEN BARU/DOSEN BELUM ADA'")
                 ->where("jadwal.kode_mk NOT IN (SELECT submit_mhs.kode_mk FROM submit_mhs WHERE submit_mhs.nrpmhs = " . $this->session->userdata('nrp') . ")")
                 ->get()->result();
         } else {
@@ -73,7 +73,7 @@ class User extends CI_Controller
                 ->join('dosen', 'dosen.id_dsn = jadwal.id_dsn', 'left')
                 ->join('submit_mhs', 'submit_mhs.nrpmhs = datamhs.nrpmhs', 'left')
                 ->where('datamhs.nrpmhs=' . $this->session->userdata('nrp') . '')
-                ->where("dosen.nama_dsn != 'DOSEN BARU/DOSEN BELUM ADA'")
+                // ->where("dosen.nama_dsn != 'DOSEN BARU/DOSEN BELUM ADA'")
                 ->get()->result();
         }
         // $matkul = $this->db->distinct()->select('jadwal.*, matkul.*, dosen.*')->from('datamhs')
