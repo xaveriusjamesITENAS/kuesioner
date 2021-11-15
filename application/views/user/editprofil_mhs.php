@@ -119,7 +119,7 @@
 								<div class="account-wrap">
 									<div class="account-item clearfix js-item-menu">
 										<div class="image">
-											<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/avatar-01.jpg"
+											<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png"
 												alt="John Doe" />
 										</div>
 										<div class="content">
@@ -129,7 +129,7 @@
 											<div class="info clearfix">
 												<div class="image">
 													<a href="#">
-														<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/avatar-01.jpg"
+														<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png"
 															alt="John Doe" />
 													</a>
 												</div>
@@ -167,7 +167,7 @@
 									<div class="card-body">
 										<div class="mx-auto d-block">
 											<img class="rounded-circle mx-auto d-block"
-												src="<?= base_url('assets/'); ?>vendor/theme/images/icon/avatar-01.jpg"
+												src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png"
 												alt="Card image cap">
 											<h5 class="text-sm-center mt-2 mb-1">
 												<?= $this->session->userdata('nama'); ?></h5>

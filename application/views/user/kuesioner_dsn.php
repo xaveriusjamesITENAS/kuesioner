@@ -127,7 +127,7 @@
 								<div class="account-wrap">
 									<div class="account-item clearfix js-item-menu">
 										<div class="image">
-											<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/avatar-01.jpg"
+											<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png"
 												alt="John Doe" />
 										</div>
 										<div class="content">
@@ -137,7 +137,7 @@
 											<div class="info clearfix">
 												<div class="image">
 													<a href="#">
-														<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/avatar-01.jpg"
+														<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png"
 															alt="John Doe" />
 													</a>
 												</div>
