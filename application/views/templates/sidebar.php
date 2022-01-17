@@ -48,7 +48,7 @@
 						</a>
 					</li>
 					<li method="post" action="<?= base_url("User"); ?>" class="">
-						<a href="<?= base_url('user/kuesioner_mhs'); ?>">
+						<a href="<?= base_url('user/kuesioner_tendik'); ?>">
 							<i class="now-ui-icons education_paper"></i>
 							<p>Kuesioner Sarana/ Pra Sarana</p>
 						</a>

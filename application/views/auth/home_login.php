@@ -21,7 +21,8 @@
 							style="text-align: center; line-height: 2.75em;">Dosen</a>
 						<a type=" submit" class="btn btn-block login-btn mb-4" href="<?= base_url('auth/index_mhs'); ?>"
 							style="text-align: center; line-height: 2.75em;">Mahasiswa</a>
-						<a type=" submit" class="btn btn-block login-btn mb-4" href="<?= base_url('auth/index_mhs'); ?>"
+						<a type=" submit" class="btn btn-block login-btn mb-4"
+							href="<?= base_url('auth/index_tendik'); ?>"
 							style="text-align: center; line-height: 2.75em;">Tendik</a>
 				</form>
 			</div>

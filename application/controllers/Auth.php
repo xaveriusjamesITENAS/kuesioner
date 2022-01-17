@@ -56,6 +56,21 @@ class Auth extends CI_Controller
         }
     }
 
+    public function index_tendik()
+    {
+        if ($this->session->has_userdata('nip')) {
+            redirect('user/kuesioner_tendik');
+        }
+        $this->form_validation->set_rules('nip', 'NIP', 'required|trim');
+        $this->form_validation->set_rules('pin', 'PIN', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('auth/login_tendik');
+        } else {
+            $this->_logintendik();
+        }
+    }
+
     public function index_kry()
     {
         if ($this->session->has_userdata('nik')) {
@@ -131,6 +146,35 @@ class Auth extends CI_Controller
         }
     }
 
+    private function _logintendik()
+    {
+        $nip = $this->input->post('nip'); #'nik' = name di view
+        $passw_tendik = $this->input->post('pin');
+
+        $this->load->model('user_model_tendik', 'tendik'); #'datamhs' disini alias dari nama modelnya
+
+        $user = $this->tendik->userCheckLogin($nip);
+
+        $user = $this->db->get_where('tendik', ['id_tendik' => $nip])->row_array(); #'datamhs' disini nama tabel dari db
+
+        if ($user != null) {
+            if ($passw_tendik == $user['passw_tendik']) {
+                $data = [
+                    'id_tendik' => $user['id_tendik'],
+                    'nama_tendik' => $user['namatendik'],
+                ];
+                $this->session->set_userdata($data);
+                redirect('user/kuebku_tendik');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" style="max-width:326px" role="alert">Password salah.</div>');
+                redirect('auth/index_tendik');
+            }
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" style="max-width:326px" role="alert">NIP anda tidak ditemukan.</div>');
+            redirect('auth/index_tendik');
+        }
+    }
+
     private function _loginkry()
     {
         $nik = $this->input->post('nik'); #'nik' = name di view
@@ -178,6 +222,16 @@ class Auth extends CI_Controller
         // $this->session->unset_userdata('nohp');
         $this->session->set_flashdata('message', '<div class="alert alert-success" style="max-width:326px" role="alert">Berhasil Logout!</div>');
         redirect('auth/index_dsn');
+    }
+
+    public function logout_tendik()
+    {
+        $this->session->unset_userdata('nip');
+        // $this->session->unset_userdata('nama_dsn');
+        // $this->session->unset_userdata('noktp');
+        // $this->session->unset_userdata('nohp');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" style="max-width:326px" role="alert">Berhasil Logout!</div>');
+        redirect('auth/index_tendik');
     }
 
     public function logout_kry()
