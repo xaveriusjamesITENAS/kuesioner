@@ -338,6 +338,11 @@ class User extends CI_Controller
         }
     }
 
+    public function kuebku_dsn()
+    {
+        $this->load->view('user/kuebku_dsn');
+    }
+
     public function getNamaMatkul()
     {
         $idmatkul = $this->input->post('idmatkul');

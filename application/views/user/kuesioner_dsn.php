@@ -78,6 +78,10 @@
 							<a class="js-arrow" href="<?= base_url('user/kuefkl_dsn'); ?>">
 								<i class="fas fa-copy"></i>Pelayanan Fakultas</a>
 						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuebku_dsn'); ?>">
+								<i class="fas fa-copy"></i>Sarana/ Pra Sarana</a>
+						</li>
 					</ul>
 				</div>
 			</nav>
@@ -105,6 +109,10 @@
 						<li class="hs-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuefkl_dsn'); ?>">
 								<i class="fas fa-copy"></i>Pelayanan Fakultas</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuebku_dsn'); ?>">
+								<i class="fas fa-copy"></i>Sarana/ Pra Sarana</a>
 						</li>
 					</ul>
 				</nav>

@@ -68,15 +68,19 @@
 					<ul class="navbar-mobile__list list-unstyled">
 						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn'); ?>">
-								<i class="fas fa-copy"></i>Kuesioner Matakuliah</a>
+								<i class="fas fa-copy"></i>Pembelajaran Daring</a>
 						</li>
-						<li class="active">
-							<a class="js-arrow" href="<?= base_url('user/kuelp2m_dsn'); ?>">
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn'); ?>">
 								<i class="fas fa-copy"></i>Pelayanan LP2M</a>
 						</li>
 						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuefkl_dsn'); ?>">
 								<i class="fas fa-copy"></i>Pelayanan Fakultas</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuebku_dsn'); ?>">
+								<i class="fas fa-copy"></i>Sarana/ Pra Sarana</a>
 						</li>
 					</ul>
 				</div>
@@ -98,7 +102,7 @@
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn'); ?>">
 								<i class="fas fa-copy"></i>Pembelajaran Daring</a>
 						</li>
-						<li class="active">
+						<li class="hs-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuelp2m_dsn'); ?>">
 								<i class="fas fa-copy"></i>Pelayanan LP2M</a>
 						</li>
@@ -106,7 +110,7 @@
 							<a class="js-arrow" href="<?= base_url('user/kuefkl_dsn'); ?>">
 								<i class="fas fa-copy"></i>Pelayanan Fakultas</a>
 						</li>
-						<li class="has-sub">
+						<li class="active">
 							<a class="js-arrow" href="<?= base_url('user/kuebku_dsn'); ?>">
 								<i class="fas fa-copy"></i>Sarana/ Pra Sarana</a>
 						</li>
@@ -124,6 +128,7 @@
 					<div class="container-fluid">
 						<div class="header-wrap">
 							<form class="" action="" method="">
+
 							</form>
 							<div class="header-button">
 								<div class="noti-wrap">
@@ -174,29 +179,28 @@
 							<div class="col-md-12">
 								<div class="card">
 									<div class="card-header">
-										<strong class="card-title">Kuesioner Pelayanan LP2M</strong>
+										<strong class="card-title">Kuesioner Pelayanan Sarana/ Pra Sarana Umum</strong>
 									</div>
 									<?= $this->session->flashdata('message'); ?>
 									<div class="card-body">
 										<div class="typo-headers">
-											<h1 class="pb-2 display-5" style="font-size: 25px;">Instrumen Penilaian
-												Pelayanan LP2M Terhadap Dosen</h1>
+											<h1 class="pb-2 display-5" style="font-size: 25px;">KUESIONER KEPUASAN
+												PENGGUNA LAYANAN BIDANG KEUANGAN DAN SARANA-PRASARANA DI ITENAS</h1>
 										</div>
 										<div class="typo-articles">
 											<p>
-												Kuesioner ini menanyakan pendapat anda mengenai pelayanan LP2M terhadap
-												tenaga pendidik. Pengumpulan data menggunakan kuesioner ini bertujuan
-												mengukur keefektifan pelayanan LP2M yang telah dilakukan. Berikan
-												tanggapan berdasarkan pendapat sendiri dan bukan pandangan/pendapat
-												orang lain.
+												<!-- Kuesioner ini menanyakan pendapat anda mengenai pelayanan fakultas
+												terhadap tenaga pendidik. Pengumpulan data menggunakan kuesioner ini
+												bertujuan mengukur keefektifan pelayanan fakultas yang telah dilakukan.
+												Berikan tanggapan berdasarkan pendapat sendiri dan bukan
+												pandangan/pendapat orang lain. -->
 												<p></p>
-												<br>Kami mengucapkan banyak terima kasih atas partisipasinya dalam
-												pengisian kuesioner ini.</br>
+												<br>Pertanyaan untuk Dosen dan Tenaga Kependidikan</br>
 											</p>
 										</div>
 									</div>
 									<div class="card-body card-block">
-										<?= form_open('user/kuelp2m_dsn'); ?>
+										<?= form_open('user/kuefkl_dsn'); ?>
 										<input type="hidden" name="id_dsn"
 											value="<?= $this->session->userdata('nip') ?>" />
 										<div class="row form-group">
@@ -258,7 +262,7 @@
                                         $no_radio3 = 1;
                                         $no_radio4 = 1;
                                         $name = 'jwb';
-                                        foreach ($pertanyaan_lp2m as $prt) : ?>
+                                        foreach ($pertanyaan_fkl as $prt) : ?>
 										<div class="form-group row">
 											<div class="col col-md-3">
 												<label class="form-control-label" style="font-weight:bold">Pertanyaan
@@ -315,7 +319,7 @@
 											</div>
 											<div class="col-12 col-md-9">
 												<textarea name="saran" id="textarea-input" rows="9" value="saran"
-													placeholder="Berikan saran anda mengenai kendala utama dalam pelayanan LP2M."
+													placeholder="Berikan saran anda mengenai kendala utama dalam pelayanan fakultas."
 													class="form-control"></textarea>
 											</div>
 										</div>
