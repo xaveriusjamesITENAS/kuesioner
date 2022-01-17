@@ -539,7 +539,7 @@ class User extends CI_Controller
         $data['pertanyaan_sarpras'] = $this->db->select('*')
             ->from('pertanyaan_sarpras')->where('level', 'dosen')
             ->get()->result_array();
-        $this->form_validation->set_rules('id_tendik', 'NIP', 'required|trim');
+        $this->form_validation->set_rules('nip', 'NIP', 'required|trim');
         if ($this->form_validation->run() == false) {
             $this->load->view('user/kuebku_tendik', $data);
         } else {
@@ -580,7 +580,7 @@ class User extends CI_Controller
                 + $this->input->post('jwb_43');
             $indeks_kml = $jml_tendik / 43;
             $data = [
-                'nip' => $this->input->post('id_tendik'),
+                'nip' => $this->input->post('nip'),
                 'jwb_1' => $this->input->post('jwb_1'),
                 'jwb_2' => $this->input->post('jwb_2'),
                 'jwb_3' => $this->input->post('jwb_3'),
@@ -628,7 +628,7 @@ class User extends CI_Controller
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ];
-            $this->db->insert('sarpras_dosen', $data);
+            $this->db->insert('sarpras_tendik', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
             redirect('user/kuebku_tendik');
         }

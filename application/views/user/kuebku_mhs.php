@@ -266,7 +266,7 @@
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="<?= $name . $no_radio4++ ?>" id="flexRadioCheckedDisabled" value="4" checked>
+                                                        <input class="form-check-input" type="radio" name="<?= $name . $no_radio4++ ?>" id="flexRadioCheckedDisabled" value="4">
                                                         <label class="form-check-label" for="flexRadioCheckedDisabled">
                                                             Sangat Puas
                                                         </label>
