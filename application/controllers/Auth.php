@@ -153,7 +153,7 @@ class Auth extends CI_Controller
         $nip = $this->input->post('nip'); #'nik' = name di view
         $passw_tendik = $this->input->post('pin');
 
-        $this->load->model('user_model_tendik', 'tendik'); #'datamhs' disini alias dari nama modelnya
+        $this->load->model('User_model_tendik', 'tendik'); #'datamhs' disini alias dari nama modelnya
 
         $user = $this->tendik->userCheckLogin($nip);
 
