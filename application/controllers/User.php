@@ -102,15 +102,15 @@ class User extends CI_Controller
         $this->form_validation->set_rules('namamhs', 'Nama Mahasiswa', 'required');
         $this->form_validation->set_rules('namamk', 'Nama MK', 'required');
         $this->form_validation->set_rules('kelas', 'Kelas', 'required');
-        for ($i = 1; $i <= 12; $i++) {
+        for ($i = 1; $i <= 15; $i++) {
             $this->form_validation->set_rules('jwb' . $i, 'Pertanyaan ' . $i, 'required');
         }
         if ($this->form_validation->run() == false) {
             $this->load->view('user/kuesioner_mhs', $data);
         } else {
             $jml = $this->input->post('jwb1') + $this->input->post('jwb2') + $this->input->post('jwb3') + $this->input->post('jwb4') + $this->input->post('jwb5') + $this->input->post('jwb6') +
-                $this->input->post('jwb7') + $this->input->post('jwb8') + $this->input->post('jwb9') + $this->input->post('jwb10') + $this->input->post('jwb11') + $this->input->post('jwb12');
-            $indeks_kml = $jml / 12;
+                $this->input->post('jwb7') + $this->input->post('jwb8') + $this->input->post('jwb9') + $this->input->post('jwb10') + $this->input->post('jwb11') + $this->input->post('jwb12') + $this->input->post('jwb13') + $this->input->post('jwb14') + $this->input->post('jwb15');
+            $indeks_kml = $jml / 15;
             $data = [
                 'nrpmhs' => $this->input->post('nrpmhs'),
                 'kode_mk' => $this->input->post('kode_mk'),
@@ -127,6 +127,9 @@ class User extends CI_Controller
                 'jwb10' => $this->input->post('jwb10'),
                 'jwb11' => $this->input->post('jwb11'),
                 'jwb12' => $this->input->post('jwb12'),
+                'jwb13' => $this->input->post('jwb13'),
+                'jwb14' => $this->input->post('jwb14'),
+                'jwb15' => $this->input->post('jwb15'),
                 'indeks_kml' => $indeks_kml,
                 'saran' => $this->input->post('saran'),
             ];
@@ -174,31 +177,34 @@ class User extends CI_Controller
         $this->form_validation->set_rules('kode_mk', 'Kode MK', 'required');
         $this->form_validation->set_rules('namamk', 'Nama MK', 'required');
         $this->form_validation->set_rules('kelas', 'Kelas', 'required');
-        for ($i = 1; $i <= 12; $i++) {
+        for ($i = 1; $i <= 15; $i++) {
             $this->form_validation->set_rules('jwb' . $i, 'Pertanyaan ' . $i, 'required');
         }
         if ($this->form_validation->run() == false) {
             $this->load->view('user/kuesioner_dsn', $data);
         } else {
             $jml_dsn = $this->input->post('jwb1') + $this->input->post('jwb2') + $this->input->post('jwb3') + $this->input->post('jwb4') + $this->input->post('jwb5') + $this->input->post('jwb6') +
-                $this->input->post('jwb7') + $this->input->post('jwb8') + $this->input->post('jwb9') + $this->input->post('jwb10') + $this->input->post('jwb11') + $this->input->post('jwb12');
-            $indeks_kml_dsn = $jml_dsn / 12;
+                $this->input->post('jwb7') + $this->input->post('jwb8') + $this->input->post('jwb9') + $this->input->post('jwb10') + $this->input->post('jwb11') + $this->input->post('jwb12') + $this->input->post('jwb13') + $this->input->post('jwb14') + $this->input->post('jwb15');
+            $indeks_kml_dsn = $jml_dsn / 15;
             $data = [
                 'id_dsn' => $this->input->post('id_dsn'),
                 'kode_mk' => $this->input->post('kode_mk'),
                 'kelas' => $this->input->post('kelas'),
-                'jwb13' => $this->input->post('jwb1'),
-                'jwb14' => $this->input->post('jwb2'),
-                'jwb15' => $this->input->post('jwb3'),
-                'jwb16' => $this->input->post('jwb4'),
-                'jwb17' => $this->input->post('jwb5'),
-                'jwb18' => $this->input->post('jwb6'),
-                'jwb19' => $this->input->post('jwb7'),
-                'jwb20' => $this->input->post('jwb8'),
-                'jwb21' => $this->input->post('jwb9'),
-                'jwb22' => $this->input->post('jwb10'),
-                'jwb23' => $this->input->post('jwb11'),
-                'jwb24' => $this->input->post('jwb12'),
+                'jwb16' => $this->input->post('jwb1'),
+                'jwb17' => $this->input->post('jwb2'),
+                'jwb18' => $this->input->post('jwb3'),
+                'jwb19' => $this->input->post('jwb4'),
+                'jwb20' => $this->input->post('jwb5'),
+                'jwb21' => $this->input->post('jwb6'),
+                'jwb22' => $this->input->post('jwb7'),
+                'jwb23' => $this->input->post('jwb8'),
+                'jwb24' => $this->input->post('jwb9'),
+                'jwb25' => $this->input->post('jwb10'),
+                'jwb26' => $this->input->post('jwb11'),
+                'jwb27' => $this->input->post('jwb12'),
+                'jwb28' => $this->input->post('jwb13'),
+                'jwb29' => $this->input->post('jwb14'),
+                'jwb30' => $this->input->post('jwb15'),
                 'indeks_kml' => $indeks_kml_dsn,
                 'saran' => $this->input->post('saran'),
             ];
