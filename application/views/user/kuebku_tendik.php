@@ -15,21 +15,30 @@
 
 	<!-- Fontfaces CSS-->
 	<link href="<?= base_url('assets/'); ?>vendor/theme/css/font-face.css" rel="stylesheet" media="all">
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/font-awesome-4.7/css/font-awesome.min.css"
+		rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/font-awesome-5/css/fontawesome-all.min.css"
+		rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/mdi-font/css/material-design-iconic-font.min.css"
+		rel="stylesheet" media="all">
 
 	<!-- Bootstrap CSS-->
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet"
+		media="all">
 
 	<!-- Vendor CSS-->
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/animsition/animsition.min.css" rel="stylesheet"
+		media="all">
+	<link
+		href="<?= base_url('assets/'); ?>vendor/theme/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css"
+		rel="stylesheet" media="all">
 	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/wow/animate.css" rel="stylesheet" media="all">
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet"
+		media="all">
 	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/slick/slick.css" rel="stylesheet" media="all">
 	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet"
+		media="all">
 
 	<!-- Main CSS-->
 	<link href="<?= base_url('assets/'); ?>vendor/theme/css/theme.css" rel="stylesheet" media="all">
@@ -127,21 +136,24 @@
 								<div class="account-wrap">
 									<div class="account-item clearfix js-item-menu">
 										<div class="image">
-											<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png" alt="John Doe" />
+											<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png"
+												alt="John Doe" />
 										</div>
 										<div class="content">
-											<a class="js-acc-btn" href="#"><?= $this->session->userdata('nip'); ?></a>
+											<a class="js-acc-btn"
+												href="#"><?= $this->session->userdata('id_tendik'); ?></a>
 										</div>
 										<div class="account-dropdown js-dropdown">
 											<div class="info clearfix">
 												<div class="image">
 													<a href="#">
-														<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png" alt="John Doe" />
+														<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png"
+															alt="John Doe" />
 													</a>
 												</div>
 												<div class="content">
 													<h5 class="name">
-														<a href="#"><?= $this->session->userdata('nama_tendik'); ?></a>
+														<a href="#"><?= $this->session->userdata('id_tendik'); ?></a>
 													</h5>
 													<span class="email">Tendik</span>
 												</div>
@@ -183,17 +195,19 @@
 												bertujuan mengukur keefektifan pelayanan fakultas yang telah dilakukan.
 												Berikan tanggapan berdasarkan pendapat sendiri dan bukan
 												pandangan/pendapat orang lain. -->
-											<p></p>
-											<br>Pertanyaan untuk Dosen dan Tenaga Kependidikan</br>
+												<p></p>
+												<br>Pertanyaan untuk Dosen dan Tenaga Kependidikan</br>
 											</p>
 										</div>
 									</div>
 									<div class="card-body card-block">
 										<?= form_open('user/kuebku_tendik'); ?>
-										<input type="hidden" name="nip" value="<?= $this->session->userdata('id_tendik') ?>" />
+										<input type="hidden" name="nip"
+											value="<?= $this->session->userdata('id_tendik') ?>" />
 										<div class="row form-group">
 											<div class="col col-md-3">
-												<label class=" form-control-label" style="color:green; font-weight:bold">Petunjuk Pengisian</label>
+												<label class=" form-control-label"
+													style="color:green; font-weight:bold">Petunjuk Pengisian</label>
 											</div>
 											<div class="col-12 col-md-9">
 												<p class="form-control-static" style="color:green">Kuesioner ini terdiri
@@ -208,25 +222,34 @@
 											<div class="col-12 col-md-9">
 												<div class="form-check">
 													<div class="radio">
-														<label for="radio1" class="form-check-label " style="color:green">
-															<input type="radio" id="radio1" name="radios" value="option1" class="form-check-input" disabled>Kurang
+														<label for="radio1" class="form-check-label "
+															style="color:green">
+															<input type="radio" id="radio1" name="radios"
+																value="option1" class="form-check-input" disabled>Kurang
 															(Tidak Puas)
 														</label>
 													</div>
 													<div class="radio">
-														<label for="radio2" class="form-check-label " style="color:green">
-															<input type="radio" id="radio2" name="radios" value="option2" class="form-check-input" disabled>Cukup
+														<label for="radio2" class="form-check-label "
+															style="color:green">
+															<input type="radio" id="radio2" name="radios"
+																value="option2" class="form-check-input" disabled>Cukup
 															(Kurang Puas)
 														</label>
 													</div>
 													<div class="radio">
-														<label for="radio3" class="form-check-label " style="color:green">
-															<input type="radio" id="radio3" name="radios" value="option3" class="form-check-input" checked disabled>Baik (Puas)
+														<label for="radio3" class="form-check-label "
+															style="color:green">
+															<input type="radio" id="radio3" name="radios"
+																value="option3" class="form-check-input" checked
+																disabled>Baik (Puas)
 														</label>
 													</div>
 													<div class="radio">
-														<label for="radio3" class="form-check-label " style="color:green">
-															<input type="radio" id="radio4" name="radios" value="option4" class="form-check-input" disabled>Sangat
+														<label for="radio3" class="form-check-label "
+															style="color:green">
+															<input type="radio" id="radio4" name="radios"
+																value="option4" class="form-check-input" disabled>Sangat
 															Baik (Sangat Puas)
 														</label>
 													</div>
@@ -241,46 +264,54 @@
 										$no_radio4 = 1;
 										$name = 'jwb_';
 										foreach ($pertanyaan_sarpras as $prt) : ?>
-											<div class="form-group row">
-												<div class="col col-md-3">
-													<label class="form-control-label" style="font-weight:bold">Pertanyaan
-														<?= $no++ ?></label>
+										<div class="form-group row">
+											<div class="col col-md-3">
+												<label class="form-control-label" style="font-weight:bold">Pertanyaan
+													<?= $no++ ?></label>
+											</div>
+											<div class="col-12 col-md-9">
+												<p class="form-control-static" aria-label="Disabled input example">
+													<?= $prt['pertanyaan']; ?></p>
+											</div>
+										</div>
+										<div class="row form-group">
+											<div class="col col-md-3">
+											</div>
+											<div class="col-12 col-md-9">
+												<div class="form-check">
+													<input class="form-check-input" type="radio"
+														name="<?= $name . $no_radio1++ ?>" id="flexRadioDisabled"
+														value="1">
+													<label class="form-check-label" for="flexRadioDisabled">
+														Sangat Tidak Puas
+													</label>
 												</div>
-												<div class="col-12 col-md-9">
-													<p class="form-control-static" aria-label="Disabled input example">
-														<?= $prt['pertanyaan']; ?></p>
+												<div class="form-check">
+													<input class="form-check-input" type="radio"
+														name="<?= $name . $no_radio2++ ?>" id="flexRadioCheckedDisabled"
+														value="2">
+													<label class="form-check-label" for="flexRadioCheckedDisabled">
+														Tidak Puas
+													</label>
+												</div>
+												<div class="form-check">
+													<input class="form-check-input" type="radio"
+														name="<?= $name . $no_radio3++ ?>" id="flexRadioDisabled"
+														value="3">
+													<label class="form-check-label" for="flexRadioDisabled">
+														Puas
+													</label>
+												</div>
+												<div class="form-check">
+													<input class="form-check-input" type="radio"
+														name="<?= $name . $no_radio4++ ?>" id="flexRadioCheckedDisabled"
+														value="4">
+													<label class="form-check-label" for="flexRadioCheckedDisabled">
+														Sangat Puas
+													</label>
 												</div>
 											</div>
-											<div class="row form-group">
-												<div class="col col-md-3">
-												</div>
-												<div class="col-12 col-md-9">
-													<div class="form-check">
-														<input class="form-check-input" type="radio" name="<?= $name . $no_radio1++ ?>" id="flexRadioDisabled" value="1">
-														<label class="form-check-label" for="flexRadioDisabled">
-															Sangat Tidak Puas
-														</label>
-													</div>
-													<div class="form-check">
-														<input class="form-check-input" type="radio" name="<?= $name . $no_radio2++ ?>" id="flexRadioCheckedDisabled" value="2">
-														<label class="form-check-label" for="flexRadioCheckedDisabled">
-															Tidak Puas
-														</label>
-													</div>
-													<div class="form-check">
-														<input class="form-check-input" type="radio" name="<?= $name . $no_radio3++ ?>" id="flexRadioDisabled" value="3">
-														<label class="form-check-label" for="flexRadioDisabled">
-															Puas
-														</label>
-													</div>
-													<div class="form-check">
-														<input class="form-check-input" type="radio" name="<?= $name . $no_radio4++ ?>" id="flexRadioCheckedDisabled" value="4">
-														<label class="form-check-label" for="flexRadioCheckedDisabled">
-															Sangat Puas
-														</label>
-													</div>
-												</div>
-											</div>
+										</div>
 										<?php endforeach; ?>
 									</div>
 									<div class="card-footer">
@@ -307,7 +338,8 @@
 			</script>
 			<script src="<?= base_url('assets/'); ?>vendor/theme/vendor/wow/wow.min.js"></script>
 			<script src="<?= base_url('assets/'); ?>vendor/theme/vendor/animsition/animsition.min.js"></script>
-			<script src="<?= base_url('assets/'); ?>vendor/theme/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+			<script
+				src="<?= base_url('assets/'); ?>vendor/theme/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
 			</script>
 			<script src="<?= base_url('assets/'); ?>vendor/theme/vendor/counter-up/jquery.waypoints.min.js"></script>
 			<script src="<?= base_url('assets/'); ?>vendor/theme/vendor/counter-up/jquery.counterup.min.js">
