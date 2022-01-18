@@ -15,30 +15,21 @@
 
 	<!-- Fontfaces CSS-->
 	<link href="<?= base_url('assets/'); ?>vendor/theme/css/font-face.css" rel="stylesheet" media="all">
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/font-awesome-5/css/fontawesome-all.min.css"
-		rel="stylesheet" media="all">
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/font-awesome-4.7/css/font-awesome.min.css"
-		rel="stylesheet" media="all">
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/mdi-font/css/material-design-iconic-font.min.css"
-		rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 
 	<!-- Bootstrap CSS-->
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet"
-		media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
 	<!-- Vendor CSS-->
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/animsition/animsition.min.css" rel="stylesheet"
-		media="all">
-	<link
-		href="<?= base_url('assets/'); ?>vendor/theme/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css"
-		rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
 	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/wow/animate.css" rel="stylesheet" media="all">
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet"
-		media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
 	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/slick/slick.css" rel="stylesheet" media="all">
 	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet"
-		media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
 	<!-- Main CSS-->
 	<link href="<?= base_url('assets/'); ?>vendor/theme/css/theme.css" rel="stylesheet" media="all">
@@ -74,6 +65,10 @@
 							<a href="<?= base_url('user/kuesioner_mhs'); ?>">
 								<i class="far fa-file-alt"></i>Kuesioner</a>
 						</li>
+						<li>
+							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs'); ?>">
+								<i class="fas fa-copy"></i>Sarana/ Pra Sarana</a>
+						</li>
 					</ul>
 				</div>
 			</nav>
@@ -98,6 +93,10 @@
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs'); ?>">
 								<i class="far fa-file-alt"></i></i>Kuesioner</a>
 						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs'); ?>">
+								<i class="fas fa-copy"></i>Sarana/ Pra Sarana</a>
+						</li>
 					</ul>
 				</nav>
 			</div>
@@ -119,8 +118,7 @@
 								<div class="account-wrap">
 									<div class="account-item clearfix js-item-menu">
 										<div class="image">
-											<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png"
-												alt="John Doe" />
+											<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png" alt="John Doe" />
 										</div>
 										<div class="content">
 											<a class="js-acc-btn" href="#"><?= $this->session->userdata('nrp'); ?></a>
@@ -129,8 +127,7 @@
 											<div class="info clearfix">
 												<div class="image">
 													<a href="#">
-														<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png"
-															alt="John Doe" />
+														<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png" alt="John Doe" />
 													</a>
 												</div>
 												<div class="content">
@@ -166,9 +163,7 @@
 									</div>
 									<div class="card-body">
 										<div class="mx-auto d-block">
-											<img class="rounded-circle mx-auto d-block"
-												src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png"
-												alt="Card image cap">
+											<img class="rounded-circle mx-auto d-block" src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png" alt="Card image cap">
 											<h5 class="text-sm-center mt-2 mb-1">
 												<?= $this->session->userdata('nama'); ?></h5>
 											<div class="location text-sm-center">
@@ -190,8 +185,7 @@
 												<label class=" form-control-label">NRP Mahasiswa</label>
 											</div>
 											<div class="col-12 col-md-7">
-												<input type="text" class="form-control" readonly placeholder="NRP"
-													name="nrpmhs" value="<?= $this->session->userdata('nrp'); ?>">
+												<input type="text" class="form-control" readonly placeholder="NRP" name="nrpmhs" value="<?= $this->session->userdata('nrp'); ?>">
 											</div>
 										</div>
 										<div class="row form-group">
@@ -199,9 +193,7 @@
 												<label for="text-input" class=" form-control-label">Nama
 													Mahasiswa</label>
 											</div>
-											<div class="col-12 col-md-7"><input type="text" class="form-control"
-													readonly placeholder="Nama Mahasiswa" readonly name="namamhs"
-													value="<?= $this->session->userdata('nama'); ?>">
+											<div class="col-12 col-md-7"><input type="text" class="form-control" readonly placeholder="Nama Mahasiswa" readonly name="namamhs" value="<?= $this->session->userdata('nama'); ?>">
 												<small class="form-text text-muted"></small>
 											</div>
 										</div>
@@ -211,8 +203,7 @@
 													KTP)</label>
 											</div>
 											<div class="col-12 col-md-7">
-												<input type="text" class="form-control" placeholder="NIK (No.KTP)"
-													id="noktpmhs" name="noktpmhs" value="<?= $user['noktpmhs'] ?>">
+												<input type="text" class="form-control" placeholder="NIK (No.KTP)" id="noktpmhs" name="noktpmhs" value="<?= $user['noktpmhs'] ?>">
 												<?= form_error('noktpmhs', '<small class="text-danger pl-3">', '</small>'); ?>
 												<small class="form-text text-muted">Pastikan NIK (No. KTP)
 													benar!</small>
@@ -223,13 +214,10 @@
 												<label for="select" class=" form-control-label">Jenis Kelamin</label>
 											</div>
 											<div class="col-12 col-md-7">
-												<select class="form-control" aria-label=".form-select-sm example"
-													name="jkmhs">
+												<select class="form-control" aria-label=".form-select-sm example" name="jkmhs">
 													<option>Pilih Jenis Kelamin</option>
-													<option value="P" <?php if ($user['jkmhs'] === 'P') : ?> selected
-														<?php endif; ?>>Laki-laki</option>
-													<option value="W" <?php if ($user['jkmhs'] === 'W') : ?> selected
-														<?php endif; ?>>Perempuan</option>
+													<option value="P" <?php if ($user['jkmhs'] === 'P') : ?> selected <?php endif; ?>>Laki-laki</option>
+													<option value="W" <?php if ($user['jkmhs'] === 'W') : ?> selected <?php endif; ?>>Perempuan</option>
 												</select>
 											</div>
 										</div>
@@ -239,8 +227,7 @@
 													Handphone</label>
 											</div>
 											<div class="col-12 col-md-7">
-												<input type="text" class="form-control" placeholder="No. Handphone"
-													id="nohpmhs" name="nohpmhs" value="<?= $user['nohpmhs'] ?>">
+												<input type="text" class="form-control" placeholder="No. Handphone" id="nohpmhs" name="nohpmhs" value="<?= $user['nohpmhs'] ?>">
 												<?= form_error('nohpmhs', '<small class="text-danger pl-3">', '</small>'); ?>
 												<small class="form-text text-muted">Pastikan No. Handphone
 													benar!</small>
@@ -260,8 +247,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="copyright">
-									<p>Copyright © 2021 Institut Teknologi Nasional. Developed by <a
-											href="https://colorlib.com">UPT-TIK Itenas</a>.</p>
+									<p>Copyright © 2021 Institut Teknologi Nasional. Developed by <a href="https://colorlib.com">UPT-TIK Itenas</a>.</p>
 								</div>
 							</div>
 						</div>
