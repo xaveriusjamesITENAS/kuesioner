@@ -170,28 +170,35 @@ class User extends CI_Controller
             ->get()->result_array();
 
         $this->form_validation->set_rules('id_dsn', 'NIP', 'required|trim');
+        $this->form_validation->set_rules('saran', 'Saran', 'required');
+        $this->form_validation->set_rules('kode_mk', 'Kode MK', 'required');
+        $this->form_validation->set_rules('namamk', 'Nama MK', 'required');
+        $this->form_validation->set_rules('kelas', 'Kelas', 'required');
+        for ($i = 1; $i <= 12; $i++) {
+            $this->form_validation->set_rules('jwb' . $i, 'Pertanyaan ' . $i, 'required');
+        }
         if ($this->form_validation->run() == false) {
             $this->load->view('user/kuesioner_dsn', $data);
         } else {
-            $jml_dsn = $this->input->post('jwb13') + $this->input->post('jwb14') + $this->input->post('jwb15') + $this->input->post('jwb16') + $this->input->post('jwb17') + $this->input->post('jwb18') +
-                $this->input->post('jwb19') + $this->input->post('jwb20') + $this->input->post('jwb21') + $this->input->post('jwb22') + $this->input->post('jwb23') + $this->input->post('jwb24');
+            $jml_dsn = $this->input->post('jwb1') + $this->input->post('jwb2') + $this->input->post('jwb3') + $this->input->post('jwb4') + $this->input->post('jwb5') + $this->input->post('jwb6') +
+                $this->input->post('jwb7') + $this->input->post('jwb8') + $this->input->post('jwb9') + $this->input->post('jwb10') + $this->input->post('jwb11') + $this->input->post('jwb12');
             $indeks_kml_dsn = $jml_dsn / 12;
             $data = [
                 'id_dsn' => $this->input->post('id_dsn'),
                 'kode_mk' => $this->input->post('kode_mk'),
                 'kelas' => $this->input->post('kelas'),
-                'jwb13' => $this->input->post('jwb13'),
-                'jwb14' => $this->input->post('jwb14'),
-                'jwb15' => $this->input->post('jwb15'),
-                'jwb16' => $this->input->post('jwb16'),
-                'jwb17' => $this->input->post('jwb17'),
-                'jwb18' => $this->input->post('jwb18'),
-                'jwb19' => $this->input->post('jwb19'),
-                'jwb20' => $this->input->post('jwb20'),
-                'jwb21' => $this->input->post('jwb21'),
-                'jwb22' => $this->input->post('jwb22'),
-                'jwb23' => $this->input->post('jwb23'),
-                'jwb24' => $this->input->post('jwb24'),
+                'jwb13' => $this->input->post('jwb1'),
+                'jwb14' => $this->input->post('jwb2'),
+                'jwb15' => $this->input->post('jwb3'),
+                'jwb16' => $this->input->post('jwb4'),
+                'jwb17' => $this->input->post('jwb5'),
+                'jwb18' => $this->input->post('jwb6'),
+                'jwb19' => $this->input->post('jwb7'),
+                'jwb20' => $this->input->post('jwb8'),
+                'jwb21' => $this->input->post('jwb9'),
+                'jwb22' => $this->input->post('jwb10'),
+                'jwb23' => $this->input->post('jwb11'),
+                'jwb24' => $this->input->post('jwb12'),
                 'indeks_kml' => $indeks_kml_dsn,
                 'saran' => $this->input->post('saran'),
             ];
@@ -218,6 +225,10 @@ class User extends CI_Controller
             ->get()->result_array();
 
         $this->form_validation->set_rules('id_dsn', 'NIP', 'required|trim');
+        $this->form_validation->set_rules('saran', 'Saran', 'required');
+        for ($i = 1; $i <= 15; $i++) {
+            $this->form_validation->set_rules('jwb' . $i, 'Pertanyaan ' . $i, 'required');
+        }
         if ($this->form_validation->run() == false) {
             $this->load->view('user/kuelp2m_dsn', $data);
         } else {
@@ -267,6 +278,10 @@ class User extends CI_Controller
             ->get()->result_array();
 
         $this->form_validation->set_rules('id_dsn', 'NIP', 'required|trim');
+        $this->form_validation->set_rules('saran', 'Saran', 'required');
+        for ($i = 1; $i <= 30; $i++) {
+            $this->form_validation->set_rules('jwb' . $i, 'Pertanyaan ' . $i, 'required');
+        }
         if ($this->form_validation->run() == false) {
             $this->load->view('user/kuefkl_dsn', $data);
         } else {

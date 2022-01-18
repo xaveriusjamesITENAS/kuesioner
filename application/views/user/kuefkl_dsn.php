@@ -240,6 +240,11 @@
 										$no_radio2 = 1;
 										$no_radio3 = 1;
 										$no_radio4 = 1;
+										$no_set1 = 1;
+										$no_set2 = 1;
+										$no_set3 = 1;
+										$no_set4 = 1;
+										$no_error = 1;
 										$name = 'jwb';
 										foreach ($pertanyaan_fkl as $prt) : ?>
 											<div class="form-group row">
@@ -257,28 +262,35 @@
 												</div>
 												<div class="col-12 col-md-9">
 													<div class="form-check">
-														<input class="form-check-input" type="radio" name="<?= $name . $no_radio1++ ?>" id="flexRadioDisabled" value="1">
+														<input class="form-check-input" type="radio" name="<?= $name . $no_radio1++ ?>" id="flexRadioDisabled" value="1" <?php if (set_value($name . $no_set1++) == "1") : ?> checked <?php endif; ?>>
 														<label class="form-check-label" for="flexRadioDisabled">
 															Sangat Tidak Puas
 														</label>
 													</div>
 													<div class="form-check">
-														<input class="form-check-input" type="radio" name="<?= $name . $no_radio2++ ?>" id="flexRadioCheckedDisabled" value="2">
+														<input class="form-check-input" type="radio" name="<?= $name . $no_radio2++ ?>" id="flexRadioCheckedDisabled" value="2" <?php if (set_value($name . $no_set2++) == "2") : ?> checked <?php endif; ?>>
 														<label class="form-check-label" for="flexRadioCheckedDisabled">
 															Tidak Puas
 														</label>
 													</div>
 													<div class="form-check">
-														<input class="form-check-input" type="radio" name="<?= $name . $no_radio3++ ?>" id="flexRadioDisabled" value="3">
+														<input class="form-check-input" type="radio" name="<?= $name . $no_radio3++ ?>" id="flexRadioDisabled" value="3" <?php if (set_value($name . $no_set3++) == "3") : ?> checked <?php endif; ?>>
 														<label class="form-check-label" for="flexRadioDisabled">
 															Puas
 														</label>
 													</div>
 													<div class="form-check">
-														<input class="form-check-input" type="radio" name="<?= $name . $no_radio4++ ?>" id="flexRadioCheckedDisabled" value="4">
+														<input class="form-check-input" type="radio" name="<?= $name . $no_radio4++ ?>" id="flexRadioCheckedDisabled" value="4" <?php if (set_value($name . $no_set4++) == "4") : ?> checked <?php endif; ?>>
 														<label class="form-check-label" for="flexRadioCheckedDisabled">
 															Sangat Puas
 														</label>
+													</div>
+													<div>
+														<?= form_error(
+															$name . $no_error++,
+															'<small class="text-danger pl-3">',
+															'</small>'
+														); ?>
 													</div>
 												</div>
 											</div>
@@ -288,7 +300,12 @@
 												<label for="textarea-input" class=" form-control-label" style="font-weight:bold">Saran</label>
 											</div>
 											<div class="col-12 col-md-9">
-												<textarea name="saran" id="textarea-input" rows="9" value="saran" placeholder="Berikan saran anda mengenai kendala utama dalam pelayanan fakultas." class="form-control"></textarea>
+												<textarea name="saran" id="textarea-input" rows="9" value="saran" placeholder="Berikan saran anda mengenai kendala utama dalam pelayanan fakultas." class="form-control"><?= set_value('saran') ?></textarea>
+												<?= form_error(
+													'saran',
+													'<small class="text-danger pl-3">',
+													'</small>'
+												); ?>
 											</div>
 										</div>
 									</div>
