@@ -21,6 +21,9 @@ class User extends CI_Controller
      */
     public function editprofil_mhs()
     {
+        if ($this->session->userdata('status') !== "mahasiswa") {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
         $data['user'] = $this->db->get_where('datamhs', ['nrpmhs' => $this->session->userdata('nrp')])->row_array();
 
         $this->form_validation->set_rules('noktpmhs', 'NIK', 'required|trim');
@@ -50,6 +53,9 @@ class User extends CI_Controller
 
     public function kuesioner_mhs()
     {
+        if ($this->session->userdata('status') !== "mahasiswa") {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
         $this->load->model('Pertanyaan_model');
 
         $data['user'] = $this->db->get_where('datamhs', ['nrpmhs' => $this->session->userdata('nrp')])->row_array();
@@ -91,6 +97,14 @@ class User extends CI_Controller
             ->get()->result_array();
 
         $this->form_validation->set_rules('nrpmhs', 'NRP', 'required|trim');
+        $this->form_validation->set_rules('saran', 'Saran', 'required');
+        $this->form_validation->set_rules('kode_mk', 'Kode MK', 'required');
+        $this->form_validation->set_rules('namamhs', 'Nama Mahasiswa', 'required');
+        $this->form_validation->set_rules('namamk', 'Nama MK', 'required');
+        $this->form_validation->set_rules('kelas', 'Kelas', 'required');
+        for ($i = 1; $i <= 12; $i++) {
+            $this->form_validation->set_rules('jwb' . $i, 'Pertanyaan ' . $i, 'required');
+        }
         if ($this->form_validation->run() == false) {
             $this->load->view('user/kuesioner_mhs', $data);
         } else {
@@ -125,6 +139,9 @@ class User extends CI_Controller
 
     public function kuesioner_dsn()
     {
+        if ($this->session->userdata('status') !== "dosen") {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
         $data['title'] = 'Kuesioner Dosen';
         $this->load->model('Pertanyaan_model');
         //$data['title'] = 'Edit Profil';
@@ -187,6 +204,9 @@ class User extends CI_Controller
 
     public function kuelp2m_dsn()
     {
+        if ($this->session->userdata('status') !== "dosen") {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
         $this->load->model('Pertanyaanlp2m_model');
 
         $data['user'] = $this->db->get_where('dosen', ['id_dsn' => $this->session->userdata('nip')])->row_array();
@@ -233,6 +253,9 @@ class User extends CI_Controller
     }
     public function kuefkl_dsn()
     {
+        if ($this->session->userdata('status') !== "dosen") {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
         $this->load->model('Pertanyaanfkl_model');
 
         $data['user'] = $this->db->get_where('dosen', ['id_dsn' => $this->session->userdata('nip')])->row_array();
@@ -338,10 +361,16 @@ class User extends CI_Controller
 
     public function kuebku_dsn()
     {
+        if ($this->session->userdata('status') !== "dosen") {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
         $data['pertanyaan_sarpras'] = $this->db->select('*')
             ->from('pertanyaan_sarpras')->where('level', 'dosen')
             ->get()->result_array();
         $this->form_validation->set_rules('id_dsn', 'NIP', 'required|trim');
+        for ($i = 1; $i <= 42; $i++) {
+            $this->form_validation->set_rules('jwb_' . $i, 'Pertanyaan ' . $i, 'required');
+        }
         if ($this->form_validation->run() == false) {
             $this->load->view('user/kuebku_dsn', $data);
         } else {
@@ -438,15 +467,19 @@ class User extends CI_Controller
 
     public function kuebku_mhs()
     {
+        if ($this->session->userdata('status') !== "mahasiswa") {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
         $data['pertanyaan_sarpras'] = $this->db->select('*')
             ->from('pertanyaan_sarpras')->where('level', 'mahasiswa')
             ->get()->result_array();
-        $this->form_validation->set_rules('nrpmhs', 'NIP', 'required|trim');
+        $this->form_validation->set_rules('nrpmhs', 'NRP', 'required|trim');
+        for ($i = 1; $i <= 42; $i++) {
+            $this->form_validation->set_rules('jwb_' . $i, 'Pertanyaan ' . $i, 'required');
+        }
         if ($this->form_validation->run() == false) {
             $this->load->view('user/kuebku_mhs', $data);
         } else {
-            // var_dump($this->input->post());
-            // die();
             $jml_dsn = $this->input->post('jwb_1') + $this->input->post('jwb_2') + $this->input->post('jwb_3') + $this->input->post('jwb_4') + $this->input->post('jwb_5') + $this->input->post('jwb_6') +
                 $this->input->post('jwb_7') + $this->input->post('jwb_8') + $this->input->post('jwb_9') + $this->input->post('jwb_10') + $this->input->post('jwb_11') + $this->input->post('jwb_12')
                 + $this->input->post('jwb_13')
@@ -530,16 +563,22 @@ class User extends CI_Controller
             ];
             $this->db->insert('sarpras_mahasiswa', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
-            redirect('user/kuebku_dsn');
+            redirect('user/kuebku_mhs');
         }
     }
 
     public function kuebku_tendik()
     {
+        if ($this->session->userdata('status') !== "tendik") {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
         $data['pertanyaan_sarpras'] = $this->db->select('*')
             ->from('pertanyaan_sarpras')->where('level', 'dosen')
             ->get()->result_array();
         $this->form_validation->set_rules('nip', 'NIP', 'required|trim');
+        for ($i = 1; $i <= 42; $i++) {
+            $this->form_validation->set_rules('jwb_' . $i, 'Pertanyaan ' . $i, 'required');
+        }
         if ($this->form_validation->run() == false) {
             $this->load->view('user/kuebku_tendik', $data);
         } else {

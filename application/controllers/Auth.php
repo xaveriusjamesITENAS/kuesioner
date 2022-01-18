@@ -103,7 +103,8 @@ class Auth extends CI_Controller
                     'nrp' => $user['nrpmhs'],
                     'nama' => $user['namamhs'],
                     'noktp' => $user['noktpmhs'],
-                    'nohp' => $user['nohpmhs']
+                    'nohp' => $user['nohpmhs'],
+                    'status' => 'mahasiswa'
                 ];
                 $this->session->set_userdata($data);
                 redirect('user/editprofil_mhs');
@@ -133,6 +134,7 @@ class Auth extends CI_Controller
                 $data = [
                     'nip' => $user['id_dsn'],
                     'nama_dsn' => $user['nama_dsn'],
+                    'status' => 'dosen'
                 ];
                 $this->session->set_userdata($data);
                 redirect('user/kuesioner_dsn');
@@ -162,6 +164,7 @@ class Auth extends CI_Controller
                 $data = [
                     'id_tendik' => $user['id_tendik'],
                     'nama_tendik' => $user['namatendik'],
+                    'status' => 'tendik'
                 ];
                 $this->session->set_userdata($data);
                 redirect('user/kuebku_tendik');
@@ -206,7 +209,7 @@ class Auth extends CI_Controller
 
     public function logout_mhs()
     {
-        $this->session->unset_userdata('nrp');
+        $this->unset_only();
         // $this->session->unset_userdata('nama');
         // $this->session->unset_userdata('noktp');
         // $this->session->unset_userdata('nohp');
@@ -216,7 +219,7 @@ class Auth extends CI_Controller
 
     public function logout_dsn()
     {
-        $this->session->unset_userdata('nip');
+        $this->unset_only();
         // $this->session->unset_userdata('nama_dsn');
         // $this->session->unset_userdata('noktp');
         // $this->session->unset_userdata('nohp');
@@ -226,7 +229,7 @@ class Auth extends CI_Controller
 
     public function logout_tendik()
     {
-        $this->session->unset_userdata('nip');
+        $this->unset_only();
         // $this->session->unset_userdata('nama_dsn');
         // $this->session->unset_userdata('noktp');
         // $this->session->unset_userdata('nohp');
@@ -236,11 +239,22 @@ class Auth extends CI_Controller
 
     public function logout_kry()
     {
-        $this->session->unset_userdata('nik');
+        $this->unset_only();
         // $this->session->unset_userdata('nama_dsn');
         // $this->session->unset_userdata('noktp');
         // $this->session->unset_userdata('nohp');
         $this->session->set_flashdata('message', '<div class="alert alert-success" style="max-width:326px" role="alert">Berhasil Logout!</div>');
         redirect('auth/index_kry');
+    }
+
+    function unset_only()
+    {
+        $user_data = $this->session->all_userdata();
+
+        foreach ($user_data as $key => $value) {
+            if ($key != 'session_id' && $key != 'ip_address' && $key != 'user_agent' && $key != 'last_activity') {
+                $this->session->unset_userdata($key);
+            }
+        }
     }
 }

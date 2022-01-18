@@ -11,7 +11,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Kuesioner Dosen | Institut Teknologi Nasional</title>
+    <title>Kuesioner Mahasiswa | Institut Teknologi Nasional</title>
 
     <!-- Fontfaces CSS-->
     <link href="<?= base_url('assets/'); ?>vendor/theme/css/font-face.css" rel="stylesheet" media="all">
@@ -122,7 +122,7 @@
                                             <img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png" alt="John Doe" />
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#"><?= $this->session->userdata('nip'); ?></a>
+                                            <a class="js-acc-btn" href="#"><?= $this->session->userdata('nrp'); ?></a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -133,13 +133,13 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#"><?= $this->session->userdata('nama_dsn'); ?></a>
+                                                        <a href="#"><?= $this->session->userdata('nama'); ?></a>
                                                     </h5>
-                                                    <span class="email">Dosen</span>
+                                                    <span class="email">Mahasiswa</span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="<?= base_url('auth/logout_dsn'); ?>">
+                                                <a href="<?= base_url('auth/logout_mhs'); ?>">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>
@@ -231,6 +231,11 @@
                                         $no_radio2 = 1;
                                         $no_radio3 = 1;
                                         $no_radio4 = 1;
+                                        $no_set1 = 1;
+                                        $no_set2 = 1;
+                                        $no_set3 = 1;
+                                        $no_set4 = 1;
+                                        $no_error = 1;
                                         $name = 'jwb_';
                                         foreach ($pertanyaan_sarpras as $prt) : ?>
                                             <div class="form-group row">
@@ -248,28 +253,35 @@
                                                 </div>
                                                 <div class="col-12 col-md-9">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="<?= $name . $no_radio1++ ?>" id="flexRadioDisabled" value="1">
+                                                        <input class="form-check-input" type="radio" name="<?= $name . $no_radio1++ ?>" id="flexRadioDisabled" value="1" <?php if (set_value($name . $no_set1++) == "1") : ?> checked <?php endif; ?>>
                                                         <label class="form-check-label" for="flexRadioDisabled">
                                                             Sangat Tidak Puas
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="<?= $name . $no_radio2++ ?>" id="flexRadioCheckedDisabled" value="2">
+                                                        <input class="form-check-input" type="radio" name="<?= $name . $no_radio2++ ?>" id="flexRadioCheckedDisabled" value="2" <?php if (set_value($name . $no_set2++) == "2") : ?> checked <?php endif; ?>>
                                                         <label class="form-check-label" for="flexRadioCheckedDisabled">
                                                             Tidak Puas
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="<?= $name . $no_radio3++ ?>" id="flexRadioDisabled" value="3">
+                                                        <input class="form-check-input" type="radio" name="<?= $name . $no_radio3++ ?>" id="flexRadioDisabled" value="3" <?php if (set_value($name . $no_set3++) == "3") : ?> checked <?php endif; ?>>
                                                         <label class="form-check-label" for="flexRadioDisabled">
                                                             Puas
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="<?= $name . $no_radio4++ ?>" id="flexRadioCheckedDisabled" value="4">
+                                                        <input class="form-check-input" type="radio" name="<?= $name . $no_radio4++ ?>" id="flexRadioCheckedDisabled" value="4" <?php if (set_value($name . $no_set4++) == "4") : ?> checked <?php endif; ?>>
                                                         <label class="form-check-label" for="flexRadioCheckedDisabled">
                                                             Sangat Puas
                                                         </label>
+                                                    </div>
+                                                    <div>
+                                                        <?= form_error(
+                                                            $name . $no_error++,
+                                                            '<small class="text-danger pl-3">',
+                                                            '</small>'
+                                                        ); ?>
                                                     </div>
                                                 </div>
                                             </div>

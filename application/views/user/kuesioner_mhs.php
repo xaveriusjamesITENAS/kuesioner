@@ -200,6 +200,11 @@
 											<div class="col-12 col-md-6">
 												<!-- <p class="form-control-static">NRP Mahasiswa</p> -->
 												<input type="text" class="form-control" readonly placeholder="NRP" name="nrpmhs" value="<?= $this->session->userdata('nrp'); ?>">
+												<?= form_error(
+													'nrpmhs',
+													'<small class="text-danger pl-3">',
+													'</small>'
+												); ?>
 											</div>
 										</div>
 										<div class="row form-group">
@@ -210,7 +215,11 @@
 											<div class="col-12 col-md-6">
 												<!-- <input type="text" id="text-input" name="text-input" placeholder="Nama Mahasiswa" readonly="" class="form-control"> -->
 												<input type="text" class="form-control" readonly placeholder="Nama Mahasiswa" name="namamhs" value="<?= $this->session->userdata('nama'); ?>">
-												<small class="form-text text-muted"></small>
+												<?= form_error(
+													'namamhs',
+													'<small class="text-danger pl-3">',
+													'</small>'
+												); ?>
 											</div>
 										</div>
 										<div class="row form-group">
@@ -225,6 +234,11 @@
 															<?= $mtk->nama_dsn ?></option>
 													<?php } ?>
 												</select>
+												<?= form_error(
+													'kode_mk',
+													'<small class="text-danger pl-3">',
+													'</small>'
+												); ?>
 											</div>
 										</div>
 										<div class="row form-group">
@@ -234,7 +248,12 @@
 											</div>
 											<div class="col-12 col-md-6">
 												<input type="text" class="form-control" readonly placeholder="" id="namamk" name="namamk" readonly>
-												<small class="form-text text-muted"></small>
+												<?= form_error(
+													'namamk',
+													'<small class="text-danger pl-3">',
+													'</small>'
+												); ?>
+
 											</div>
 										</div>
 										<div class="row form-group">
@@ -243,7 +262,11 @@
 											</div>
 											<div class="col-12 col-md-6">
 												<input type="text" class="form-control" readonly placeholder="" id="kelas" name="kelas">
-												<small class="form-text text-muted"></small>
+												<?= form_error(
+													'kelas',
+													'<small class="text-danger pl-3">',
+													'</small>'
+												); ?>
 											</div>
 										</div>
 										<div class="row form-group">
@@ -296,6 +319,11 @@
 										$no_radio2 = 1;
 										$no_radio3 = 1;
 										$no_radio4 = 1;
+										$no_set1 = 1;
+										$no_set2 = 1;
+										$no_set3 = 1;
+										$no_set4 = 1;
+										$no_error = 1;
 										$name = 'jwb';
 										foreach ($pertanyaan as $prt) : ?>
 											<div class="form-group row">
@@ -303,13 +331,9 @@
 													<label class="form-control-label" style="font-weight:bold">Pertanyaan
 														<?= $no++ ?></label>
 												</div>
-
-												<!-- <div class="col-sm-10"> -->
 												<div class="col-12 col-md-9">
-													<!-- <input class="form-control" type="text" placeholder="Pertanyaan 1" aria-label="Disabled input example" disabled readonly> -->
 													<p class="form-control-static" aria-label="Disabled input example">
-														<?= $prt['pertanyaan']; ?>
-													</p>
+														<?= $prt['pertanyaan']; ?></p>
 												</div>
 											</div>
 											<div class="row form-group">
@@ -317,30 +341,36 @@
 												</div>
 												<div class="col-12 col-md-9">
 													<div class="form-check">
-														<input class="form-check-input" type="radio" name="<?= $name . $no_radio1++ ?>" id="flexRadioDisabled" value="1">
+														<input class="form-check-input" type="radio" name="<?= $name . $no_radio1++ ?>" id="flexRadioDisabled" value="1" <?php if (set_value($name . $no_set1++) == "1") : ?> checked <?php endif; ?>>
 														<label class="form-check-label" for="flexRadioDisabled">
-															Kurang (Tidak Puas)
+															Sangat Tidak Puas
 														</label>
 													</div>
 													<div class="form-check">
-														<input class="form-check-input" type="radio" name="<?= $name . $no_radio2++ ?>" id="flexRadioCheckedDisabled" value="2">
+														<input class="form-check-input" type="radio" name="<?= $name . $no_radio2++ ?>" id="flexRadioCheckedDisabled" value="2" <?php if (set_value($name . $no_set2++) == "2") : ?> checked <?php endif; ?>>
 														<label class="form-check-label" for="flexRadioCheckedDisabled">
-															Cukup (Kurang Puas)
+															Tidak Puas
 														</label>
 													</div>
 													<div class="form-check">
-														<input class="form-check-input" type="radio" name="<?= $name . $no_radio3++ ?>" id="flexRadioDisabled" value="3">
+														<input class="form-check-input" type="radio" name="<?= $name . $no_radio3++ ?>" id="flexRadioDisabled" value="3" <?php if (set_value($name . $no_set3++) == "3") : ?> checked <?php endif; ?>>
 														<label class="form-check-label" for="flexRadioDisabled">
-															Baik (Puas)
+															Puas
 														</label>
 													</div>
 													<div class="form-check">
-														<input class="form-check-input" type="radio" name="<?= $name . $no_radio4++ ?>" id="flexRadioCheckedDisabled" value="4">
+														<input class="form-check-input" type="radio" name="<?= $name . $no_radio4++ ?>" id="flexRadioCheckedDisabled" value="4" <?php if (set_value($name . $no_set4++) == "4") : ?> checked <?php endif; ?>>
 														<label class="form-check-label" for="flexRadioCheckedDisabled">
-															Sangat Baik (Sangat Puas)
+															Sangat Puas
 														</label>
 													</div>
-
+													<div>
+														<?= form_error(
+															$name . $no_error++,
+															'<small class="text-danger pl-3">',
+															'</small>'
+														); ?>
+													</div>
 												</div>
 											</div>
 										<?php endforeach; ?>
@@ -349,7 +379,12 @@
 												<label for="textarea-input" class=" form-control-label" style="font-weight:bold">Saran</label>
 											</div>
 											<div class="col-12 col-md-9">
-												<textarea name="saran" id="textarea-input" rows="9" value="saran" placeholder="Berikan saran anda mengenai kendala utama dalam pembelajaran daring." class="form-control"></textarea>
+												<textarea name="saran" id="textarea-input" rows="9" value="saran" placeholder="Berikan saran anda mengenai kendala utama dalam pembelajaran daring." class="form-control"><?= set_value('saran') ?></textarea>
+												<?= form_error(
+													'saran',
+													'<small class="text-danger pl-3">',
+													'</small>'
+												); ?>
 												<!-- <textarea rows="4" cols="80" class="form-control" placeholder="" name="saran" value="saran"></textarea> -->
 											</div>
 										</div>
