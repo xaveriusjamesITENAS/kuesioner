@@ -530,7 +530,7 @@ class User extends CI_Controller
             ];
             $this->db->insert('sarpras_mahasiswa', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
-            redirect('user/kuebku_dsn');
+            redirect('user/kuebku_mhs');
         }
     }
 
