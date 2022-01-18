@@ -75,12 +75,12 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	// 'database' => 'kuesioner_nik',
-	// 'username' => 'kuesioner_user',
-	// 'password' => 'F}zjZVs#an^]',
+	// 'hostname' => 'localhost',
+	// 'username' => 'root',
+	// 'password' => '',
+	'database' => 'kuesioner_nik',
+	'username' => 'kuesioner_user',
+	'password' => 'F}zjZVs#an^]',
 	'database' => 'kuesioner_20211',
 	// 'username' => 'kuesioner_20211',
 	// 'password' => 'eY=x&sHIcF?T',
