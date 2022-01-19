@@ -81,6 +81,8 @@ $db['default'] = array(
 	// 'database' => 'kuesioner_nik',
 	// 'username' => 'kuesioner_user',
 	// 'password' => 'F}zjZVs#an^]',
+
+	### DB Hosting 20211
 	'database' => 'kuesioner_20211',
 	'username' => 'kuesioner_20211',
 	'password' => 'eY=x&sHIcF?T',
