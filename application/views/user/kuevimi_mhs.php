@@ -106,9 +106,13 @@
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs'); ?>">
 								<i class="far fa-file-alt"></i>Kuesioner</a>
 						</li>
-						<li class="active">
+						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs'); ?>">
 								<i class="fas fa-copy"></i>Sarana/ Pra Sarana</a>
+						</li>
+						<li class="active">
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs'); ?>">
+								<i class="fas fa-copy"></i>Visi Misi</a>
 						</li>
 					</ul>
 				</nav>
@@ -175,13 +179,14 @@
 							<div class="col-md-12">
 								<div class="card">
 									<div class="card-header">
-										<strong class="card-title">Kuesioner Pelayanan Sarana/ Pra Sarana Umum</strong>
+										<strong class="card-title">Kuesioner Pemahaman Visi, Misi, dan Tujuan
+											Itenas</strong>
 									</div>
 									<?= $this->session->flashdata('message'); ?>
 									<div class="card-body">
 										<div class="typo-headers">
-											<h1 class="pb-2 display-5" style="font-size: 25px;">KUESIONER KEPUASAN
-												PENGGUNA LAYANAN BIDANG KEUANGAN DAN SARANA-PRASARANA DI ITENAS</h1>
+											<h1 class="pb-2 display-5" style="font-size: 25px;">Kuesioner Pemahaman
+												Visi, Misi, dan Tujuan Itenas</h1>
 										</div>
 										<div class="typo-articles">
 											<p>
@@ -191,7 +196,7 @@
 												Berikan tanggapan berdasarkan pendapat sendiri dan bukan
 												pandangan/pendapat orang lain. -->
 												<p></p>
-												<br>Pertanyaan untuk Dosen dan Tenaga Kependidikan</br>
+												<br>Pertanyaan untuk Mahasiswa, Dosen dan Tenaga Kependidikan</br>
 											</p>
 										</div>
 									</div>
@@ -199,7 +204,7 @@
 										<?= form_open('user/kuebku_mhs'); ?>
 										<input type="hidden" class="form-control" readonly placeholder="NRP"
 											name="nrpmhs" value="<?= $this->session->userdata('nrp'); ?>">
-										<div class="row form-group">
+										<!-- <div class="row form-group">
 											<div class="col col-md-3">
 												<label class=" form-control-label"
 													style="color:green; font-weight:bold">Petunjuk Pengisian</label>
@@ -250,7 +255,7 @@
 													</div>
 												</div>
 											</div>
-										</div>
+										</div> -->
 										<?php
 										$no = 1;
 										$no_radio1 = 1;
@@ -263,7 +268,7 @@
 										$no_set4 = 1;
 										$no_error = 1;
 										$name = 'jwb_';
-										foreach ($pertanyaan_sarpras as $prt) : ?>
+										foreach ($pertanyaan_visimisi as $prt) : ?>
 										<div class="form-group row">
 											<div class="col col-md-3">
 												<label class="form-control-label" style="font-weight:bold">Pertanyaan
@@ -271,7 +276,7 @@
 											</div>
 											<div class="col-12 col-md-9">
 												<p class="form-control-static" aria-label="Disabled input example">
-													<?= $prt['pertanyaan']; ?></p>
+													<?= $prt['pertanyaan_vimi']; ?></p>
 											</div>
 										</div>
 										<div class="row form-group">
@@ -324,6 +329,22 @@
 											</div>
 										</div>
 										<?php endforeach; ?>
+										<div class="row form-group">
+											<div class="col col-md-3">
+												<label for="textarea-input" class=" form-control-label"
+													style="font-weight:bold">Saran</label>
+											</div>
+											<div class="col-12 col-md-9">
+												<textarea name="saran" id="textarea-input" rows="9" value="saran"
+													placeholder="Mohon tuliskan saran terkait Visi, Misi, Tujuan Itenas:"
+													class="form-control"><?= set_value('saran') ?></textarea>
+												<?= form_error(
+													'saran',
+													'<small class="text-danger pl-3">',
+													'</small>'
+												); ?>
+											</div>
+										</div>
 									</div>
 									<div class="card-footer">
 										<button type="submit" class="btn btn-success btn-sm">

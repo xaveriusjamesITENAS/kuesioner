@@ -15,21 +15,30 @@
 
 	<!-- Fontfaces CSS-->
 	<link href="<?= base_url('assets/'); ?>vendor/theme/css/font-face.css" rel="stylesheet" media="all">
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/font-awesome-4.7/css/font-awesome.min.css"
+		rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/font-awesome-5/css/fontawesome-all.min.css"
+		rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/mdi-font/css/material-design-iconic-font.min.css"
+		rel="stylesheet" media="all">
 
 	<!-- Bootstrap CSS-->
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet"
+		media="all">
 
 	<!-- Vendor CSS-->
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/animsition/animsition.min.css" rel="stylesheet"
+		media="all">
+	<link
+		href="<?= base_url('assets/'); ?>vendor/theme/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css"
+		rel="stylesheet" media="all">
 	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/wow/animate.css" rel="stylesheet" media="all">
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet"
+		media="all">
 	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/slick/slick.css" rel="stylesheet" media="all">
 	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet"
+		media="all">
 
 	<!-- Main CSS-->
 	<link href="<?= base_url('assets/'); ?>vendor/theme/css/theme.css" rel="stylesheet" media="all">
@@ -64,6 +73,10 @@
 						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs'); ?>">
 								<i class="far fa-file-alt"></i>Kuesioner</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs'); ?>">
+								<i class="fas fa-copy"></i>Visi Misi</a>
 						</li>
 						<!-- <li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs'); ?>">
@@ -126,7 +139,8 @@
 								<div class="account-wrap">
 									<div class="account-item clearfix js-item-menu">
 										<div class="image">
-											<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png" alt="John Doe" />
+											<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png"
+												alt="John Doe" />
 										</div>
 										<div class="content">
 											<a class="js-acc-btn" href="#"><?= $this->session->userdata('nrp'); ?></a>
@@ -135,7 +149,8 @@
 											<div class="info clearfix">
 												<div class="image">
 													<a href="#">
-														<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png" alt="John Doe" />
+														<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png"
+															alt="John Doe" />
 													</a>
 												</div>
 												<div class="content">
@@ -185,9 +200,9 @@
 												daring yang telah dilakukan. Berikan tanggapan berdasarkan pendapat
 												sendiri dan bukan
 												pandangan/pendapat orang lain.
-											<p></p>
-											<br>Kami mengucapkan banyak terima kasih atas partisipasinya dalam
-											pengisian kuesioner ini.</br>
+												<p></p>
+												<br>Kami mengucapkan banyak terima kasih atas partisipasinya dalam
+												pengisian kuesioner ini.</br>
 											</p>
 										</div>
 									</div>
@@ -199,7 +214,8 @@
 											</div>
 											<div class="col-12 col-md-6">
 												<!-- <p class="form-control-static">NRP Mahasiswa</p> -->
-												<input type="text" class="form-control" readonly placeholder="NRP" name="nrpmhs" value="<?= $this->session->userdata('nrp'); ?>">
+												<input type="text" class="form-control" readonly placeholder="NRP"
+													name="nrpmhs" value="<?= $this->session->userdata('nrp'); ?>">
 												<?= form_error(
 													'nrpmhs',
 													'<small class="text-danger pl-3">',
@@ -214,7 +230,9 @@
 											</div>
 											<div class="col-12 col-md-6">
 												<!-- <input type="text" id="text-input" name="text-input" placeholder="Nama Mahasiswa" readonly="" class="form-control"> -->
-												<input type="text" class="form-control" readonly placeholder="Nama Mahasiswa" name="namamhs" value="<?= $this->session->userdata('nama'); ?>">
+												<input type="text" class="form-control" readonly
+													placeholder="Nama Mahasiswa" name="namamhs"
+													value="<?= $this->session->userdata('nama'); ?>">
 												<?= form_error(
 													'namamhs',
 													'<small class="text-danger pl-3">',
@@ -227,11 +245,12 @@
 												<label for="select" class=" form-control-label">Kode Matakuliah</label>
 											</div>
 											<div class="col-12 col-md-6">
-												<select class="form-control" aria-label=".form-select-sm example" name="kode_mk" id="pilihmatkul">
+												<select class="form-control" aria-label=".form-select-sm example"
+													name="kode_mk" id="pilihmatkul">
 													<option>Pilih Kode Matakuliah</option>
 													<?php foreach ($matkul as $mtk) { ?>
-														<option value="<?= $mtk->kode_mk ?>"><?= $mtk->kode_mk ?> -
-															<?= $mtk->nama_dsn ?></option>
+													<option value="<?= $mtk->kode_mk ?>"><?= $mtk->kode_mk ?> -
+														<?= $mtk->nama_dsn ?></option>
 													<?php } ?>
 												</select>
 												<?= form_error(
@@ -247,7 +266,8 @@
 													Matakuliah</label>
 											</div>
 											<div class="col-12 col-md-6">
-												<input type="text" class="form-control" readonly placeholder="" id="namamk" name="namamk" readonly>
+												<input type="text" class="form-control" readonly placeholder=""
+													id="namamk" name="namamk" readonly>
 												<?= form_error(
 													'namamk',
 													'<small class="text-danger pl-3">',
@@ -261,7 +281,8 @@
 												<label for="text-input" class=" form-control-label">Kelas</label>
 											</div>
 											<div class="col-12 col-md-6">
-												<input type="text" class="form-control" readonly placeholder="" id="kelas" name="kelas">
+												<input type="text" class="form-control" readonly placeholder=""
+													id="kelas" name="kelas">
 												<?= form_error(
 													'kelas',
 													'<small class="text-danger pl-3">',
@@ -271,7 +292,8 @@
 										</div>
 										<div class="row form-group">
 											<div class="col col-md-3">
-												<label class=" form-control-label" style="color:green; font-weight:bold">Petunjuk
+												<label class=" form-control-label"
+													style="color:green; font-weight:bold">Petunjuk
 													Pengisian</label>
 											</div>
 											<div class="col-12 col-md-9">
@@ -288,25 +310,34 @@
 											<div class="col-12 col-md-9">
 												<div class="form-check">
 													<div class="radio">
-														<label for="radio1" class="form-check-label " style="color:green">
-															<input type="radio" id="radio1" name="radios" value="option1" class="form-check-input" disabled>Kurang
+														<label for="radio1" class="form-check-label "
+															style="color:green">
+															<input type="radio" id="radio1" name="radios"
+																value="option1" class="form-check-input" disabled>Kurang
 															(Tidak Puas)
 														</label>
 													</div>
 													<div class="radio">
-														<label for="radio2" class="form-check-label " style="color:green">
-															<input type="radio" id="radio2" name="radios" value="option2" class="form-check-input" disabled>Cukup
+														<label for="radio2" class="form-check-label "
+															style="color:green">
+															<input type="radio" id="radio2" name="radios"
+																value="option2" class="form-check-input" disabled>Cukup
 															(Kurang Puas)
 														</label>
 													</div>
 													<div class="radio">
-														<label for="radio3" class="form-check-label " style="color:green">
-															<input type="radio" id="radio3" name="radios" value="option3" class="form-check-input" checked disabled>Baik (Puas)
+														<label for="radio3" class="form-check-label "
+															style="color:green">
+															<input type="radio" id="radio3" name="radios"
+																value="option3" class="form-check-input" checked
+																disabled>Baik (Puas)
 														</label>
 													</div>
 													<div class="radio">
-														<label for="radio3" class="form-check-label " style="color:green">
-															<input type="radio" id="radio4" name="radios" value="option4" class="form-check-input" disabled>Sangat
+														<label for="radio3" class="form-check-label "
+															style="color:green">
+															<input type="radio" id="radio4" name="radios"
+																value="option4" class="form-check-input" disabled>Sangat
 															Baik (Sangat Puas)
 														</label>
 													</div>
@@ -326,60 +357,75 @@
 										$no_error = 1;
 										$name = 'jwb';
 										foreach ($pertanyaan as $prt) : ?>
-											<div class="form-group row">
-												<div class="col col-md-3">
-													<label class="form-control-label" style="font-weight:bold">Pertanyaan
-														<?= $no++ ?></label>
-												</div>
-												<div class="col-12 col-md-9">
-													<p class="form-control-static" aria-label="Disabled input example">
-														<?= $prt['pertanyaan']; ?></p>
-												</div>
+										<div class="form-group row">
+											<div class="col col-md-3">
+												<label class="form-control-label" style="font-weight:bold">Pertanyaan
+													<?= $no++ ?></label>
 											</div>
-											<div class="row form-group">
-												<div class="col col-md-3">
+											<div class="col-12 col-md-9">
+												<p class="form-control-static" aria-label="Disabled input example">
+													<?= $prt['pertanyaan']; ?></p>
+											</div>
+										</div>
+										<div class="row form-group">
+											<div class="col col-md-3">
+											</div>
+											<div class="col-12 col-md-9">
+												<div class="form-check">
+													<input class="form-check-input" type="radio"
+														name="<?= $name . $no_radio1++ ?>" id="flexRadioDisabled"
+														value="1" <?php if (set_value($name . $no_set1++) == "1") : ?>
+														checked <?php endif; ?>>
+													<label class="form-check-label" for="flexRadioDisabled">
+														Sangat Tidak Puas
+													</label>
 												</div>
-												<div class="col-12 col-md-9">
-													<div class="form-check">
-														<input class="form-check-input" type="radio" name="<?= $name . $no_radio1++ ?>" id="flexRadioDisabled" value="1" <?php if (set_value($name . $no_set1++) == "1") : ?> checked <?php endif; ?>>
-														<label class="form-check-label" for="flexRadioDisabled">
-															Sangat Tidak Puas
-														</label>
-													</div>
-													<div class="form-check">
-														<input class="form-check-input" type="radio" name="<?= $name . $no_radio2++ ?>" id="flexRadioCheckedDisabled" value="2" <?php if (set_value($name . $no_set2++) == "2") : ?> checked <?php endif; ?>>
-														<label class="form-check-label" for="flexRadioCheckedDisabled">
-															Tidak Puas
-														</label>
-													</div>
-													<div class="form-check">
-														<input class="form-check-input" type="radio" name="<?= $name . $no_radio3++ ?>" id="flexRadioDisabled" value="3" <?php if (set_value($name . $no_set3++) == "3") : ?> checked <?php endif; ?>>
-														<label class="form-check-label" for="flexRadioDisabled">
-															Puas
-														</label>
-													</div>
-													<div class="form-check">
-														<input class="form-check-input" type="radio" name="<?= $name . $no_radio4++ ?>" id="flexRadioCheckedDisabled" value="4" <?php if (set_value($name . $no_set4++) == "4") : ?> checked <?php endif; ?>>
-														<label class="form-check-label" for="flexRadioCheckedDisabled">
-															Sangat Puas
-														</label>
-													</div>
-													<div>
-														<?= form_error(
+												<div class="form-check">
+													<input class="form-check-input" type="radio"
+														name="<?= $name . $no_radio2++ ?>" id="flexRadioCheckedDisabled"
+														value="2" <?php if (set_value($name . $no_set2++) == "2") : ?>
+														checked <?php endif; ?>>
+													<label class="form-check-label" for="flexRadioCheckedDisabled">
+														Tidak Puas
+													</label>
+												</div>
+												<div class="form-check">
+													<input class="form-check-input" type="radio"
+														name="<?= $name . $no_radio3++ ?>" id="flexRadioDisabled"
+														value="3" <?php if (set_value($name . $no_set3++) == "3") : ?>
+														checked <?php endif; ?>>
+													<label class="form-check-label" for="flexRadioDisabled">
+														Puas
+													</label>
+												</div>
+												<div class="form-check">
+													<input class="form-check-input" type="radio"
+														name="<?= $name . $no_radio4++ ?>" id="flexRadioCheckedDisabled"
+														value="4" <?php if (set_value($name . $no_set4++) == "4") : ?>
+														checked <?php endif; ?>>
+													<label class="form-check-label" for="flexRadioCheckedDisabled">
+														Sangat Puas
+													</label>
+												</div>
+												<div>
+													<?= form_error(
 															$name . $no_error++,
 															'<small class="text-danger pl-3">',
 															'</small>'
 														); ?>
-													</div>
 												</div>
 											</div>
+										</div>
 										<?php endforeach; ?>
 										<div class="row form-group">
 											<div class="col col-md-3">
-												<label for="textarea-input" class=" form-control-label" style="font-weight:bold">Saran</label>
+												<label for="textarea-input" class=" form-control-label"
+													style="font-weight:bold">Saran</label>
 											</div>
 											<div class="col-12 col-md-9">
-												<textarea name="saran" id="textarea-input" rows="9" value="saran" placeholder="Berikan saran anda mengenai kendala utama dalam pembelajaran daring." class="form-control"><?= set_value('saran') ?></textarea>
+												<textarea name="saran" id="textarea-input" rows="9" value="saran"
+													placeholder="Berikan saran anda mengenai kendala utama dalam pembelajaran daring."
+													class="form-control"><?= set_value('saran') ?></textarea>
 												<?= form_error(
 													'saran',
 													'<small class="text-danger pl-3">',
@@ -416,7 +462,8 @@
 			</script>
 			<script src="<?= base_url('assets/'); ?>vendor/theme/vendor/wow/wow.min.js"></script>
 			<script src="<?= base_url('assets/'); ?>vendor/theme/vendor/animsition/animsition.min.js"></script>
-			<script src="<?= base_url('assets/'); ?>vendor/theme/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+			<script
+				src="<?= base_url('assets/'); ?>vendor/theme/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
 			</script>
 			<script src="<?= base_url('assets/'); ?>vendor/theme/vendor/counter-up/jquery.waypoints.min.js"></script>
 			<script src="<?= base_url('assets/'); ?>vendor/theme/vendor/counter-up/jquery.counterup.min.js">
@@ -434,7 +481,7 @@
 
 			<script>
 				// jika user memilih non akademik, kemudian memilih unit
-				$(document).on('change', '#pilihmatkul', function(e) {
+				$(document).on('change', '#pilihmatkul', function (e) {
 					e.preventDefault();
 					let idmatkul = $(this).val();
 					$.ajax({
@@ -445,7 +492,7 @@
 						},
 						dataType: 'json',
 						cache: false,
-						success: function(res) {
+						success: function (res) {
 							console.log(res)
 							$("#namamk").val(res.nama_mk)
 							$("#kelas").val(res.kelas)
@@ -459,6 +506,7 @@
 						}
 					});
 				})
+
 			</script>
 
 </body>

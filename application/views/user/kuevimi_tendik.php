@@ -11,7 +11,7 @@
 	<meta name="keywords" content="au theme template">
 
 	<!-- Title Page-->
-	<title>Kuesioner Mahasiswa | Institut Teknologi Nasional</title>
+	<title>Kuesioner Tendik | Institut Teknologi Nasional</title>
 
 	<!-- Fontfaces CSS-->
 	<link href="<?= base_url('assets/'); ?>vendor/theme/css/font-face.css" rel="stylesheet" media="all">
@@ -66,20 +66,24 @@
 			<nav class="navbar-mobile">
 				<div class="container-fluid">
 					<ul class="navbar-mobile__list list-unstyled">
-						<li class="has-sub">
-							<a href="<?= base_url('user/editprofil_mhs'); ?>">
-								<i class="far fa-id-card"></i>Profil Mahasiswa</a>
+						<!-- <li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn'); ?>">
+								<i class="fas fa-copy"></i>Pembelajaran Daring</a>
 						</li>
 						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs'); ?>">
-								<i class="far fa-file-alt"></i>Kuesioner</a>
+							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn'); ?>">
+								<i class="fas fa-copy"></i>Pelayanan LP2M</a>
 						</li>
 						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs'); ?>">
+							<a class="js-arrow" href="<?= base_url('user/kuefkl_dsn'); ?>">
+								<i class="fas fa-copy"></i>Pelayanan Fakultas</a>
+						</li> -->
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuebku_tendik'); ?>">
 								<i class="fas fa-copy"></i>Sarana/ Pra Sarana</a>
 						</li>
-						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs'); ?>">
+						<li class="active">
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_tendik'); ?>">
 								<i class="fas fa-copy"></i>Visi Misi</a>
 						</li>
 					</ul>
@@ -98,17 +102,25 @@
 			<div class="menu-sidebar__content js-scrollbar1">
 				<nav class="navbar-sidebar">
 					<ul class="list-unstyled navbar__list">
-						<li class="has-sub">
-							<a href="<?= base_url('user/editprofil_mhs'); ?>">
-								<i class="far fa-id-card"></i>Profil Mahasiswa</a>
+						<!-- <li class="hs-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn'); ?>">
+								<i class="fas fa-copy"></i>Pembelajaran Daring</a>
 						</li>
+						<li class="hs-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuelp2m_dsn'); ?>">
+								<i class="fas fa-copy"></i>Pelayanan LP2M</a>
+						</li>
+						<li class="hs-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuefkl_dsn'); ?>">
+								<i class="fas fa-copy"></i>Pelayanan Fakultas</a>
+						</li> -->
 						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs'); ?>">
-								<i class="far fa-file-alt"></i>Kuesioner</a>
+							<a class="js-arrow" href="<?= base_url('user/kuebku_tendik'); ?>">
+								<i class="fas fa-copy"></i>Sarana/ Pra Sarana</a>
 						</li>
 						<li class="active">
-							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs'); ?>">
-								<i class="fas fa-copy"></i>Sarana/ Pra Sarana</a>
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_tendik'); ?>">
+								<i class="fas fa-copy"></i>Visi Misi</a>
 						</li>
 					</ul>
 				</nav>
@@ -136,7 +148,8 @@
 												alt="John Doe" />
 										</div>
 										<div class="content">
-											<a class="js-acc-btn" href="#"><?= $this->session->userdata('nrp'); ?></a>
+											<a class="js-acc-btn"
+												href="#"><?= $this->session->userdata('id_tendik'); ?></a>
 										</div>
 										<div class="account-dropdown js-dropdown">
 											<div class="info clearfix">
@@ -148,13 +161,13 @@
 												</div>
 												<div class="content">
 													<h5 class="name">
-														<a href="#"><?= $this->session->userdata('nama'); ?></a>
+														<a href="#"><?= $this->session->userdata('id_tendik'); ?></a>
 													</h5>
-													<span class="email">Mahasiswa</span>
+													<span class="email">Tendik</span>
 												</div>
 											</div>
 											<div class="account-dropdown__footer">
-												<a href="<?= base_url('auth/logout_mhs'); ?>">
+												<a href="<?= base_url('auth/logout_tendik'); ?>">
 													<i class="zmdi zmdi-power"></i>Logout</a>
 											</div>
 										</div>
@@ -175,13 +188,14 @@
 							<div class="col-md-12">
 								<div class="card">
 									<div class="card-header">
-										<strong class="card-title">Kuesioner Pelayanan Sarana/ Pra Sarana Umum</strong>
+										<strong class="card-title">Kuesioner Pemahaman
+											Visi, Misi, dan Tujuan Itenas</strong>
 									</div>
 									<?= $this->session->flashdata('message'); ?>
 									<div class="card-body">
 										<div class="typo-headers">
-											<h1 class="pb-2 display-5" style="font-size: 25px;">KUESIONER KEPUASAN
-												PENGGUNA LAYANAN BIDANG KEUANGAN DAN SARANA-PRASARANA DI ITENAS</h1>
+											<h1 class="pb-2 display-5" style="font-size: 25px;">Kuesioner Pemahaman
+												Visi, Misi, dan Tujuan Itenas</h1>
 										</div>
 										<div class="typo-articles">
 											<p>
@@ -191,15 +205,15 @@
 												Berikan tanggapan berdasarkan pendapat sendiri dan bukan
 												pandangan/pendapat orang lain. -->
 												<p></p>
-												<br>Pertanyaan untuk Dosen dan Tenaga Kependidikan</br>
+												<br>Pertanyaan untuk Mahasiswa, Dosen dan Tenaga Kependidikan</br>
 											</p>
 										</div>
 									</div>
 									<div class="card-body card-block">
-										<?= form_open('user/kuebku_mhs'); ?>
-										<input type="hidden" class="form-control" readonly placeholder="NRP"
-											name="nrpmhs" value="<?= $this->session->userdata('nrp'); ?>">
-										<div class="row form-group">
+										<?= form_open('user/kuebku_tendik'); ?>
+										<input type="hidden" name="nip"
+											value="<?= $this->session->userdata('id_tendik') ?>" />
+										<!-- <div class="row form-group">
 											<div class="col col-md-3">
 												<label class=" form-control-label"
 													style="color:green; font-weight:bold">Petunjuk Pengisian</label>
@@ -250,7 +264,7 @@
 													</div>
 												</div>
 											</div>
-										</div>
+										</div> -->
 										<?php
 										$no = 1;
 										$no_radio1 = 1;
@@ -263,7 +277,7 @@
 										$no_set4 = 1;
 										$no_error = 1;
 										$name = 'jwb_';
-										foreach ($pertanyaan_sarpras as $prt) : ?>
+										foreach ($pertanyaan_visimisi as $prt) : ?>
 										<div class="form-group row">
 											<div class="col col-md-3">
 												<label class="form-control-label" style="font-weight:bold">Pertanyaan
@@ -271,7 +285,7 @@
 											</div>
 											<div class="col-12 col-md-9">
 												<p class="form-control-static" aria-label="Disabled input example">
-													<?= $prt['pertanyaan']; ?></p>
+													<?= $prt['pertanyaan_vimi']; ?></p>
 											</div>
 										</div>
 										<div class="row form-group">
@@ -324,6 +338,22 @@
 											</div>
 										</div>
 										<?php endforeach; ?>
+										<div class="row form-group">
+											<div class="col col-md-3">
+												<label for="textarea-input" class=" form-control-label"
+													style="font-weight:bold">Saran</label>
+											</div>
+											<div class="col-12 col-md-9">
+												<textarea name="saran" id="textarea-input" rows="9" value="saran"
+													placeholder="Mohon tuliskan saran terkait Visi, Misi, Tujuan Itenas:"
+													class="form-control"><?= set_value('saran') ?></textarea>
+												<?= form_error(
+													'saran',
+													'<small class="text-danger pl-3">',
+													'</small>'
+												); ?>
+											</div>
+										</div>
 									</div>
 									<div class="card-footer">
 										<button type="submit" class="btn btn-success btn-sm">

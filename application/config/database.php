@@ -76,16 +76,17 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	// 'username' => 'root',
-	// 'password' => '',
-	// 'database' => 'kuesioner_nik',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'kuesioner_20211',
 	// 'username' => 'kuesioner_user',
 	// 'password' => 'F}zjZVs#an^]',
 
 	### DB Hosting 20211
-	'database' => 'kuesioner_20211',
-	'username' => 'kuesioner_20211',
-	'password' => 'eY=x&sHIcF?T',
+	// 'database' => 'kuesioner_20211',
+	// 'username' => 'kuesioner_20211',
+	// 'password' => 'eY=x&sHIcF?T',
+	###
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
