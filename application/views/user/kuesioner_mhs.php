@@ -66,17 +66,21 @@
 			<nav class="navbar-mobile">
 				<div class="container-fluid">
 					<ul class="navbar-mobile__list list-unstyled">
-						<li>
+						<li class="active">
 							<a href="<?= base_url('user/editprofil_mhs'); ?>">
-								<i class="far fa-id-card"></i>Profil Mahasiswa</a>
+								<i class="far fa-id-card"></i></i>Profil Mahasiswa</a>
 						</li>
 						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs'); ?>">
-								<i class="far fa-file-alt"></i>Kuesioner</a>
+								<i class="far fa-file-alt"></i></i>Kuesioner</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs'); ?>">
+								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana</a>
 						</li>
 						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs'); ?>">
-								<i class="fas fa-copy"></i>Visi Misi</a>
+								<i class="fas fa-thumbs-up"></i>Visi Misi</a>
 						</li>
 						<!-- <li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs'); ?>">
@@ -100,15 +104,19 @@
 					<ul class="list-unstyled navbar__list">
 						<li class="has-sub">
 							<a href="<?= base_url('user/editprofil_mhs'); ?>">
-								<i class="far fa-id-card"></i>Profil Mahasiswa</a>
+								<i class="far fa-id-card"></i></i>Profil Mahasiswa</a>
 						</li>
 						<li class="active">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs'); ?>">
-								<i class="far fa-file-alt"></i>Kuesioner</a>
+								<i class="far fa-file-alt"></i></i>Kuesioner</a>
 						</li>
 						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs'); ?>">
-								<i class="fas fa-copy"></i>Sarana/ Pra Sarana</a>
+								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs'); ?>">
+								<i class="fas fa-thumbs-up"></i>Visi Misi</a>
 						</li>
 						<!-- <li class="">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs'); ?>">

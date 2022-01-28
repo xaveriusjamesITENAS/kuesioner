@@ -104,11 +104,11 @@
 						</li>
 						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs'); ?>">
-								<i class="fas fa-copy"></i>Sarana/ Pra Sarana</a>
+								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana</a>
 						</li>
 						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs'); ?>">
-								<i class="fas fa-copy"></i>Visi Misi</a>
+								<i class="fas fa-thumbs-up"></i>Visi Misi</a>
 						</li>
 					</ul>
 				</nav>

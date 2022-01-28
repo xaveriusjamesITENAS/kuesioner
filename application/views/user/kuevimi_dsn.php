@@ -66,25 +66,25 @@
 			<nav class="navbar-mobile">
 				<div class="container-fluid">
 					<ul class="navbar-mobile__list list-unstyled">
-						<li class="has-sub">
+						<li class="hs-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn'); ?>">
-								<i class="fas fa-copy"></i>Pembelajaran Daring</a>
+								<i class="fas fa-graduation-cap"></i>Pembelajaran Daring</a>
 						</li>
-						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn'); ?>">
+						<li class="hs-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuelp2m_dsn'); ?>">
 								<i class="fas fa-copy"></i>Pelayanan LP2M</a>
 						</li>
-						<li class="has-sub">
+						<li class="hs-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuefkl_dsn'); ?>">
-								<i class="fas fa-copy"></i>Pelayanan Fakultas</a>
+								<i class="fas fa-university"></i>Pelayanan Fakultas</a>
 						</li>
-						<li class="has-sub">
+						<li class="hs-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuebku_dsn'); ?>">
-								<i class="fas fa-copy"></i>Sarana/ Pra Sarana</a>
+								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana</a>
 						</li>
 						<li class="active">
 							<a class="js-arrow" href="<?= base_url('user/kuevimi_dsn'); ?>">
-								<i class="fas fa-copy"></i>Visi Misi</a>
+								<i class="fas fa-thumbs-up"></i>Visi Misi</a>
 						</li>
 					</ul>
 				</div>
@@ -104,7 +104,7 @@
 					<ul class="list-unstyled navbar__list">
 						<li class="hs-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn'); ?>">
-								<i class="fas fa-copy"></i>Pembelajaran Daring</a>
+								<i class="fas fa-graduation-cap"></i>Pembelajaran Daring</a>
 						</li>
 						<li class="hs-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuelp2m_dsn'); ?>">
@@ -112,15 +112,15 @@
 						</li>
 						<li class="hs-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuefkl_dsn'); ?>">
-								<i class="fas fa-copy"></i>Pelayanan Fakultas</a>
+								<i class="fas fa-university"></i>Pelayanan Fakultas</a>
 						</li>
 						<li class="hs-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuebku_dsn'); ?>">
-								<i class="fas fa-copy"></i>Sarana/ Pra Sarana</a>
+								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana</a>
 						</li>
 						<li class="active">
 							<a class="js-arrow" href="<?= base_url('user/kuevimi_dsn'); ?>">
-								<i class="fas fa-copy"></i>Visi Misi</a>
+								<i class="fas fa-thumbs-up"></i>Visi Misi</a>
 						</li>
 					</ul>
 				</nav>

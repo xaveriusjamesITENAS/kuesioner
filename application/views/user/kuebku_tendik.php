@@ -80,7 +80,11 @@
 						</li> -->
 						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuebku_tendik'); ?>">
-								<i class="fas fa-copy"></i>Sarana/ Pra Sarana</a>
+								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_tendik'); ?>">
+								<i class="fas fa-thumbs-up"></i>Visi Misi</a>
 						</li>
 					</ul>
 				</div>
@@ -112,11 +116,11 @@
 						</li> -->
 						<li class="active">
 							<a class="js-arrow" href="<?= base_url('user/kuebku_tendik'); ?>">
-								<i class="fas fa-copy"></i>Sarana/ Pra Sarana</a>
+								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana</a>
 						</li>
 						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuevimi_tendik'); ?>">
-								<i class="fas fa-copy"></i>Visi Misi</a>
+								<i class="fas fa-thumbs-up"></i>Visi Misi</a>
 						</li>
 					</ul>
 				</nav>
