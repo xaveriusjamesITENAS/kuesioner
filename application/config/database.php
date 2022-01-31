@@ -78,7 +78,7 @@ $db['default'] = array(
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
-	'database' => 'kuesioner_20211',
+	'database' => 'kuesioner_20211_uas',
 	// 'username' => 'kuesioner_user',
 	// 'password' => 'F}zjZVs#an^]',
 
