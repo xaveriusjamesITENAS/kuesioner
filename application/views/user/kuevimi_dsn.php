@@ -210,73 +210,11 @@
 										</div>
 									</div>
 									<div class="card-body card-block">
-										<?= form_open('user/kuebku_dsn'); ?>
-										<input type="hidden" name="id_dsn"
+										<?= form_open('user/kuevimi_dsn'); ?>
+										<input type="hidden" name="nip"
 											value="<?= $this->session->userdata('nip') ?>" />
-										<!-- <div class="row form-group">
-											<div class="col col-md-3">
-												<label class=" form-control-label"
-													style="color:green; font-weight:bold">Petunjuk Pengisian</label>
-											</div>
-											<div class="col-12 col-md-9">
-												<p class="form-control-static" style="color:green">Kuesioner ini terdiri
-													dari 12 butir pertanyaan dengan bentuk jawaban pilihan ganda yang
-													terdiri dari 4 (empat) pilihan jawaban. Anda dapat memilih satu
-													pilihan sesuai pendapat pribadi.</p>
-											</div>
-										</div>
-										<div class="row form-group">
-											<div class="col col-md-3">
-											</div>
-											<div class="col-12 col-md-9">
-												<div class="form-check">
-													<div class="radio">
-														<label for="radio1" class="form-check-label "
-															style="color:green">
-															<input type="radio" id="radio1" name="radios"
-																value="option1" class="form-check-input" disabled>Kurang
-															(Tidak Puas)
-														</label>
-													</div>
-													<div class="radio">
-														<label for="radio2" class="form-check-label "
-															style="color:green">
-															<input type="radio" id="radio2" name="radios"
-																value="option2" class="form-check-input" disabled>Cukup
-															(Kurang Puas)
-														</label>
-													</div>
-													<div class="radio">
-														<label for="radio3" class="form-check-label "
-															style="color:green">
-															<input type="radio" id="radio3" name="radios"
-																value="option3" class="form-check-input" checked
-																disabled>Baik (Puas)
-														</label>
-													</div>
-													<div class="radio">
-														<label for="radio3" class="form-check-label "
-															style="color:green">
-															<input type="radio" id="radio4" name="radios"
-																value="option4" class="form-check-input" disabled>Sangat
-															Baik (Sangat Puas)
-														</label>
-													</div>
-												</div>
-											</div>
-										</div> -->
 										<?php
 										$no = 1;
-										$no_radio1 = 1;
-										$no_radio2 = 1;
-										$no_radio3 = 1;
-										$no_radio4 = 1;
-										$no_set1 = 1;
-										$no_set2 = 1;
-										$no_set3 = 1;
-										$no_set4 = 1;
-										$no_error = 1;
-										$name = 'jwb_';
 										foreach ($pertanyaan_visimisi as $prt) : ?>
 										<div class="form-group row">
 											<div class="col col-md-3">
@@ -285,60 +223,48 @@
 											</div>
 											<div class="col-12 col-md-9">
 												<p class="form-control-static" aria-label="Disabled input example">
-													<?= $prt['pertanyaan_vimi']; ?></p>
+													<?= $prt['pertanyaan']; ?></p>
 											</div>
 										</div>
 										<div class="row form-group">
 											<div class="col col-md-3">
 											</div>
 											<div class="col-12 col-md-9">
+												<?php
+													$jawaban = $this->db->select('*')
+														->from('jawaban_visimisi')
+														->where('jawaban_visimisi.id_pertanyaan', $prt['id'])
+														->get()->result_array();
+
+													foreach ($jawaban as $key => $jwb) :
+													?>
+												<?php if ($jwb['id_pertanyaan'] == 3) : ?>
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox"
+														value="<?= $jwb['id'] ?>" name="3[]" id="defaultCheck1">
+													<label class="form-check-label" for="defaultCheck1">
+														<?= $jwb['jawaban'] ?>
+													</label>
+												</div>
+												<?php elseif ($jwb['id_pertanyaan'] == 8) : ?>
+												<textarea name="8" id="textarea-input" rows="9"
+													placeholder="Mohon tuliskan saran terkait Visi, Misi, Tujuan Itenas:"
+													class="form-control"></textarea>
+												<?php else : ?>
 												<div class="form-check">
 													<input class="form-check-input" type="radio"
-														name="<?= $name . $no_radio1++ ?>" id="flexRadioDisabled"
-														value="1" <?php if (set_value($name . $no_set1++) == "1") : ?>
-														checked <?php endif; ?>>
+														name="<?= $prt['id'] ?>" id="flexRadioDisabled"
+														value="<?= $jwb['id'] ?>">
 													<label class="form-check-label" for="flexRadioDisabled">
-														Sangat Tidak Puas
+														<?= $jwb['jawaban'] ?>
 													</label>
 												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="radio"
-														name="<?= $name . $no_radio2++ ?>" id="flexRadioCheckedDisabled"
-														value="2" <?php if (set_value($name . $no_set2++) == "2") : ?>
-														checked <?php endif; ?>>
-													<label class="form-check-label" for="flexRadioCheckedDisabled">
-														Tidak Puas
-													</label>
-												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="radio"
-														name="<?= $name . $no_radio3++ ?>" id="flexRadioDisabled"
-														value="3" <?php if (set_value($name . $no_set3++) == "3") : ?>
-														checked <?php endif; ?>>
-													<label class="form-check-label" for="flexRadioDisabled">
-														Puas
-													</label>
-												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="radio"
-														name="<?= $name . $no_radio4++ ?>" id="flexRadioCheckedDisabled"
-														value="4" <?php if (set_value($name . $no_set4++) == "4") : ?>
-														checked <?php endif; ?>>
-													<label class="form-check-label" for="flexRadioCheckedDisabled">
-														Sangat Puas
-													</label>
-												</div>
-												<div>
-													<?= form_error(
-															$name . $no_error++,
-															'<small class="text-danger pl-3">',
-															'</small>'
-														); ?>
-												</div>
+												<?php endif; ?>
+												<?php endforeach; ?>
 											</div>
 										</div>
 										<?php endforeach; ?>
-										<div class="row form-group">
+										<!-- <div class="row form-group">
 											<div class="col col-md-3">
 												<label for="textarea-input" class=" form-control-label"
 													style="font-weight:bold">Saran</label>
@@ -353,7 +279,7 @@
 													'</small>'
 												); ?>
 											</div>
-										</div>
+										</div> -->
 									</div>
 									<div class="card-footer">
 										<button type="submit" class="btn btn-success btn-sm">

@@ -628,32 +628,29 @@ class User extends CI_Controller
             redirect($_SERVER['HTTP_REFERER']);
         }
         $data['pertanyaan_visimisi'] = $this->db->select('*')
-            ->from('pertanyaan_visimisi')->where('level', 'dosen')
+            ->from('pertanyaan_visimisi')
             ->get()->result_array();
-        $this->form_validation->set_rules('id_dsn', 'NIP', 'required|trim');
-        for ($i = 1; $i <= 7; $i++) {
-            $this->form_validation->set_rules('jwb_' . $i, 'Pertanyaan ' . $i, 'required');
-        }
+        $this->form_validation->set_rules('1', 'NIP', 'required|trim');
         if ($this->form_validation->run() == false) {
             $this->load->view('user/kuevimi_dsn', $data);
         } else {
-            $jml_dsn = $this->input->post('jwb_1') + $this->input->post('jwb_2') + $this->input->post('jwb_3') + $this->input->post('jwb_4') + $this->input->post('jwb_5') + $this->input->post('jwb_6') +
-                $this->input->post('jwb_7');
-            $indeks_kml = $jml_dsn / 7;
-            $data = [
-                'nip' => $this->input->post('id_dsn'),
-                'jwb_1' => $this->input->post('jwb_1'),
-                'jwb_2' => $this->input->post('jwb_2'),
-                'jwb_3' => $this->input->post('jwb_3'),
-                'jwb_4' => $this->input->post('jwb_4'),
-                'jwb_5' => $this->input->post('jwb_5'),
-                'jwb_6' => $this->input->post('jwb_6'),
-                'jwb_7' => $this->input->post('jwb_7'),
-                'indeks_kml' => $indeks_kml,
-                'created_at' => date("Y-m-d H:i:s"),
-                'updated_at' => date("Y-m-d H:i:s")
-            ];
-            $this->db->insert('visimisi_dsn', $data);
+            foreach ($this->input->post() as $key => $value) {
+                if ($key == 3) {
+                    foreach ($this->input->post('3') as $key2 => $value2) {
+                        $this->db->insert('submit_vimi_dsn', [
+                            'nip' => $this->input->post('nip'),
+                            'id_pertanyaan' => $key,
+                            'id_jawaban' => $value2,
+                        ]);
+                    }
+                } elseif ($key != "nip") {
+                    $this->db->insert('submit_vimi_dsn', [
+                        'nip' => $this->input->post('nip'),
+                        'id_pertanyaan' => $key,
+                        'id_jawaban' => $value,
+                    ]);
+                }
+            }
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
             redirect('user/kuevimi_dsn');
         }
@@ -665,36 +662,107 @@ class User extends CI_Controller
             redirect($_SERVER['HTTP_REFERER']);
         }
         $data['pertanyaan_visimisi'] = $this->db->select('*')
-            ->from('pertanyaan_visimisi')->where('level', 'tendik')
+            ->from('pertanyaan_visimisi')
             ->get()->result_array();
-        $this->form_validation->set_rules('nip', 'NIP', 'required|trim');
-        for ($i = 1; $i <= 7; $i++) {
-            $this->form_validation->set_rules('jwb_' . $i, 'Pertanyaan ' . $i, 'required');
-        }
+        $this->form_validation->set_rules('1', 'NIP', 'required|trim');
         if ($this->form_validation->run() == false) {
             $this->load->view('user/kuevimi_tendik', $data);
         } else {
-            $jml_dsn = $this->input->post('jwb_1') + $this->input->post('jwb_2') + $this->input->post('jwb_3') + $this->input->post('jwb_4') + $this->input->post('jwb_5') + $this->input->post('jwb_6') +
-                $this->input->post('jwb_7');
-            $indeks_kml = $jml_dsn / 7;
-            $data = [
-                'nip' => $this->input->post('nip'),
-                'jwb_1' => $this->input->post('jwb_1'),
-                'jwb_2' => $this->input->post('jwb_2'),
-                'jwb_3' => $this->input->post('jwb_3'),
-                'jwb_4' => $this->input->post('jwb_4'),
-                'jwb_5' => $this->input->post('jwb_5'),
-                'jwb_6' => $this->input->post('jwb_6'),
-                'jwb_7' => $this->input->post('jwb_7'),
-                'indeks_kml' => $indeks_kml,
-                'created_at' => date("Y-m-d H:i:s"),
-                'updated_at' => date("Y-m-d H:i:s")
-            ];
-            $this->db->insert('visimisi_tendik', $data);
+            foreach ($this->input->post() as $key => $value) {
+                if ($key == 3) {
+                    foreach ($this->input->post('3') as $key2 => $value2) {
+                        $this->db->insert('submit_vimi_tendik', [
+                            'nip' => $this->input->post('nip'),
+                            'id_pertanyaan' => $key,
+                            'id_jawaban' => $value2,
+                        ]);
+                    }
+                } elseif ($key != "nip") {
+                    $this->db->insert('submit_vimi_tendik', [
+                        'nip' => $this->input->post('nip'),
+                        'id_pertanyaan' => $key,
+                        'id_jawaban' => $value,
+                    ]);
+                }
+            }
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
             redirect('user/kuevimi_tendik');
         }
     }
+
+    // public function kuevimi_dsn()
+    // {
+    //     if ($this->session->userdata('status') !== "dosen") {
+    //         redirect($_SERVER['HTTP_REFERER']);
+    //     }
+    //     $data['pertanyaan_visimisi'] = $this->db->select('*')
+    //         ->from('pertanyaan_visimisi')->where('level', 'dosen')
+    //         ->get()->result_array();
+    //     $this->form_validation->set_rules('id_dsn', 'NIP', 'required|trim');
+    //     for ($i = 1; $i <= 7; $i++) {
+    //         $this->form_validation->set_rules('jwb_' . $i, 'Pertanyaan ' . $i, 'required');
+    //     }
+    //     if ($this->form_validation->run() == false) {
+    //         $this->load->view('user/kuevimi_dsn', $data);
+    //     } else {
+    //         $jml_dsn = $this->input->post('jwb_1') + $this->input->post('jwb_2') + $this->input->post('jwb_3') + $this->input->post('jwb_4') + $this->input->post('jwb_5') + $this->input->post('jwb_6') +
+    //             $this->input->post('jwb_7');
+    //         $indeks_kml = $jml_dsn / 7;
+    //         $data = [
+    //             'nip' => $this->input->post('id_dsn'),
+    //             'jwb_1' => $this->input->post('jwb_1'),
+    //             'jwb_2' => $this->input->post('jwb_2'),
+    //             'jwb_3' => $this->input->post('jwb_3'),
+    //             'jwb_4' => $this->input->post('jwb_4'),
+    //             'jwb_5' => $this->input->post('jwb_5'),
+    //             'jwb_6' => $this->input->post('jwb_6'),
+    //             'jwb_7' => $this->input->post('jwb_7'),
+    //             'indeks_kml' => $indeks_kml,
+    //             'created_at' => date("Y-m-d H:i:s"),
+    //             'updated_at' => date("Y-m-d H:i:s")
+    //         ];
+    //         $this->db->insert('visimisi_dsn', $data);
+    //         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
+    //         redirect('user/kuevimi_dsn');
+    //     }
+    // }
+
+    // public function kuevimi_tendik()
+    // {
+    //     if ($this->session->userdata('status') !== "tendik") {
+    //         redirect($_SERVER['HTTP_REFERER']);
+    //     }
+    //     $data['pertanyaan_visimisi'] = $this->db->select('*')
+    //         ->from('pertanyaan_visimisi')->where('level', 'tendik')
+    //         ->get()->result_array();
+    //     $this->form_validation->set_rules('nip', 'NIP', 'required|trim');
+    //     for ($i = 1; $i <= 7; $i++) {
+    //         $this->form_validation->set_rules('jwb_' . $i, 'Pertanyaan ' . $i, 'required');
+    //     }
+    //     if ($this->form_validation->run() == false) {
+    //         $this->load->view('user/kuevimi_tendik', $data);
+    //     } else {
+    //         $jml_dsn = $this->input->post('jwb_1') + $this->input->post('jwb_2') + $this->input->post('jwb_3') + $this->input->post('jwb_4') + $this->input->post('jwb_5') + $this->input->post('jwb_6') +
+    //             $this->input->post('jwb_7');
+    //         $indeks_kml = $jml_dsn / 7;
+    //         $data = [
+    //             'nip' => $this->input->post('nip'),
+    //             'jwb_1' => $this->input->post('jwb_1'),
+    //             'jwb_2' => $this->input->post('jwb_2'),
+    //             'jwb_3' => $this->input->post('jwb_3'),
+    //             'jwb_4' => $this->input->post('jwb_4'),
+    //             'jwb_5' => $this->input->post('jwb_5'),
+    //             'jwb_6' => $this->input->post('jwb_6'),
+    //             'jwb_7' => $this->input->post('jwb_7'),
+    //             'indeks_kml' => $indeks_kml,
+    //             'created_at' => date("Y-m-d H:i:s"),
+    //             'updated_at' => date("Y-m-d H:i:s")
+    //         ];
+    //         $this->db->insert('visimisi_tendik', $data);
+    //         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
+    //         redirect('user/kuevimi_tendik');
+    //     }
+    // }
 
     public function kuebku_tendik()
     {
