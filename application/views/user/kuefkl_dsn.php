@@ -68,7 +68,7 @@
 					<ul class="navbar-mobile__list list-unstyled">
 						<li class="hs-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn'); ?>">
-								<i class="fas fa-graduation-cap"></i>Pembelajaran Daring</a>
+								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik</a>
 						</li>
 						<li class="hs-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuelp2m_dsn'); ?>">
@@ -104,7 +104,7 @@
 					<ul class="list-unstyled navbar__list">
 						<li class="hs-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn'); ?>">
-								<i class="fas fa-graduation-cap"></i>Pembelajaran Daring</a>
+								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik</a>
 						</li>
 						<li class="hs-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuelp2m_dsn'); ?>">

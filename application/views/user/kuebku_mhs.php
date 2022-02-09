@@ -72,7 +72,7 @@
 						</li>
 						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs'); ?>">
-								<i class="far fa-file-alt"></i>Kuesioner</a>
+								<i class="far fa-file-alt"></i>Pembelajaran dan Suasana Akademik</a>
 						</li>
 						<li class="active">
 							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs'); ?>">
@@ -104,7 +104,7 @@
 						</li>
 						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs'); ?>">
-								<i class="far fa-file-alt"></i>Kuesioner</a>
+								<i class="far fa-file-alt"></i>Pembelajaran dan Suasana Akademik</a>
 						</li>
 						<li class="active">
 							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs'); ?>">

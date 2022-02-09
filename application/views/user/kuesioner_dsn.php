@@ -68,7 +68,7 @@
 					<ul class="navbar-mobile__list list-unstyled">
 						<li class="active">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn'); ?>">
-								<i class="fas fa-graduation-cap"></i>Pembelajaran Daring</a>
+								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik</a>
 						</li>
 						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuelp2m_dsn'); ?>">
@@ -104,7 +104,7 @@
 					<ul class="list-unstyled navbar__list">
 						<li class="active">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn'); ?>">
-								<i class="fas fa-graduation-cap"></i>Pembelajaran Daring</a>
+								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik</a>
 						</li>
 						<li class="hs-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuelp2m_dsn'); ?>">
@@ -186,7 +186,7 @@
 							<div class="col-md-12">
 								<div class="card">
 									<div class="card-header">
-										<strong class="card-title">Kuesioner Pembelajaran Daring</strong>
+										<strong class="card-title">Kuesioner Pembelajaran dan Suasana Akademik</strong>
 									</div>
 									<?= $this->session->flashdata('message'); ?>
 									<div class="card-body">
@@ -196,7 +196,7 @@
 										</div>
 										<div class="typo-articles">
 											<p>
-												Kuesioner ini menanyakan pendapat anda mengenai pembelajaran daring
+												Kuesioner ini menanyakan pendapat anda mengenai Pembelajaran dan Suasana Akademik
 												selama semester ini. Pengumpulan data menggunakan kuesioner ini
 												bertujuan mengukur keefektifan kegiatan belajar daring yang telah
 												dilakukan. Berikan tanggapan berdasarkan pendapat sendiri dan bukan
@@ -410,7 +410,7 @@
 											</div>
 											<div class="col-12 col-md-9">
 												<textarea name="saran" id="textarea-input" rows="9" value="saran"
-													placeholder="Berikan saran anda mengenai kendala utama dalam pembelajaran daring."
+													placeholder="Berikan saran anda mengenai kendala utama dalam Pembelajaran dan Suasana Akademik."
 													class="form-control"><?= set_value('saran') ?></textarea>
 												<?= form_error(
 													'saran',

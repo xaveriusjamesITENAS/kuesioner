@@ -11,7 +11,7 @@
 					<h6 class="h3 mb-4 text-gray-800">Instrumen Penilaian Efektivitas Proses Pembelajaran Online</h6>
 					<div class="form-group row">
 						<label for="namamhs" class="col-sm-10">Kuesioner ini menanyakan pendapat anda mengenai
-							pembelajaran daring selama semester ini. Pengumpulan data menggunakan kuesioner ini
+							Pembelajaran dan Suasana Akademik selama semester ini. Pengumpulan data menggunakan kuesioner ini
 							bertujuan mengukur keefektifan kegiatan belajar daring yang telah dilakukan. Berikan
 							tanggapan berdasarkan pendapat sendiri dan bukan pandangan/pendapat orang lain. Kami
 							mengucapkan banyak terima kasih atas partisipasinya dalam pengisian kuesioner ini. </label>
@@ -155,7 +155,7 @@
 								<label class="col-sm col-form-label">Saran:</label>
 								<div class="col-md-10">
 									<label readonly class="form-control-plaintext">Berikan saran anda mengenai kendala
-										utama dalam pembelajaran daring.</label>
+										utama dalam Pembelajaran dan Suasana Akademik.</label>
 									<textarea rows="4" cols="80" class="form-control" placeholder="" name="saran"
 										value="saran"></textarea>
 								</div>

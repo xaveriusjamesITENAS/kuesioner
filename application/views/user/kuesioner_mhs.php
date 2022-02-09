@@ -72,7 +72,7 @@
 						</li>
 						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs'); ?>">
-								<i class="far fa-file-alt"></i></i>Kuesioner</a>
+								<i class="far fa-file-alt"></i></i>Pembelajaran dan Suasana Akademik</a>
 						</li>
 						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs'); ?>">
@@ -108,7 +108,7 @@
 						</li>
 						<li class="active">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs'); ?>">
-								<i class="far fa-file-alt"></i></i>Kuesioner</a>
+								<i class="far fa-file-alt"></i></i>Pembelajaran dan Suasana Akademik</a>
 						</li>
 						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs'); ?>">
@@ -201,7 +201,8 @@
 										</div>
 										<div class="typo-articles">
 											<p>
-												Kuesioner ini menanyakan pendapat anda mengenai pembelajaran daring
+												Kuesioner ini menanyakan pendapat anda mengenai Pembelajaran dan Suasana
+												Akademik
 												selama semester ini.
 												Pengumpulan data menggunakan kuesioner ini bertujuan mengukur
 												keefektifan kegiatan belajar
@@ -432,7 +433,7 @@
 											</div>
 											<div class="col-12 col-md-9">
 												<textarea name="saran" id="textarea-input" rows="9" value="saran"
-													placeholder="Berikan saran anda mengenai kendala utama dalam pembelajaran daring."
+													placeholder="Berikan saran anda mengenai kendala utama dalam Pembelajaran dan Suasana Akademik."
 													class="form-control"><?= set_value('saran') ?></textarea>
 												<?= form_error(
 													'saran',

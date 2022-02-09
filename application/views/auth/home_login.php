@@ -16,14 +16,31 @@
 			<div class="signin-signup">
 				<form method="post" action="" class="sign-in-form">
 					<h1 class="title" style="color: green; font-size:medium">
-						<h2 class="title">Selamat Datang!</h2>
-						<a type="submit" class="btn btn-block login-btn mb-4" href="<?= base_url('auth/index_dsn'); ?>"
-							style="text-align: center; line-height: 2.75em;">Dosen</a>
-						<a type=" submit" class="btn btn-block login-btn mb-4" href="<?= base_url('auth/index_mhs'); ?>"
-							style="text-align: center; line-height: 2.75em;">Mahasiswa</a>
-						<a type=" submit" class="btn btn-block login-btn mb-4"
-							href="<?= base_url('auth/index_tendik'); ?>"
-							style="text-align: center; line-height: 2.75em;">Tendik</a>
+						<h6 class="title" align="center" style="font-size: 30px;">Selamat Datang di<br>Sistem Kuesioner
+							Umpan Balik terhadap
+							Pelayanan Itenas
+							</h5>
+							<!-- <div class="row">
+								<div class="col-sm"> -->
+							<a type="submit" class="btn btn-outline-primary"
+								style="text-align: center; line-height: 2.75em;"
+								href="<?= base_url('auth/index_dsn'); ?>">Dosen</a>
+							<a type=" submit" class="btn btn-outline-primary" href="<?= base_url('auth/index_mhs'); ?>"
+								style="text-align: center; line-height: 2.75em;">Mahasiswa</a>
+							<a type=" submit" class="btn btn-outline-primary"
+								href="<?= base_url('auth/index_tendik'); ?>"
+								style="text-align: center; line-height: 2.75em;">Tendik</a>
+							<!-- <button type="button" class="btn btn-outline-primary">Primary</button>
+									<button type="button" class="btn btn-outline-secondary">Secondary</button>
+									<button type="button" class="btn btn-outline-success">Success</button> -->
+							<!-- <button type="button" class="btn btn-outline-danger">Danger</button>
+									<button type="button" class="btn btn-outline-warning">Warning</button>
+									<button type="button" class="btn btn-outline-info">Info</button>
+									<button type="button" class="btn btn-outline-light">Light</button>
+									<button type="button" class="btn btn-outline-dark">Dark</button> -->
+							<!-- </div>
+							</div> -->
+
 				</form>
 			</div>
 		</div>
