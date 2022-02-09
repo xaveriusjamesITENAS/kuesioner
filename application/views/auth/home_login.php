@@ -20,26 +20,27 @@
 							Umpan Balik terhadap
 							Pelayanan Itenas
 							</h5>
-							<!-- <div class="row">
-								<div class="col-sm"> -->
-							<a type="submit" class="btn btn-outline-primary"
-								style="text-align: center; line-height: 2.75em;"
-								href="<?= base_url('auth/index_dsn'); ?>">Dosen</a>
-							<a type=" submit" class="btn btn-outline-primary" href="<?= base_url('auth/index_mhs'); ?>"
-								style="text-align: center; line-height: 2.75em;">Mahasiswa</a>
-							<a type=" submit" class="btn btn-outline-primary"
-								href="<?= base_url('auth/index_tendik'); ?>"
-								style="text-align: center; line-height: 2.75em;">Tendik</a>
-							<!-- <button type="button" class="btn btn-outline-primary">Primary</button>
-									<button type="button" class="btn btn-outline-secondary">Secondary</button>
-									<button type="button" class="btn btn-outline-success">Success</button> -->
-							<!-- <button type="button" class="btn btn-outline-danger">Danger</button>
-									<button type="button" class="btn btn-outline-warning">Warning</button>
-									<button type="button" class="btn btn-outline-info">Info</button>
-									<button type="button" class="btn btn-outline-light">Light</button>
-									<button type="button" class="btn btn-outline-dark">Dark</button> -->
-							<!-- </div>
-							</div> -->
+							<div class="card-body">
+								<button type="button" class="btn btn-primary"><a
+										href="<?= base_url('auth/index_dsn'); ?>"
+										style="text-decoration:none; color:white; font-size:large">Dosen</button>
+								<button type="button" class="btn btn-primary"><a
+										href="<?= base_url('auth/index_mhs'); ?>"
+										style="text-decoration:none; color:white; font-size:large">Mahasiswa</button>
+								<button type="button" class="btn btn-primary"><a
+										href="<?= base_url('auth/index_tendik'); ?>"
+										style="text-decoration:none; color:white; font-size:large">Tendik</button>
+								<!-- <a type="submit" class="btn btn-outline-primary"
+									style="text-align: center; line-height: 2.75em;"
+									href="<?= base_url('auth/index_dsn'); ?>">Dosen</a>
+								<a type=" submit" class="btn btn-outline-primary"
+									href="<?= base_url('auth/index_mhs'); ?>"
+									style="text-align: center; line-height: 2.75em;">Mahasiswa</a>
+								<a type=" submit" class="btn btn-outline-primary"
+									href="<?= base_url('auth/index_tendik'); ?>"
+									style="text-align: center; line-height: 2.75em;">Tendik</a> -->
+							</div>
+							<!-- </div> -->
 
 				</form>
 			</div>
