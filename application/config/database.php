@@ -89,7 +89,7 @@ $db['default'] = array(
 	## DB Hosting 20212
 	'database' => 'kuesioner_20212',
 	'username' => 'kuesioner_20212',
-	'password' => 'eY=x&sHIcF?T',
+	'password' => 'Ic;wJ)24aP{P',
 	###
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
