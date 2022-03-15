@@ -83,13 +83,13 @@ $db['default'] = array(
 	// 'password' => 'F}zjZVs#an^]',
 
 	### DB Hosting 20211
-	// 'database' => 'kuesioner_20211',
-	// 'username' => 'kuesioner_20211',
-	// 'password' => 'eY=x&sHIcF?T',
-	## DB Hosting 20212
-	'database' => 'kuesioner_20212',
-	'username' => 'kuesioner_20212',
+	'database' => 'kuesioner_20211',
+	'username' => 'kuesioner_20211',
 	'password' => 'eY=x&sHIcF?T',
+	## DB Hosting 20212
+	// 'database' => 'kuesioner_20212',
+	// 'username' => 'kuesioner_20212',
+	// 'password' => 'eY=x&sHIcF?T',
 	###
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
