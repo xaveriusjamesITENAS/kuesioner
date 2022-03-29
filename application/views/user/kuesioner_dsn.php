@@ -196,7 +196,8 @@
 										</div>
 										<div class="typo-articles">
 											<p>
-												Kuesioner ini menanyakan pendapat anda mengenai Pembelajaran dan Suasana Akademik
+												Kuesioner ini menanyakan pendapat anda mengenai Pembelajaran dan Suasana
+												Akademik
 												selama semester ini. Pengumpulan data menggunakan kuesioner ini
 												bertujuan mengukur keefektifan kegiatan belajar daring yang telah
 												dilakukan. Berikan tanggapan berdasarkan pendapat sendiri dan bukan
