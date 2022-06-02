@@ -424,6 +424,81 @@ class User extends CI_Controller
         }
     }
 
+    public function kuesioner_dsn_s2sipil_ganjil()
+    {
+        if ($this->session->userdata('status') !== "dosen") {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+        $data['title'] = 'Kuesioner Dosen';
+        $this->load->model('Pertanyaan_model');
+        //$data['title'] = 'Edit Profil';
+        $data['user'] = $this->db->get_where('dosen', ['id_dsn' => $this->session->userdata('nip')])->row_array();
+
+        $submit = $this->db->get_where('submit_dsn', ['id_dsn' => $this->session->userdata('nip')])->row_array();
+
+        if ($submit != NULL) {
+            $data['matkul'] = $this->db->distinct()->select('jadwal.kode_mk, jadwal.kelas')->from('jadwal')
+                ->where('jadwal.id_dsn=' . $this->session->userdata('nip') . '')
+                ->where("NOT EXISTS 
+                (SELECT submit_dsn.kode_mk, submit_dsn.kelas from submit_dsn 
+                WHERE submit_dsn.kelas = jadwal.kelas AND submit_dsn.kode_mk = jadwal.kode_mk AND jadwal.id_dsn=" . $this->session->userdata('nip') . ")")
+                ->get()->result();
+        } else {
+            $data['matkul'] = $this->db->select('matkul.nama_mk, matkul.kode_mk, jadwal.kelas')->from('matkul')
+                ->join('jadwal', 'jadwal.kode_mk = matkul.kode_mk', 'left')
+                ->where('jadwal.id_dsn=' . $this->session->userdata('nip') . '')
+                ->group_by('matkul.kode_mk, jadwal.kelas')
+                ->order_by('matkul.kode_mk, jadwal.kelas')
+                ->get()->result();
+        }
+
+        $data['pertanyaan'] = $this->db->select('*')
+            ->from('pertanyaan')->where('level', 'dosen')
+            ->get()->result_array();
+
+        $this->form_validation->set_rules('id_dsn', 'NIP', 'required|trim');
+        $this->form_validation->set_rules('saran', 'Saran', 'required');
+        $this->form_validation->set_rules('kode_mk', 'Kode MK', 'required');
+        $this->form_validation->set_rules('namamk', 'Nama MK', 'required');
+        $this->form_validation->set_rules('kelas', 'Kelas', 'required');
+        for ($i = 1; $i <= 15; $i++) {
+            $this->form_validation->set_rules('jwb' . $i, 'Pertanyaan ' . $i, 'required');
+        }
+        if ($this->form_validation->run() == false) {
+            $this->load->view('user/kuesioner_dsn', $data);
+        } else {
+            $jml_dsn = $this->input->post('jwb1') + $this->input->post('jwb2') + $this->input->post('jwb3') + $this->input->post('jwb4') + $this->input->post('jwb5') + $this->input->post('jwb6') +
+                $this->input->post('jwb7') + $this->input->post('jwb8') + $this->input->post('jwb9') + $this->input->post('jwb10') + $this->input->post('jwb11') + $this->input->post('jwb12') + $this->input->post('jwb13') + $this->input->post('jwb14') + $this->input->post('jwb15');
+            $indeks_kml_dsn = $jml_dsn / 15;
+            $data = [
+                'id_dsn' => $this->input->post('id_dsn'),
+                'kode_mk' => $this->input->post('kode_mk'),
+                'kelas' => $this->input->post('kelas'),
+                'jwb16' => $this->input->post('jwb1'),
+                'jwb17' => $this->input->post('jwb2'),
+                'jwb18' => $this->input->post('jwb3'),
+                'jwb19' => $this->input->post('jwb4'),
+                'jwb20' => $this->input->post('jwb5'),
+                'jwb21' => $this->input->post('jwb6'),
+                'jwb22' => $this->input->post('jwb7'),
+                'jwb23' => $this->input->post('jwb8'),
+                'jwb24' => $this->input->post('jwb9'),
+                'jwb25' => $this->input->post('jwb10'),
+                'jwb26' => $this->input->post('jwb11'),
+                'jwb27' => $this->input->post('jwb12'),
+                'jwb28' => $this->input->post('jwb13'),
+                'jwb29' => $this->input->post('jwb14'),
+                'jwb30' => $this->input->post('jwb15'),
+                'indeks_kml' => $indeks_kml_dsn,
+                'saran' => $this->input->post('saran'),
+            ];
+            $this->db->insert('submit_dsn', $data);
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
+            redirect('user/kuesioner_dsn');
+        }
+    }
+
     public function kuelp2m_dsn()
     {
         if ($this->session->userdata('status') !== "dosen") {
