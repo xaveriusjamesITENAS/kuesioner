@@ -429,6 +429,7 @@ class User extends CI_Controller
         if ($this->session->userdata('status') !== "dosen") {
             redirect($_SERVER['HTTP_REFERER']);
         }
+
         $data['title'] = 'Kuesioner Dosen';
         $this->load->model('Pertanyaan_model');
         //$data['title'] = 'Edit Profil';

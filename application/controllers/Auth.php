@@ -48,7 +48,6 @@ class Auth extends CI_Controller
         }
         $this->form_validation->set_rules('nip', 'NIP', 'required|trim');
         $this->form_validation->set_rules('pin', 'PIN', 'required|trim');
-
         if ($this->form_validation->run() == false) {
             $this->load->view('auth/login_dsn');
         } else {
@@ -106,10 +105,10 @@ class Auth extends CI_Controller
                     'nohp' => $user['nohpmhs'],
                     'status' => 'mahasiswa'
                 ];
-                if("63" == substr($nrpmhs,0,2)){
+                if ("63" == substr($nrpmhs, 0, 2)) {
                     $this->session->set_userdata($data);
-                redirect('user/editprofil_mhs_s2sipil');
-                } else{
+                    redirect('user/editprofil_mhs_s2sipil');
+                } else {
                     $this->session->set_userdata($data);
                     redirect('user/editprofil_mhs');
                 }
@@ -136,13 +135,18 @@ class Auth extends CI_Controller
 
         if ($user != null) {
             if ($passw_dsn == $user['passw_dsn']) {
+                // 11055 11062 11063 11434 11609 11733
                 $data = [
                     'nip' => $user['id_dsn'],
                     'nama_dsn' => $user['nama_dsn'],
                     'status' => 'dosen'
                 ];
                 $this->session->set_userdata($data);
-                redirect('user/kuesioner_dsn');
+                if (in_array($id_dsn, array(11055, 11062, 11063, 11434, 11609, 11733))) {
+                    redirect('user/kuesioner_dsn_s2sipil_ganjil');
+                } else {
+                    redirect('user/kuesioner_dsn');
+                }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" style="max-width:326px" role="alert">Password salah.</div>');
                 redirect('auth/index_dsn');
