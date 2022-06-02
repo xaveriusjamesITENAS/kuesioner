@@ -242,7 +242,7 @@
 										</div>
 									</div>
 									<div class="card-body card-block">
-										<?= form_open('user/kuesioner_mhs'); ?>
+										<?= form_open('user/kuesioner_mhs_s2sipil_ganjil'); ?>
 										<div class="row form-group">
 											<div class="col col-md-3">
 												<label class=" form-control-label">NRP Mahasiswa</label>
@@ -520,7 +520,7 @@
 					e.preventDefault();
 					let idmatkul = $(this).val();
 					$.ajax({
-						url: "<?php echo site_url('user/getNamaMatkul'); ?>",
+						url: "<?php echo site_url('user/getNamaMatkul_s2sipil_ganjil'); ?>",
 						type: 'POST',
 						data: {
 							idmatkul: idmatkul,

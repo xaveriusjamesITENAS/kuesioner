@@ -242,7 +242,7 @@
 										</div>
 									</div>
 									<div class="card-body card-block">
-										<?= form_open('user/kuesioner_mhs'); ?>
+										<?= form_open('user/kuesioner_mhs_s2sipil_genap'); ?>
 										<div class="row form-group">
 											<div class="col col-md-3">
 												<label class=" form-control-label">NRP Mahasiswa</label>

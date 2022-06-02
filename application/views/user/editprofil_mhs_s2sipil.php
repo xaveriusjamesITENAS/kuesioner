@@ -234,7 +234,8 @@
 										<strong>Profil </strong>Mahasiswa
 									</div>
 									<?= $this->session->flashdata('message_editprofil'); ?>
-									<div class="card-body card-block"><?= form_open_multipart('user/editprofil_mhs'); ?>
+									<div class="card-body card-block">
+										<?= form_open_multipart('user/editprofil_mhs_s2sipil'); ?>
 										<div class="row form-group">
 											<div class="col col-md-5">
 												<label class=" form-control-label">NRP Mahasiswa</label>
@@ -275,7 +276,7 @@
 											<div class="col-12 col-md-7">
 												<select class="form-control" aria-label=".form-select-sm example"
 													name="jkmhs">
-													<option>Pilih Jenis Kelamin</option>
+													<option disabled selected>Pilih Jenis Kelamin</option>
 													<option value="P" <?php if ($user['jkmhs'] === 'P') : ?> selected
 														<?php endif; ?>>Laki-laki</option>
 													<option value="W" <?php if ($user['jkmhs'] === 'W') : ?> selected

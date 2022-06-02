@@ -235,7 +235,7 @@
 										</div>
 									</div>
 									<div class="card-body card-block">
-										<?= form_open('user/kuevimi_mhs'); ?>
+										<?= form_open('user/kuevimi_mhs_s2sipil_genap'); ?>
 										<input type="hidden" class="form-control" readonly placeholder="NRP"
 											name="nrpmhs" value="<?= $this->session->userdata('nrp'); ?>">
 

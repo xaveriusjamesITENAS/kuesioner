@@ -78,7 +78,7 @@ class User extends CI_Controller
             // die;
 
             $this->session->set_flashdata('message_editprofil', '<div class="alert alert-success" style="margin: 15px 15px" role="alert">Profil Anda berhasil di Update</div>');
-            redirect('user/editprofil_mhs');
+            redirect('user/editprofil_mhs_s2sipil');
         }
     }
 
@@ -183,7 +183,7 @@ class User extends CI_Controller
         $submit = $this->db->get_where('submit_mhs_s2sipil_ganjil', ['nrpmhs' => $this->session->userdata('nrp')])->row_array();
 
         if ($submit != NULL) {
-            $data['matkul_s2sipil_ganjil'] = $this->db->distinct()->select('jadwal_s2sipil_ganjil.*, matkul_s2sipil_ganjil.*, dosen.*')->from('datamhs')
+            $data['matkul'] = $this->db->distinct()->select('jadwal_s2sipil_ganjil.*, matkul_s2sipil_ganjil.*, dosen.*')->from('datamhs')
                 ->join('jadwal_s2sipil_ganjil', 'jadwal_s2sipil_ganjil.nrpmhs = datamhs.nrpmhs', 'inner')
                 ->join('matkul_s2sipil_ganjil', 'matkul_s2sipil_ganjil.kode_mk = jadwal_s2sipil_ganjil.kode_mk', 'left')
                 ->join('dosen', 'dosen.id_dsn = jadwal_s2sipil_ganjil.id_dsn', 'left')
@@ -193,7 +193,7 @@ class User extends CI_Controller
                 ->where("jadwal_s2sipil_ganjil.kode_mk NOT IN (SELECT submit_mhs_s2sipil_ganjil.kode_mk FROM submit_mhs_s2sipil_ganjil WHERE submit_mhs_s2sipil_ganjil.nrpmhs = " . $this->session->userdata('nrp') . ")")
                 ->get()->result();
         } else {
-            $data['matkul_s2sipil_ganjil'] = $this->db->distinct()->select('jadwal_s2sipil_ganjil.*, matkul_s2sipil_ganjil.*, dosen.*')->from('datamhs')
+            $data['matkul'] = $this->db->distinct()->select('jadwal_s2sipil_ganjil.*, matkul_s2sipil_ganjil.*, dosen.*')->from('datamhs')
                 ->join('jadwal_s2sipil_ganjil', 'jadwal_s2sipil_ganjil.nrpmhs = datamhs.nrpmhs', 'inner')
                 ->join('matkul_s2sipil_ganjil', 'matkul_s2sipil_ganjil.kode_mk = jadwal_s2sipil_ganjil.kode_mk', 'left')
                 ->join('dosen', 'dosen.id_dsn = jadwal_s2sipil_ganjil.id_dsn', 'left')
@@ -345,7 +345,7 @@ class User extends CI_Controller
             $this->db->insert('submit_mhs', $data);
 
             $this->session->set_flashdata('message_kuesionermhs', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
-            redirect('user/kuesioner_mhs');
+            redirect('user/kuesioner_mhs_s2sipil_genap');
         }
     }
 
@@ -893,9 +893,9 @@ class User extends CI_Controller
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ];
-            $this->db->insert('sarpras_mahasiswa', $data);
+            $this->db->insert('sarpras_mahasiswa_s2sipil_ganjil', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
-            redirect('user/kuebku_mhs');
+            redirect('user/kuebku_mhs_s2sipil_ganjil');
         }
     }
 
@@ -997,7 +997,7 @@ class User extends CI_Controller
             ];
             $this->db->insert('sarpras_mahasiswa', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
-            redirect('user/kuebku_mhs');
+            redirect('user/kuebku_mhs_s2sipil_genap');
         }
     }
 
@@ -1050,14 +1050,14 @@ class User extends CI_Controller
             foreach ($this->input->post() as $key => $value) {
                 if ($key == 3) {
                     foreach ($this->input->post('3') as $key2 => $value2) {
-                        $this->db->insert('submit_vimi', [
+                        $this->db->insert('submit_vimi_s2sipil_ganjil', [
                             'nrpmhs' => $this->input->post('nrpmhs'),
                             'id_pertanyaan' => $key,
                             'id_jawaban' => $value2,
                         ]);
                     }
                 } elseif ($key != "nrpmhs") {
-                    $this->db->insert('submit_vimi', [
+                    $this->db->insert('submit_vimi_s2sipil_ganjil', [
                         'nrpmhs' => $this->input->post('nrpmhs'),
                         'id_pertanyaan' => $key,
                         'id_jawaban' => $value,
@@ -1065,7 +1065,7 @@ class User extends CI_Controller
                 }
             }
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
-            redirect('user/kuevimi_mhs');
+            redirect('user/kuevimi_mhs_s2sipil_ganjil');
         }
     }
 
@@ -1099,7 +1099,7 @@ class User extends CI_Controller
                 }
             }
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
-            redirect('user/kuevimi_mhs');
+            redirect('user/kuevimi_mhs_s2sipil_genap');
         }
     }
 
@@ -1358,6 +1358,16 @@ class User extends CI_Controller
             ->join('jadwal', 'jadwal.kode_mk=matkul.kode_mk')
             ->join('datamhs', 'datamhs.nrpmhs = jadwal.nrpmhs')
             ->where('jadwal.kode_mk', $idmatkul)->where('jadwal.nrpmhs', $this->session->userdata('nrp'))->get()->first_row();
+        echo json_encode($matakuliah);
+    }
+
+    public function getNamaMatkul_s2sipil_ganjil()
+    {
+        $idmatkul = $this->input->post('idmatkul');
+        $matakuliah = $this->db->select('*')->from('matkul_s2sipil_ganjil')
+            ->join('jadwal_s2sipil_ganjil', 'jadwal_s2sipil_ganjil.kode_mk=matkul_s2sipil_ganjil.kode_mk')
+            ->join('datamhs', 'datamhs.nrpmhs = jadwal_s2sipil_ganjil.nrpmhs')
+            ->where('jadwal_s2sipil_ganjil.kode_mk', $idmatkul)->where('jadwal_s2sipil_ganjil.nrpmhs', $this->session->userdata('nrp'))->get()->first_row();
         echo json_encode($matakuliah);
     }
 
