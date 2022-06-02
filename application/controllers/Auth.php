@@ -106,8 +106,13 @@ class Auth extends CI_Controller
                     'nohp' => $user['nohpmhs'],
                     'status' => 'mahasiswa'
                 ];
-                $this->session->set_userdata($data);
-                redirect('user/editprofil_mhs');
+                if("63" == substr($nrpmhs,0,2)){
+                    $this->session->set_userdata($data);
+                redirect('user/editprofil_mhs_s2sipil');
+                } else{
+                    $this->session->set_userdata($data);
+                    redirect('user/editprofil_mhs');
+                }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" style="max-width:326px" role="alert">Password salah.</div>');
                 redirect('auth/index_mhs');

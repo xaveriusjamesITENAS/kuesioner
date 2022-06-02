@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	// 'hostname' => 'localhost',
-	// 'username' => 'root',
-	// 'password' => '',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '',
 	// 'database' => 'kuesioner_20211_uas',
 	// 'username' => 'kuesioner_user',
 	// 'password' => 'F}zjZVs#an^]',
@@ -88,8 +88,8 @@ $db['default'] = array(
 	// 'password' => 'eY=x&sHIcF?T',
 	## DB Hosting 20212
 	'database' => 'kuesioner_20212',
-	'username' => 'kuesioner_20212',
-	'password' => 'Ic;wJ)24aP{P',
+	// 'username' => 'kuesioner_20212',
+	// 'password' => 'Ic;wJ)24aP{P',
 	###
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

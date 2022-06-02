@@ -71,16 +71,34 @@
 								<i class="far fa-id-card"></i>Profil Mahasiswa</a>
 						</li>
 						<li>
-							<a href="<?= base_url('user/kuesioner_mhs'); ?>">
-								<i class="far fa-file-alt"></i>Kuesioner</a>
+							<a href="<?= base_url('user/kuesioner_mhs_s2sipil_ganjil'); ?>">
+								<i class="far fa-file-alt"></i>Kuesioner (Ganjil)</a>
 						</li>
 						<li>
-							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs'); ?>">
-								<i class="fas fa-copy"></i>Sarana/ Pra Sarana</a>
+							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs_s2sipil_ganjil'); ?>">
+								<i class="fas fa-copy"></i>Sarana/ Pra Sarana (Ganjil)</a>
 						</li>
 						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs'); ?>">
-								<i class="fas fa-thumbs-up"></i>Visi Misi</a>
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs_s2sipil_ganjil'); ?>">
+								<i class="fas fa-thumbs-up"></i>Visi Misi (Ganjil)</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<nav class="navbar-mobile">
+				<div class="container-fluid">
+					<ul class="navbar-mobile__list list-unstyled">
+						<li>
+							<a href="<?= base_url('user/kuesioner_mhs_s2sipil_genap'); ?>">
+								<i class="far fa-file-alt"></i>Kuesioner (Genap)</a>
+						</li>
+						<li>
+							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs_s2sipil_genap'); ?>">
+								<i class="fas fa-copy"></i>Sarana/ Pra Sarana (Genap)</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs_mhs_s2sipil_genap'); ?>">
+								<i class="fas fa-thumbs-up"></i>Visi Misi (Genap)</a>
 						</li>
 					</ul>
 				</div>
@@ -103,16 +121,32 @@
 								<i class="far fa-id-card"></i></i>Profil Mahasiswa</a>
 						</li>
 						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs'); ?>">
-								<i class="far fa-file-alt"></i></i>Kuesioner</a>
+							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs_s2sipil_ganjil'); ?>">
+								<i class="far fa-file-alt"></i></i>Kuesioner (Ganjil)</a>
 						</li>
 						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs'); ?>">
-								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana</a>
+							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs_s2sipil_ganjil'); ?>">
+								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana (Ganjil)</a>
 						</li>
 						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs'); ?>">
-								<i class="fas fa-thumbs-up"></i>Visi Misi</a>
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs_s2sipil_ganjil'); ?>">
+								<i class="fas fa-thumbs-up"></i>Visi Misi (Ganjil)</a>
+						</li>
+					</ul>
+				</nav>
+				<nav class="navbar-sidebar">
+					<ul class="list-unstyled navbar__list">
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs_s2sipil_genap'); ?>">
+								<i class="far fa-file-alt"></i></i>Kuesioner (Genap)</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs_mhs_s2sipil_genap'); ?>">
+								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana (Genap)</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs_mhs_s2sipil_genap'); ?>">
+								<i class="fas fa-thumbs-up"></i>Visi Misi (Genap)</a>
 						</li>
 					</ul>
 				</nav>
