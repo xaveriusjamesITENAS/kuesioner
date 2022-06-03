@@ -435,6 +435,82 @@ class User extends CI_Controller
         //$data['title'] = 'Edit Profil';
         $data['user'] = $this->db->get_where('dosen', ['id_dsn' => $this->session->userdata('nip')])->row_array();
 
+        $submit = $this->db->get_where('submit_dsn_s2sipil_ganjil', ['id_dsn' => $this->session->userdata('nip')])->row_array();
+
+        if ($submit != NULL) {
+            $data['matkul'] = $this->db->distinct()->select('jadwal_s2sipil_ganjil.kode_mk, jadwal_s2sipil_ganjil.kelas')->from('jadwal_s2sipil_ganjil')
+                ->where('jadwal_s2sipil_ganjil.id_dsn=' . $this->session->userdata('nip') . '')
+                ->where("NOT EXISTS 
+                (SELECT submit_dsn_s2sipil_ganjil.kode_mk, submit_dsn_s2sipil_ganjil.kelas from submit_dsn_s2sipil_ganjil 
+                WHERE submit_dsn_s2sipil_ganjil.kelas = jadwal_s2sipil_ganjil.kelas AND submit_dsn_s2sipil_ganjil.kode_mk = jadwal_s2sipil_ganjil.kode_mk AND jadwal_s2sipil_ganjil.id_dsn=" . $this->session->userdata('nip') . ")")
+                ->get()->result();
+        } else {
+            $data['matkul'] = $this->db->select('matkul_s2sipil_ganjil.nama_mk, matkul_s2sipil_ganjil.kode_mk, jadwal_s2sipil_ganjil.kelas')->from('matkul_s2sipil_ganjil')
+                ->join('jadwal_s2sipil_ganjil', 'jadwal_s2sipil_ganjil.kode_mk = matkul_s2sipil_ganjil.kode_mk', 'left')
+                ->where('jadwal_s2sipil_ganjil.id_dsn=' . $this->session->userdata('nip') . '')
+                ->group_by('matkul_s2sipil_ganjil.kode_mk, jadwal_s2sipil_ganjil.kelas')
+                ->order_by('matkul_s2sipil_ganjil.kode_mk, jadwal_s2sipil_ganjil.kelas')
+                ->get()->result();
+        }
+
+        $data['pertanyaan'] = $this->db->select('*')
+            ->from('pertanyaan')->where('level', 'dosen')
+            ->get()->result_array();
+
+        $this->form_validation->set_rules('id_dsn', 'NIP', 'required|trim');
+        $this->form_validation->set_rules('saran', 'Saran', 'required');
+        $this->form_validation->set_rules('kode_mk', 'Kode MK', 'required');
+        $this->form_validation->set_rules('namamk', 'Nama MK', 'required');
+        $this->form_validation->set_rules('kelas', 'Kelas', 'required');
+        for ($i = 1; $i <= 15; $i++) {
+            $this->form_validation->set_rules('jwb' . $i, 'Pertanyaan ' . $i, 'required');
+        }
+        if ($this->form_validation->run() == false) {
+            $this->load->view('user/kuesioner_dsn_s2sipil_ganjil', $data);
+        } else {
+            $jml_dsn = $this->input->post('jwb1') + $this->input->post('jwb2') + $this->input->post('jwb3') + $this->input->post('jwb4') + $this->input->post('jwb5') + $this->input->post('jwb6') +
+                $this->input->post('jwb7') + $this->input->post('jwb8') + $this->input->post('jwb9') + $this->input->post('jwb10') + $this->input->post('jwb11') + $this->input->post('jwb12') + $this->input->post('jwb13') + $this->input->post('jwb14') + $this->input->post('jwb15');
+            $indeks_kml_dsn = $jml_dsn / 15;
+            $data = [
+                'id_dsn' => $this->input->post('id_dsn'),
+                'kode_mk' => $this->input->post('kode_mk'),
+                'kelas' => $this->input->post('kelas'),
+                'jwb16' => $this->input->post('jwb1'),
+                'jwb17' => $this->input->post('jwb2'),
+                'jwb18' => $this->input->post('jwb3'),
+                'jwb19' => $this->input->post('jwb4'),
+                'jwb20' => $this->input->post('jwb5'),
+                'jwb21' => $this->input->post('jwb6'),
+                'jwb22' => $this->input->post('jwb7'),
+                'jwb23' => $this->input->post('jwb8'),
+                'jwb24' => $this->input->post('jwb9'),
+                'jwb25' => $this->input->post('jwb10'),
+                'jwb26' => $this->input->post('jwb11'),
+                'jwb27' => $this->input->post('jwb12'),
+                'jwb28' => $this->input->post('jwb13'),
+                'jwb29' => $this->input->post('jwb14'),
+                'jwb30' => $this->input->post('jwb15'),
+                'indeks_kml' => $indeks_kml_dsn,
+                'saran' => $this->input->post('saran'),
+            ];
+            $this->db->insert('submit_dsn_s2sipil_ganjil', $data);
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
+            redirect('user/kuesioner_dsn_s2sipil_ganjil');
+        }
+    }
+
+    public function kuesioner_dsn_s2sipil_genap()
+    {
+        if ($this->session->userdata('status') !== "dosen") {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+        $data['title'] = 'Kuesioner Dosen';
+        $this->load->model('Pertanyaan_model');
+        //$data['title'] = 'Edit Profil';
+        $data['user'] = $this->db->get_where('dosen', ['id_dsn' => $this->session->userdata('nip')])->row_array();
+
         $submit = $this->db->get_where('submit_dsn', ['id_dsn' => $this->session->userdata('nip')])->row_array();
 
         if ($submit != NULL) {
@@ -466,7 +542,7 @@ class User extends CI_Controller
             $this->form_validation->set_rules('jwb' . $i, 'Pertanyaan ' . $i, 'required');
         }
         if ($this->form_validation->run() == false) {
-            $this->load->view('user/kuesioner_dsn', $data);
+            $this->load->view('user/kuesioner_dsn_s2sipil_genap', $data);
         } else {
             $jml_dsn = $this->input->post('jwb1') + $this->input->post('jwb2') + $this->input->post('jwb3') + $this->input->post('jwb4') + $this->input->post('jwb5') + $this->input->post('jwb6') +
                 $this->input->post('jwb7') + $this->input->post('jwb8') + $this->input->post('jwb9') + $this->input->post('jwb10') + $this->input->post('jwb11') + $this->input->post('jwb12') + $this->input->post('jwb13') + $this->input->post('jwb14') + $this->input->post('jwb15');
@@ -496,7 +572,7 @@ class User extends CI_Controller
             $this->db->insert('submit_dsn', $data);
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
-            redirect('user/kuesioner_dsn');
+            redirect('user/kuesioner_dsn_s2sipil_genap');
         }
     }
 
@@ -553,6 +629,115 @@ class User extends CI_Controller
             redirect('user/kuelp2m_dsn');
         }
     }
+
+    public function kuelp2m_dsn_s2sipil_ganjil()
+    {
+        if ($this->session->userdata('status') !== "dosen") {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+        $this->load->model('Pertanyaanlp2m_model');
+
+        $data['user'] = $this->db->get_where('dosen', ['id_dsn' => $this->session->userdata('nip')])->row_array();
+
+        $submit = $this->db->get_where('submit_lp2m_s2sipil_ganjil', ['id_dsn' => $this->session->userdata('nip')])->row_array();
+
+        $data['pertanyaan_lp2m'] = $this->db->select('*')
+            ->from('pertanyaan_lp2m')->where('level', 'dosen')
+            ->get()->result_array();
+
+        $this->form_validation->set_rules('id_dsn', 'NIP', 'required|trim');
+        $this->form_validation->set_rules('saran', 'Saran', 'required');
+        for ($i = 1; $i <= 15; $i++) {
+            $this->form_validation->set_rules('jwb' . $i, 'Pertanyaan ' . $i, 'required');
+        }
+        if ($this->form_validation->run() == false) {
+            $this->load->view('user/kuelp2m_dsn_s2sipil_ganjil', $data);
+        } else {
+            $jml_lp2m = $this->input->post('jwb1') + $this->input->post('jwb2') + $this->input->post('jwb3') + $this->input->post('jwb4') + $this->input->post('jwb5') + $this->input->post('jwb6') +
+                $this->input->post('jwb7') + $this->input->post('jwb8') + $this->input->post('jwb9') + $this->input->post('jwb10') + $this->input->post('jwb11') + $this->input->post('jwb12') + $this->input->post('jwb13') + $this->input->post('jwb14') + $this->input->post('jwb15');
+            $indeks_kml_lp2m = $jml_lp2m / 15;
+            $data = [
+                'id_dsn' => $this->input->post('id_dsn'),
+                'jwb1' => $this->input->post('jwb1'),
+                'jwb2' => $this->input->post('jwb2'),
+                'jwb3' => $this->input->post('jwb3'),
+                'jwb4' => $this->input->post('jwb4'),
+                'jwb5' => $this->input->post('jwb5'),
+                'jwb6' => $this->input->post('jwb6'),
+                'jwb7' => $this->input->post('jwb7'),
+                'jwb8' => $this->input->post('jwb8'),
+                'jwb9' => $this->input->post('jwb9'),
+                'jwb10' => $this->input->post('jwb10'),
+                'jwb11' => $this->input->post('jwb11'),
+                'jwb12' => $this->input->post('jwb12'),
+                'jwb13' => $this->input->post('jwb13'),
+                'jwb14' => $this->input->post('jwb14'),
+                'jwb15' => $this->input->post('jwb15'),
+                'indeks_kml' => $indeks_kml_lp2m,
+                'saran' => $this->input->post('saran'),
+            ];
+            $this->db->insert('submit_lp2m_s2sipil_ganjil', $data);
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
+
+            redirect('user/kuelp2m_dsn_s2sipil_ganjil');
+        }
+    }
+
+    public function kuelp2m_dsn_s2sipil_genap()
+    {
+        if ($this->session->userdata('status') !== "dosen") {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+        $this->load->model('Pertanyaanlp2m_model');
+
+        $data['user'] = $this->db->get_where('dosen', ['id_dsn' => $this->session->userdata('nip')])->row_array();
+
+        $submit = $this->db->get_where('submit_lp2m', ['id_dsn' => $this->session->userdata('nip')])->row_array();
+
+        $data['pertanyaan_lp2m'] = $this->db->select('*')
+            ->from('pertanyaan_lp2m')->where('level', 'dosen')
+            ->get()->result_array();
+
+        $this->form_validation->set_rules('id_dsn', 'NIP', 'required|trim');
+        $this->form_validation->set_rules('saran', 'Saran', 'required');
+        for ($i = 1; $i <= 15; $i++) {
+            $this->form_validation->set_rules('jwb' . $i, 'Pertanyaan ' . $i, 'required');
+        }
+        if ($this->form_validation->run() == false) {
+            $this->load->view('user/kuelp2m_dsn_s2sipil_genap', $data);
+        } else {
+            $jml_lp2m = $this->input->post('jwb1') + $this->input->post('jwb2') + $this->input->post('jwb3') + $this->input->post('jwb4') + $this->input->post('jwb5') + $this->input->post('jwb6') +
+                $this->input->post('jwb7') + $this->input->post('jwb8') + $this->input->post('jwb9') + $this->input->post('jwb10') + $this->input->post('jwb11') + $this->input->post('jwb12') + $this->input->post('jwb13') + $this->input->post('jwb14') + $this->input->post('jwb15');
+            $indeks_kml_lp2m = $jml_lp2m / 15;
+            $data = [
+                'id_dsn' => $this->input->post('id_dsn'),
+                'jwb1' => $this->input->post('jwb1'),
+                'jwb2' => $this->input->post('jwb2'),
+                'jwb3' => $this->input->post('jwb3'),
+                'jwb4' => $this->input->post('jwb4'),
+                'jwb5' => $this->input->post('jwb5'),
+                'jwb6' => $this->input->post('jwb6'),
+                'jwb7' => $this->input->post('jwb7'),
+                'jwb8' => $this->input->post('jwb8'),
+                'jwb9' => $this->input->post('jwb9'),
+                'jwb10' => $this->input->post('jwb10'),
+                'jwb11' => $this->input->post('jwb11'),
+                'jwb12' => $this->input->post('jwb12'),
+                'jwb13' => $this->input->post('jwb13'),
+                'jwb14' => $this->input->post('jwb14'),
+                'jwb15' => $this->input->post('jwb15'),
+                'indeks_kml' => $indeks_kml_lp2m,
+                'saran' => $this->input->post('saran'),
+            ];
+            $this->db->insert('submit_lp2m', $data);
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
+
+            redirect('user/kuelp2m_dsn_s2sipil_genap');
+        }
+    }
+
     public function kuefkl_dsn()
     {
         if ($this->session->userdata('status') !== "dosen") {
@@ -622,6 +807,147 @@ class User extends CI_Controller
             redirect('user/kuefkl_dsn');
         }
     }
+
+    public function kuefkl_dsn_s2sipil_ganjil()
+    {
+        if ($this->session->userdata('status') !== "dosen") {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+        $this->load->model('Pertanyaanfkl_model');
+
+        $data['user'] = $this->db->get_where('dosen', ['id_dsn' => $this->session->userdata('nip')])->row_array();
+
+        $submit = $this->db->get_where('submit_fkl_s2sipil_ganjil', ['id_dsn' => $this->session->userdata('nip')])->row_array();
+
+        $data['pertanyaan_fkl'] = $this->db->select('*')
+            ->from('pertanyaan_fkl')->where('level', 'dosen')
+            ->get()->result_array();
+
+        $this->form_validation->set_rules('id_dsn', 'NIP', 'required|trim');
+        $this->form_validation->set_rules('saran', 'Saran', 'required');
+        for ($i = 1; $i <= 30; $i++) {
+            $this->form_validation->set_rules('jwb' . $i, 'Pertanyaan ' . $i, 'required');
+        }
+        if ($this->form_validation->run() == false) {
+            $this->load->view('user/kuefkl_dsn_s2sipil_ganjil', $data);
+        } else {
+            $jml_fkl = $this->input->post('jwb1') + $this->input->post('jwb2') + $this->input->post('jwb3') + $this->input->post('jwb4') + $this->input->post('jwb5') + $this->input->post('jwb6') +
+                $this->input->post('jwb7') + $this->input->post('jwb8') + $this->input->post('jwb9') + $this->input->post('jwb10') + $this->input->post('jwb11') + $this->input->post('jwb12') +
+                $this->input->post('jwb13') + $this->input->post('jwb14') + $this->input->post('jwb15') + $this->input->post('jwb16') + $this->input->post('jwb17') + $this->input->post('jwb18')
+                + $this->input->post('jwb19') + $this->input->post('jwb20') + $this->input->post('jwb21') + $this->input->post('jwb22') + $this->input->post('jwb23') + $this->input->post('jwb24')
+                + $this->input->post('jwb25') + $this->input->post('jwb26') + $this->input->post('jwb27') + $this->input->post('jwb28') + $this->input->post('jwb29') + $this->input->post('jwb30');
+            $indeks_kml_fkl = $jml_fkl / 30;
+            $data = [
+                'id_dsn' => $this->input->post('id_dsn'),
+                'jwb1' => $this->input->post('jwb1'),
+                'jwb2' => $this->input->post('jwb2'),
+                'jwb3' => $this->input->post('jwb3'),
+                'jwb4' => $this->input->post('jwb4'),
+                'jwb5' => $this->input->post('jwb5'),
+                'jwb6' => $this->input->post('jwb6'),
+                'jwb7' => $this->input->post('jwb7'),
+                'jwb8' => $this->input->post('jwb8'),
+                'jwb9' => $this->input->post('jwb9'),
+                'jwb10' => $this->input->post('jwb10'),
+                'jwb11' => $this->input->post('jwb11'),
+                'jwb12' => $this->input->post('jwb12'),
+                'jwb13' => $this->input->post('jwb13'),
+                'jwb14' => $this->input->post('jwb14'),
+                'jwb15' => $this->input->post('jwb15'),
+                'jwb16' => $this->input->post('jwb16'),
+                'jwb17' => $this->input->post('jwb17'),
+                'jwb18' => $this->input->post('jwb18'),
+                'jwb19' => $this->input->post('jwb19'),
+                'jwb20' => $this->input->post('jwb20'),
+                'jwb21' => $this->input->post('jwb21'),
+                'jwb22' => $this->input->post('jwb22'),
+                'jwb23' => $this->input->post('jwb23'),
+                'jwb24' => $this->input->post('jwb24'),
+                'jwb25' => $this->input->post('jwb25'),
+                'jwb26' => $this->input->post('jwb26'),
+                'jwb27' => $this->input->post('jwb27'),
+                'jwb28' => $this->input->post('jwb28'),
+                'jwb29' => $this->input->post('jwb29'),
+                'jwb30' => $this->input->post('jwb30'),
+                'indeks_kml' => $indeks_kml_fkl,
+                'saran' => $this->input->post('saran'),
+            ];
+            $this->db->insert('submit_fkl_s2sipil_ganjil', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
+            redirect('user/kuefkl_dsn_s2sipil_ganjil');
+        }
+    }
+
+    public function kuefkl_dsn_s2sipil_genap()
+    {
+        if ($this->session->userdata('status') !== "dosen") {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+        $this->load->model('Pertanyaanfkl_model');
+
+        $data['user'] = $this->db->get_where('dosen', ['id_dsn' => $this->session->userdata('nip')])->row_array();
+
+        $submit = $this->db->get_where('submit_fkl', ['id_dsn' => $this->session->userdata('nip')])->row_array();
+
+        $data['pertanyaan_fkl'] = $this->db->select('*')
+            ->from('pertanyaan_fkl')->where('level', 'dosen')
+            ->get()->result_array();
+
+        $this->form_validation->set_rules('id_dsn', 'NIP', 'required|trim');
+        $this->form_validation->set_rules('saran', 'Saran', 'required');
+        for ($i = 1; $i <= 30; $i++) {
+            $this->form_validation->set_rules('jwb' . $i, 'Pertanyaan ' . $i, 'required');
+        }
+        if ($this->form_validation->run() == false) {
+            $this->load->view('user/kuefkl_dsn_s2sipil_genap', $data);
+        } else {
+            $jml_fkl = $this->input->post('jwb1') + $this->input->post('jwb2') + $this->input->post('jwb3') + $this->input->post('jwb4') + $this->input->post('jwb5') + $this->input->post('jwb6') +
+                $this->input->post('jwb7') + $this->input->post('jwb8') + $this->input->post('jwb9') + $this->input->post('jwb10') + $this->input->post('jwb11') + $this->input->post('jwb12') +
+                $this->input->post('jwb13') + $this->input->post('jwb14') + $this->input->post('jwb15') + $this->input->post('jwb16') + $this->input->post('jwb17') + $this->input->post('jwb18')
+                + $this->input->post('jwb19') + $this->input->post('jwb20') + $this->input->post('jwb21') + $this->input->post('jwb22') + $this->input->post('jwb23') + $this->input->post('jwb24')
+                + $this->input->post('jwb25') + $this->input->post('jwb26') + $this->input->post('jwb27') + $this->input->post('jwb28') + $this->input->post('jwb29') + $this->input->post('jwb30');
+            $indeks_kml_fkl = $jml_fkl / 30;
+            $data = [
+                'id_dsn' => $this->input->post('id_dsn'),
+                'jwb1' => $this->input->post('jwb1'),
+                'jwb2' => $this->input->post('jwb2'),
+                'jwb3' => $this->input->post('jwb3'),
+                'jwb4' => $this->input->post('jwb4'),
+                'jwb5' => $this->input->post('jwb5'),
+                'jwb6' => $this->input->post('jwb6'),
+                'jwb7' => $this->input->post('jwb7'),
+                'jwb8' => $this->input->post('jwb8'),
+                'jwb9' => $this->input->post('jwb9'),
+                'jwb10' => $this->input->post('jwb10'),
+                'jwb11' => $this->input->post('jwb11'),
+                'jwb12' => $this->input->post('jwb12'),
+                'jwb13' => $this->input->post('jwb13'),
+                'jwb14' => $this->input->post('jwb14'),
+                'jwb15' => $this->input->post('jwb15'),
+                'jwb16' => $this->input->post('jwb16'),
+                'jwb17' => $this->input->post('jwb17'),
+                'jwb18' => $this->input->post('jwb18'),
+                'jwb19' => $this->input->post('jwb19'),
+                'jwb20' => $this->input->post('jwb20'),
+                'jwb21' => $this->input->post('jwb21'),
+                'jwb22' => $this->input->post('jwb22'),
+                'jwb23' => $this->input->post('jwb23'),
+                'jwb24' => $this->input->post('jwb24'),
+                'jwb25' => $this->input->post('jwb25'),
+                'jwb26' => $this->input->post('jwb26'),
+                'jwb27' => $this->input->post('jwb27'),
+                'jwb28' => $this->input->post('jwb28'),
+                'jwb29' => $this->input->post('jwb29'),
+                'jwb30' => $this->input->post('jwb30'),
+                'indeks_kml' => $indeks_kml_fkl,
+                'saran' => $this->input->post('saran'),
+            ];
+            $this->db->insert('submit_fkl', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
+            redirect('user/kuefkl_dsn_s2sipil_genap');
+        }
+    }
+
     public function kuesioner_kry()
     {
         $this->load->model('Pertanyaankry_model');
@@ -768,6 +1094,218 @@ class User extends CI_Controller
             $this->db->insert('sarpras_dosen', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
             redirect('user/kuebku_dsn');
+        }
+    }
+
+    public function kuebku_dsn_s2sipil_ganjil()
+    {
+        if ($this->session->userdata('status') !== "dosen") {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+        $data['pertanyaan_sarpras'] = $this->db->select('*')
+            ->from('pertanyaan_sarpras')->where('level', 'dosen')
+            ->get()->result_array();
+        $this->form_validation->set_rules('id_dsn', 'NIP', 'required|trim');
+        for ($i = 1; $i <= 42; $i++) {
+            $this->form_validation->set_rules('jwb_' . $i, 'Pertanyaan ' . $i, 'required');
+        }
+        if ($this->form_validation->run() == false) {
+            $this->load->view('user/kuebku_dsn_s2sipil_ganjil', $data);
+        } else {
+            // var_dump($this->input->post());
+            // die();
+            $jml_dsn = $this->input->post('jwb_1') + $this->input->post('jwb_2') + $this->input->post('jwb_3') + $this->input->post('jwb_4') + $this->input->post('jwb_5') + $this->input->post('jwb_6') +
+                $this->input->post('jwb_7') + $this->input->post('jwb_8') + $this->input->post('jwb_9') + $this->input->post('jwb_10') + $this->input->post('jwb_11') + $this->input->post('jwb_12')
+                + $this->input->post('jwb_13')
+                + $this->input->post('jwb_14')
+                + $this->input->post('jwb_15')
+                + $this->input->post('jwb_16')
+                + $this->input->post('jwb_17')
+                + $this->input->post('jwb_18')
+                + $this->input->post('jwb_19')
+                + $this->input->post('jwb_20')
+                + $this->input->post('jwb_21')
+                + $this->input->post('jwb_22')
+                + $this->input->post('jwb_23')
+                + $this->input->post('jwb_24')
+                + $this->input->post('jwb_25')
+                + $this->input->post('jwb_26')
+                + $this->input->post('jwb_27')
+                + $this->input->post('jwb_28')
+                + $this->input->post('jwb_29')
+                + $this->input->post('jwb_30')
+                + $this->input->post('jwb_31')
+                + $this->input->post('jwb_32')
+                + $this->input->post('jwb_33')
+                + $this->input->post('jwb_34')
+                + $this->input->post('jwb_35')
+                + $this->input->post('jwb_36')
+                + $this->input->post('jwb_37')
+                + $this->input->post('jwb_38')
+                + $this->input->post('jwb_39')
+                + $this->input->post('jwb_40')
+                + $this->input->post('jwb_41')
+                + $this->input->post('jwb_42')
+                + $this->input->post('jwb_43');
+            $indeks_kml = $jml_dsn / 43;
+            $data = [
+                'nip' => $this->input->post('id_dsn'),
+                'jwb_1' => $this->input->post('jwb_1'),
+                'jwb_2' => $this->input->post('jwb_2'),
+                'jwb_3' => $this->input->post('jwb_3'),
+                'jwb_4' => $this->input->post('jwb_4'),
+                'jwb_5' => $this->input->post('jwb_5'),
+                'jwb_6' => $this->input->post('jwb_6'),
+                'jwb_7' => $this->input->post('jwb_7'),
+                'jwb_8' => $this->input->post('jwb_8'),
+                'jwb_9' => $this->input->post('jwb_9'),
+                'jwb_10' => $this->input->post('jwb_10'),
+                'jwb_11' => $this->input->post('jwb_11'),
+                'jwb_12' => $this->input->post('jwb_12'),
+                'jwb_13' => $this->input->post('jwb_13'),
+                'jwb_14' => $this->input->post('jwb_14'),
+                'jwb_15' => $this->input->post('jwb_15'),
+                'jwb_16' => $this->input->post('jwb_16'),
+                'jwb_17' => $this->input->post('jwb_17'),
+                'jwb_18' => $this->input->post('jwb_18'),
+                'jwb_19' => $this->input->post('jwb_19'),
+                'jwb_20' => $this->input->post('jwb_20'),
+                'jwb_21' => $this->input->post('jwb_21'),
+                'jwb_22' => $this->input->post('jwb_22'),
+                'jwb_23' => $this->input->post('jwb_23'),
+                'jwb_24' => $this->input->post('jwb_24'),
+                'jwb_25' => $this->input->post('jwb_25'),
+                'jwb_26' => $this->input->post('jwb_26'),
+                'jwb_27' => $this->input->post('jwb_27'),
+                'jwb_28' => $this->input->post('jwb_28'),
+                'jwb_29' => $this->input->post('jwb_29'),
+                'jwb_30' => $this->input->post('jwb_30'),
+                'jwb_31' => $this->input->post('jwb_31'),
+                'jwb_32' => $this->input->post('jwb_32'),
+                'jwb_33' => $this->input->post('jwb_33'),
+                'jwb_34' => $this->input->post('jwb_34'),
+                'jwb_35' => $this->input->post('jwb_35'),
+                'jwb_36' => $this->input->post('jwb_36'),
+                'jwb_37' => $this->input->post('jwb_37'),
+                'jwb_38' => $this->input->post('jwb_38'),
+                'jwb_39' => $this->input->post('jwb_39'),
+                'jwb_40' => $this->input->post('jwb_40'),
+                'jwb_41' => $this->input->post('jwb_41'),
+                'jwb_42' => $this->input->post('jwb_42'),
+                'jwb_43' => $this->input->post('jwb_43'),
+                'indeks_kml' => $indeks_kml,
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ];
+            $this->db->insert('sarpras_dosen_s2sipil_ganjil', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
+            redirect('user/kuebku_dsn_s2sipil_ganjil');
+        }
+    }
+
+    public function kuebku_dsn_s2sipil_genap()
+    {
+        if ($this->session->userdata('status') !== "dosen") {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+        $data['pertanyaan_sarpras'] = $this->db->select('*')
+            ->from('pertanyaan_sarpras')->where('level', 'dosen')
+            ->get()->result_array();
+        $this->form_validation->set_rules('id_dsn', 'NIP', 'required|trim');
+        for ($i = 1; $i <= 42; $i++) {
+            $this->form_validation->set_rules('jwb_' . $i, 'Pertanyaan ' . $i, 'required');
+        }
+        if ($this->form_validation->run() == false) {
+            $this->load->view('user/kuebku_dsn_s2sipil_genap', $data);
+        } else {
+            // var_dump($this->input->post());
+            // die();
+            $jml_dsn = $this->input->post('jwb_1') + $this->input->post('jwb_2') + $this->input->post('jwb_3') + $this->input->post('jwb_4') + $this->input->post('jwb_5') + $this->input->post('jwb_6') +
+                $this->input->post('jwb_7') + $this->input->post('jwb_8') + $this->input->post('jwb_9') + $this->input->post('jwb_10') + $this->input->post('jwb_11') + $this->input->post('jwb_12')
+                + $this->input->post('jwb_13')
+                + $this->input->post('jwb_14')
+                + $this->input->post('jwb_15')
+                + $this->input->post('jwb_16')
+                + $this->input->post('jwb_17')
+                + $this->input->post('jwb_18')
+                + $this->input->post('jwb_19')
+                + $this->input->post('jwb_20')
+                + $this->input->post('jwb_21')
+                + $this->input->post('jwb_22')
+                + $this->input->post('jwb_23')
+                + $this->input->post('jwb_24')
+                + $this->input->post('jwb_25')
+                + $this->input->post('jwb_26')
+                + $this->input->post('jwb_27')
+                + $this->input->post('jwb_28')
+                + $this->input->post('jwb_29')
+                + $this->input->post('jwb_30')
+                + $this->input->post('jwb_31')
+                + $this->input->post('jwb_32')
+                + $this->input->post('jwb_33')
+                + $this->input->post('jwb_34')
+                + $this->input->post('jwb_35')
+                + $this->input->post('jwb_36')
+                + $this->input->post('jwb_37')
+                + $this->input->post('jwb_38')
+                + $this->input->post('jwb_39')
+                + $this->input->post('jwb_40')
+                + $this->input->post('jwb_41')
+                + $this->input->post('jwb_42')
+                + $this->input->post('jwb_43');
+            $indeks_kml = $jml_dsn / 43;
+            $data = [
+                'nip' => $this->input->post('id_dsn'),
+                'jwb_1' => $this->input->post('jwb_1'),
+                'jwb_2' => $this->input->post('jwb_2'),
+                'jwb_3' => $this->input->post('jwb_3'),
+                'jwb_4' => $this->input->post('jwb_4'),
+                'jwb_5' => $this->input->post('jwb_5'),
+                'jwb_6' => $this->input->post('jwb_6'),
+                'jwb_7' => $this->input->post('jwb_7'),
+                'jwb_8' => $this->input->post('jwb_8'),
+                'jwb_9' => $this->input->post('jwb_9'),
+                'jwb_10' => $this->input->post('jwb_10'),
+                'jwb_11' => $this->input->post('jwb_11'),
+                'jwb_12' => $this->input->post('jwb_12'),
+                'jwb_13' => $this->input->post('jwb_13'),
+                'jwb_14' => $this->input->post('jwb_14'),
+                'jwb_15' => $this->input->post('jwb_15'),
+                'jwb_16' => $this->input->post('jwb_16'),
+                'jwb_17' => $this->input->post('jwb_17'),
+                'jwb_18' => $this->input->post('jwb_18'),
+                'jwb_19' => $this->input->post('jwb_19'),
+                'jwb_20' => $this->input->post('jwb_20'),
+                'jwb_21' => $this->input->post('jwb_21'),
+                'jwb_22' => $this->input->post('jwb_22'),
+                'jwb_23' => $this->input->post('jwb_23'),
+                'jwb_24' => $this->input->post('jwb_24'),
+                'jwb_25' => $this->input->post('jwb_25'),
+                'jwb_26' => $this->input->post('jwb_26'),
+                'jwb_27' => $this->input->post('jwb_27'),
+                'jwb_28' => $this->input->post('jwb_28'),
+                'jwb_29' => $this->input->post('jwb_29'),
+                'jwb_30' => $this->input->post('jwb_30'),
+                'jwb_31' => $this->input->post('jwb_31'),
+                'jwb_32' => $this->input->post('jwb_32'),
+                'jwb_33' => $this->input->post('jwb_33'),
+                'jwb_34' => $this->input->post('jwb_34'),
+                'jwb_35' => $this->input->post('jwb_35'),
+                'jwb_36' => $this->input->post('jwb_36'),
+                'jwb_37' => $this->input->post('jwb_37'),
+                'jwb_38' => $this->input->post('jwb_38'),
+                'jwb_39' => $this->input->post('jwb_39'),
+                'jwb_40' => $this->input->post('jwb_40'),
+                'jwb_41' => $this->input->post('jwb_41'),
+                'jwb_42' => $this->input->post('jwb_42'),
+                'jwb_43' => $this->input->post('jwb_43'),
+                'indeks_kml' => $indeks_kml,
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            ];
+            $this->db->insert('sarpras_dosen', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
+            redirect('user/kuebku_dsn_s2sipil_genap');
         }
     }
 
@@ -1213,6 +1751,74 @@ class User extends CI_Controller
         }
     }
 
+    public function kuevimi_dsn_s2sipil_ganjil()
+    {
+        if ($this->session->userdata('status') !== "dosen") {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+        $data['pertanyaan_visimisi'] = $this->db->select('*')
+            ->from('pertanyaan_visimisi')
+            ->get()->result_array();
+        $this->form_validation->set_rules('1', 'NIP', 'required|trim');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('user/kuevimi_dsn_s2sipil_ganjil', $data);
+        } else {
+            foreach ($this->input->post() as $key => $value) {
+                if ($key == 3) {
+                    foreach ($this->input->post('3') as $key2 => $value2) {
+                        $this->db->insert('submit_vimi_dsn_s2sipil_ganjil', [
+                            'nip' => $this->input->post('nip'),
+                            'id_pertanyaan' => $key,
+                            'id_jawaban' => $value2,
+                        ]);
+                    }
+                } elseif ($key != "nip") {
+                    $this->db->insert('submit_vimi_dsn_s2sipil_ganjil', [
+                        'nip' => $this->input->post('nip'),
+                        'id_pertanyaan' => $key,
+                        'id_jawaban' => $value,
+                    ]);
+                }
+            }
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
+            redirect('user/kuevimi_dsn_s2sipil_ganjil');
+        }
+    }
+
+    public function kuevimi_dsn_s2sipil_genap()
+    {
+        if ($this->session->userdata('status') !== "dosen") {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+        $data['pertanyaan_visimisi'] = $this->db->select('*')
+            ->from('pertanyaan_visimisi')
+            ->get()->result_array();
+        $this->form_validation->set_rules('1', 'NIP', 'required|trim');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('user/kuevimi_dsn_s2sipil_genap', $data);
+        } else {
+            foreach ($this->input->post() as $key => $value) {
+                if ($key == 3) {
+                    foreach ($this->input->post('3') as $key2 => $value2) {
+                        $this->db->insert('submit_vimi_dsn', [
+                            'nip' => $this->input->post('nip'),
+                            'id_pertanyaan' => $key,
+                            'id_jawaban' => $value2,
+                        ]);
+                    }
+                } elseif ($key != "nip") {
+                    $this->db->insert('submit_vimi_dsn', [
+                        'nip' => $this->input->post('nip'),
+                        'id_pertanyaan' => $key,
+                        'id_jawaban' => $value,
+                    ]);
+                }
+            }
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
+            redirect('user/kuevimi_dsn_s2sipil_genap');
+        }
+    }
+
     public function kuevimi_tendik()
     {
         if ($this->session->userdata('status') !== "tendik") {
@@ -1457,6 +2063,19 @@ class User extends CI_Controller
             ->join('jadwal', 'jadwal.kode_mk=matkul.kode_mk')
             ->join('dosen', 'dosen.id_dsn = jadwal.id_dsn')
             ->where('jadwal.kode_mk', $kode_mk)->where('jadwal.kelas', $kelas_mk)->where('jadwal.id_dsn', $this->session->userdata('nip'))->get()->first_row();
+        echo json_encode($matakuliah);
+    }
+
+    public function getNamaMatkul_dsn_s2sipil_ganjil()
+    {
+        $idmatkul = $this->input->post('idmatkul');
+        $string = explode('-', $idmatkul);
+        $kode_mk = $string[0];
+        $kelas_mk = $string[1];
+        $matakuliah = $this->db->select('*')->from('matkul_s2sipil_ganjil')
+            ->join('jadwal_s2sipil_ganjil', 'jadwal_s2sipil_ganjil.kode_mk=matkul_s2sipil_ganjil.kode_mk')
+            ->join('dosen', 'dosen.id_dsn = jadwal_s2sipil_ganjil.id_dsn')
+            ->where('jadwal_s2sipil_ganjil.kode_mk', $kode_mk)->where('jadwal_s2sipil_ganjil.kelas', $kelas_mk)->where('jadwal_s2sipil_ganjil.id_dsn', $this->session->userdata('nip'))->get()->first_row();
         echo json_encode($matakuliah);
     }
 

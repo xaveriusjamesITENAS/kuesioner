@@ -66,7 +66,7 @@
 			<nav class="navbar-mobile">
 				<div class="container-fluid">
 					<ul class="navbar-mobile__list list-unstyled">
-						<li class="active">
+						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn_s2sipil_ganjil'); ?>">
 								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik (Ganjil)</a>
 						</li>
@@ -92,7 +92,7 @@
 			<nav class="navbar-mobile">
 				<div class="container-fluid">
 					<ul class="navbar-mobile__list list-unstyled">
-						<li class="has-sub">
+						<li class="active">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn_s2sipil_genap'); ?>">
 								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik (Genap)</a>
 						</li>
@@ -128,7 +128,7 @@
 			<div class="menu-sidebar__content js-scrollbar1">
 				<nav class="navbar-sidebar">
 					<ul class="list-unstyled navbar__list">
-						<li class="active">
+						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn_s2sipil_ganjil'); ?>">
 								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik (Ganjil)</a>
 						</li>
@@ -152,7 +152,7 @@
 				</nav>
 				<nav class="navbar-sidebar">
 					<ul class="list-unstyled navbar__list">
-						<li class="has-sub">
+						<li class="active">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn_s2sipil_genap'); ?>">
 								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik (Genap)</a>
 						</li>
@@ -257,7 +257,7 @@
 										</div>
 									</div>
 									<div class="card-body card-block">
-										<?= form_open('user/kuesioner_dsn_s2sipil_ganjil'); ?>
+										<?= form_open('user/kuesioner_dsn_s2sipil_genap'); ?>
 										<div class="row form-group">
 											<div class="col col-md-3">
 												<label class=" form-control-label">NIP Karyawan</label>

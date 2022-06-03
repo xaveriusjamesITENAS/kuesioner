@@ -66,25 +66,51 @@
 			<nav class="navbar-mobile">
 				<div class="container-fluid">
 					<ul class="navbar-mobile__list list-unstyled">
-						<li class="hs-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn'); ?>">
-								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik</a>
-						</li>
-						<li class="hs-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuelp2m_dsn'); ?>">
-								<i class="fas fa-copy"></i>Pelayanan LP2M</a>
-						</li>
-						<li class="hs-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuefkl_dsn'); ?>">
-								<i class="fas fa-university"></i>Pelayanan Fakultas</a>
-						</li>
-						<li class="active">
-							<a class="js-arrow" href="<?= base_url('user/kuebku_dsn'); ?>">
-								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana</a>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn_s2sipil_ganjil'); ?>">
+								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik (Ganjil)</a>
 						</li>
 						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuevimi_dsn'); ?>">
-								<i class="fas fa-thumbs-up"></i>Visi Misi</a>
+							<a class="js-arrow" href="<?= base_url('user/kuelp2m_dsn_s2sipil_ganjil'); ?>">
+								<i class="fas fa-copy"></i>Pelayanan LP2M (Ganjil)</a>
+						</li>
+						<li class="active">
+							<a class="js-arrow" href="<?= base_url('user/kuefkl_dsn_s2sipil_ganjil'); ?>">
+								<i class="fas fa-university"></i>Pelayanan Fakultas (Ganjil)</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuebku_dsn_s2sipil_ganjil'); ?>">
+								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana (Ganjil)</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_dsn_s2sipil_ganjil'); ?>">
+								<i class="fas fa-thumbs-up"></i>Visi Misi (Ganjil)</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<nav class="navbar-mobile">
+				<div class="container-fluid">
+					<ul class="navbar-mobile__list list-unstyled">
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn_s2sipil_genap'); ?>">
+								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik (Genap)</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuelp2m_dsn_s2sipil_genap'); ?>">
+								<i class="fas fa-copy"></i>Pelayanan LP2M (Genap)</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuefkl_dsn_s2sipil_genap'); ?>">
+								<i class="fas fa-university"></i>Pelayanan Fakultas (Genap)</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuebku_dsn_s2sipil_genap'); ?>">
+								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana (Genap)</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_dsn_s2sipil_genap'); ?>">
+								<i class="fas fa-thumbs-up"></i>Visi Misi (Genap)</a>
 						</li>
 					</ul>
 				</div>
@@ -102,25 +128,49 @@
 			<div class="menu-sidebar__content js-scrollbar1">
 				<nav class="navbar-sidebar">
 					<ul class="list-unstyled navbar__list">
-						<li class="hs-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn'); ?>">
-								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik</a>
-						</li>
-						<li class="hs-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuelp2m_dsn'); ?>">
-								<i class="fas fa-copy"></i>Pelayanan LP2M</a>
-						</li>
-						<li class="hs-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuefkl_dsn'); ?>">
-								<i class="fas fa-university"></i>Pelayanan Fakultas</a>
-						</li>
-						<li class="active">
-							<a class="js-arrow" href="<?= base_url('user/kuebku_dsn'); ?>">
-								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana</a>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn_s2sipil_ganjil'); ?>">
+								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik (Ganjil)</a>
 						</li>
 						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuevimi_dsn'); ?>">
-								<i class="fas fa-thumbs-up"></i>Visi Misi</a>
+							<a class="js-arrow" href="<?= base_url('user/kuelp2m_dsn_s2sipil_ganjil'); ?>">
+								<i class="fas fa-copy"></i>Pelayanan LP2M (Ganjil)</a>
+						</li>
+						<li class="active">
+							<a class="js-arrow" href="<?= base_url('user/kuefkl_dsn_s2sipil_ganjil'); ?>">
+								<i class="fas fa-university"></i>Pelayanan Fakultas (Ganjil)</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuebku_dsn_s2sipil_ganjil'); ?>">
+								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana (Ganjil)</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_dsn_s2sipil_ganjil'); ?>">
+								<i class="fas fa-thumbs-up"></i>Visi Misi (Ganjil)</a>
+						</li>
+					</ul>
+				</nav>
+				<nav class="navbar-sidebar">
+					<ul class="list-unstyled navbar__list">
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn_s2sipil_genap'); ?>">
+								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik (Genap)</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuelp2m_dsn_s2sipil_genap'); ?>">
+								<i class="fas fa-copy"></i>Pelayanan LP2M (Genap)</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuefkl_dsn_s2sipil_genap'); ?>">
+								<i class="fas fa-university"></i>Pelayanan Fakultas (Genap)</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuebku_dsn_s2sipil_genap'); ?>">
+								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana (Genap)</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_dsn_s2sipil_genap'); ?>">
+								<i class="fas fa-thumbs-up"></i>Visi Misi (Genap)</a>
 						</li>
 					</ul>
 				</nav>
@@ -187,28 +237,29 @@
 							<div class="col-md-12">
 								<div class="card">
 									<div class="card-header">
-										<strong class="card-title">Kuesioner Pelayanan Sarana/ Pra Sarana Umum</strong>
+										<strong class="card-title">Kuesioner Pelayanan Fakultas</strong>
 									</div>
 									<?= $this->session->flashdata('message'); ?>
 									<div class="card-body">
 										<div class="typo-headers">
-											<h1 class="pb-2 display-5" style="font-size: 25px;">KUESIONER KEPUASAN
-												PENGGUNA LAYANAN BIDANG KEUANGAN DAN SARANA-PRASARANA DI ITENAS</h1>
+											<h1 class="pb-2 display-5" style="font-size: 25px;">Instrumen Penilaian
+												Pelayanan Fakultas Terhadap Dosen</h1>
 										</div>
 										<div class="typo-articles">
 											<p>
-												<!-- Kuesioner ini menanyakan pendapat anda mengenai pelayanan fakultas
+												Kuesioner ini menanyakan pendapat anda mengenai pelayanan fakultas
 												terhadap tenaga pendidik. Pengumpulan data menggunakan kuesioner ini
 												bertujuan mengukur keefektifan pelayanan fakultas yang telah dilakukan.
 												Berikan tanggapan berdasarkan pendapat sendiri dan bukan
-												pandangan/pendapat orang lain. -->
+												pandangan/pendapat orang lain.
 												<p></p>
-												<br>Pertanyaan untuk Dosen dan Tenaga Kependidikan</br>
+												<br>Kami mengucapkan banyak terima kasih atas partisipasinya dalam
+												pengisian kuesioner ini.</br>
 											</p>
 										</div>
 									</div>
 									<div class="card-body card-block">
-										<?= form_open('user/kuebku_dsn'); ?>
+										<?= form_open('user/kuefkl_dsn_s2sipil_ganjil'); ?>
 										<input type="hidden" name="id_dsn"
 											value="<?= $this->session->userdata('nip') ?>" />
 										<div class="row form-group">
@@ -274,8 +325,8 @@
 										$no_set3 = 1;
 										$no_set4 = 1;
 										$no_error = 1;
-										$name = 'jwb_';
-										foreach ($pertanyaan_sarpras as $prt) : ?>
+										$name = 'jwb';
+										foreach ($pertanyaan_fkl as $prt) : ?>
 										<div class="form-group row">
 											<div class="col col-md-3">
 												<label class="form-control-label" style="font-weight:bold">Pertanyaan
@@ -336,6 +387,22 @@
 											</div>
 										</div>
 										<?php endforeach; ?>
+										<div class="row form-group">
+											<div class="col col-md-3">
+												<label for="textarea-input" class=" form-control-label"
+													style="font-weight:bold">Saran</label>
+											</div>
+											<div class="col-12 col-md-9">
+												<textarea name="saran" id="textarea-input" rows="9" value="saran"
+													placeholder="Berikan saran anda mengenai kendala utama dalam pelayanan fakultas."
+													class="form-control"><?= set_value('saran') ?></textarea>
+												<?= form_error(
+													'saran',
+													'<small class="text-danger pl-3">',
+													'</small>'
+												); ?>
+											</div>
+										</div>
 									</div>
 									<div class="card-footer">
 										<button type="submit" class="btn btn-success btn-sm">

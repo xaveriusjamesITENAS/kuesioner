@@ -66,7 +66,7 @@
 			<nav class="navbar-mobile">
 				<div class="container-fluid">
 					<ul class="navbar-mobile__list list-unstyled">
-						<li class="active">
+						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn_s2sipil_ganjil'); ?>">
 								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik (Ganjil)</a>
 						</li>
@@ -96,7 +96,7 @@
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn_s2sipil_genap'); ?>">
 								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik (Genap)</a>
 						</li>
-						<li class="has-sub">
+						<li class="active">
 							<a class="js-arrow" href="<?= base_url('user/kuelp2m_dsn_s2sipil_genap'); ?>">
 								<i class="fas fa-copy"></i>Pelayanan LP2M (Genap)</a>
 						</li>
@@ -128,7 +128,7 @@
 			<div class="menu-sidebar__content js-scrollbar1">
 				<nav class="navbar-sidebar">
 					<ul class="list-unstyled navbar__list">
-						<li class="active">
+						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn_s2sipil_ganjil'); ?>">
 								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik (Ganjil)</a>
 						</li>
@@ -156,7 +156,7 @@
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn_s2sipil_genap'); ?>">
 								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik (Genap)</a>
 						</li>
-						<li class="has-sub">
+						<li class="active">
 							<a class="js-arrow" href="<?= base_url('user/kuelp2m_dsn_s2sipil_genap'); ?>">
 								<i class="fas fa-copy"></i>Pelayanan LP2M (Genap)</a>
 						</li>
@@ -236,99 +236,31 @@
 							<div class="col-md-12">
 								<div class="card">
 									<div class="card-header">
-										<strong class="card-title">Kuesioner Pembelajaran dan Suasana Akademik</strong>
+										<strong class="card-title">Kuesioner Pelayanan LP2M</strong>
 									</div>
 									<?= $this->session->flashdata('message'); ?>
 									<div class="card-body">
 										<div class="typo-headers">
 											<h1 class="pb-2 display-5" style="font-size: 25px;">Instrumen Penilaian
-												Efektivitas Proses Pembelajaran Online</h1>
+												Pelayanan LP2M Terhadap Dosen</h1>
 										</div>
 										<div class="typo-articles">
 											<p>
-												Kuesioner ini menanyakan pendapat anda mengenai Pembelajaran dan Suasana
-												Akademik
-												selama semester ini. Pengumpulan data menggunakan kuesioner ini
-												bertujuan mengukur keefektifan kegiatan belajar daring yang telah
-												dilakukan. Berikan tanggapan berdasarkan pendapat sendiri dan bukan
-												pandangan/pendapat orang lain. Kami mengucapkan banyak terima kasih atas
-												partisipasinya dalam pengisian kuesioner ini.
+												Kuesioner ini menanyakan pendapat anda mengenai pelayanan LP2M terhadap
+												tenaga pendidik. Pengumpulan data menggunakan kuesioner ini bertujuan
+												mengukur keefektifan pelayanan LP2M yang telah dilakukan. Berikan
+												tanggapan berdasarkan pendapat sendiri dan bukan pandangan/pendapat
+												orang lain.
+												<p></p>
+												<br>Kami mengucapkan banyak terima kasih atas partisipasinya dalam
+												pengisian kuesioner ini.</br>
 											</p>
 										</div>
 									</div>
 									<div class="card-body card-block">
-										<?= form_open('user/kuesioner_dsn_s2sipil_ganjil'); ?>
-										<div class="row form-group">
-											<div class="col col-md-3">
-												<label class=" form-control-label">NIP Karyawan</label>
-											</div>
-											<div class="col-12 col-md-6">
-												<input type="text" class="form-control" id="id_dsn" name="id_dsn"
-													readonly value="<?= $this->session->userdata('nip'); ?>">
-											</div>
-										</div>
-										<div class="row form-group">
-											<div class="col col-md-3">
-												<label for="text-input" class=" form-control-label">Nama
-													Karyawan</label>
-											</div>
-											<div class="col-12 col-md-6">
-												<input type="text" class="form-control" id="passw_dsn" name="passw_dsn"
-													readonly value="<?= $this->session->userdata('nama_dsn'); ?>"
-													readonly>
-												<small class="form-text text-muted"></small>
-											</div>
-										</div>
-										<div class="row form-group">
-											<div class="col col-md-3">
-												<label for="select" class=" form-control-label">Kode Matakuliah</label>
-											</div>
-											<div class="col-12 col-md-6">
-												<select class="form-control" aria-label=".form-select-sm example"
-													name="kode_mk" id="pilihmatkul">
-													<option>Pilih Kode Matakuliah</option>
-													<?php foreach ($matkul as $mtk) { ?>
-													<option value="<?= $mtk->kode_mk . '-' . $mtk->kelas ?>">
-														<?= $mtk->kode_mk ?> - <?= $mtk->kelas ?></option>
-													<?php } ?>
-												</select>
-												<?= form_error(
-													'kode_mk',
-													'<small class="text-danger pl-3">',
-													'</small>'
-												); ?>
-												<input type="hidden" name="pilihkelas" id="pilihkelas">
-											</div>
-										</div>
-										<div class="row form-group">
-											<div class="col col-md-3">
-												<label for="text-input" class=" form-control-label">Nama
-													Matakuliah</label>
-											</div>
-											<div class="col-12 col-md-6">
-												<input type="text" class="form-control" readonly id="namamk"
-													name="namamk" readonly>
-												<?= form_error(
-													'namamk',
-													'<small class="text-danger pl-3">',
-													'</small>'
-												); ?>
-											</div>
-										</div>
-										<div class="row form-group">
-											<div class="col col-md-3">
-												<label for="text-input" class=" form-control-label">Kelas</label>
-											</div>
-											<div class="col-12 col-md-6">
-												<input type="text" class="form-control" readonly id="kelas" name="kelas"
-													value="" readonly>
-												<?= form_error(
-													'kelas',
-													'<small class="text-danger pl-3">',
-													'</small>'
-												); ?>
-											</div>
-										</div>
+										<?= form_open('user/kuelp2m_dsn_s2sipil_genap'); ?>
+										<input type="hidden" name="id_dsn"
+											value="<?= $this->session->userdata('nip') ?>" />
 										<div class="row form-group">
 											<div class="col col-md-3">
 												<label class=" form-control-label"
@@ -393,7 +325,7 @@
 										$no_set4 = 1;
 										$no_error = 1;
 										$name = 'jwb';
-										foreach ($pertanyaan as $prt) : ?>
+										foreach ($pertanyaan_lp2m as $prt) : ?>
 										<div class="form-group row">
 											<div class="col col-md-3">
 												<label class="form-control-label" style="font-weight:bold">Pertanyaan
@@ -461,7 +393,7 @@
 											</div>
 											<div class="col-12 col-md-9">
 												<textarea name="saran" id="textarea-input" rows="9" value="saran"
-													placeholder="Berikan saran anda mengenai kendala utama dalam Pembelajaran dan Suasana Akademik."
+													placeholder="Berikan saran anda mengenai kendala utama dalam pelayanan LP2M."
 													class="form-control"><?= set_value('saran') ?></textarea>
 												<?= form_error(
 													'saran',
@@ -511,31 +443,6 @@
 
 			<!-- Main JS-->
 			<script src="<?= base_url('assets/'); ?>vendor/theme/js/main.js"></script>
-
-			<script>
-				// jika user memilih non akademik, kemudian memilih unit
-				$(document).on('change', '#pilihmatkul', function (e) {
-					e.preventDefault();
-					let idmatkul = $(this).val();
-					$.ajax({
-						url: "<?php echo site_url('user/getNamaMatkul_dsn'); ?>",
-						type: 'POST',
-						data: {
-							idmatkul: idmatkul,
-						},
-						dataType: 'json',
-						cache: false,
-						success: function (res) {
-							console.log(res)
-							$("#namamk").val(res.nama_mk)
-							$("#kelas").val(res.kelas)
-							$("#pilihkelas").val(res.kelas)
-						}
-					});
-				})
-
-			</script>
-
 </body>
 
 </html>
