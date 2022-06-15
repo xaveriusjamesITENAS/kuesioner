@@ -283,7 +283,7 @@
 									</div>
 									<div class="card-footer">
 										<button type="submit" class="btn btn-success btn-sm">
-											<i type="submit" class=""></i>Submit</button>
+											<i type="submit" class=""></i>Submit Data</button>
 										</form>
 									</div>
 								</div>
