@@ -83,7 +83,7 @@ $db['default'] = array(
 	// 'username' => 'infodata',
 	// 'password' => 'infodata2021',
 	// 'database' => 'kuesioner',
-	'hostname' => '192.168.255.44',
+	'hostname' => 'localhost',
 	'database' => 'kuesioner_s2',
 	'username' => 'kuesioner_kuesioner',
 	'password' => 'AGX=(m@MZSVz',
