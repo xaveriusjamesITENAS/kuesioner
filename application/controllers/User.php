@@ -50,7 +50,7 @@ class User extends CI_Controller
             redirect('user/editprofil_mhs');
         }
     }
-    public function editprofil_mhs_s2sipil()
+    public function editprofil_mhs_s2()
     {
         if ($this->session->userdata('status') !== "mahasiswa") {
             redirect($_SERVER['HTTP_REFERER']);
@@ -61,7 +61,7 @@ class User extends CI_Controller
         $this->form_validation->set_rules('nohpmhs', 'No.Handphone', 'required|trim');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('user/editprofil_mhs_s2sipil', $data);
+            $this->load->view('user/editprofil_mhs_s2', $data);
         } else {
             $noktp = $this->input->post('noktpmhs');
             $jkmhs = $this->input->post('jkmhs');
@@ -78,7 +78,7 @@ class User extends CI_Controller
             // die;
 
             $this->session->set_flashdata('message_editprofil', '<div class="alert alert-success" style="margin: 15px 15px" role="alert">Profil Anda berhasil di Update</div>');
-            redirect('user/editprofil_mhs_s2sipil');
+            redirect('user/editprofil_mhs_s2');
         }
     }
 
@@ -171,7 +171,7 @@ class User extends CI_Controller
         }
     }
 
-    public function kuesioner_mhs_s2sipil_ganjil()
+    public function kuesioner_mhs_s2_ganjil()
     {
         if ($this->session->userdata('status') !== "mahasiswa") {
             redirect($_SERVER['HTTP_REFERER']);
@@ -180,38 +180,28 @@ class User extends CI_Controller
 
         $data['user'] = $this->db->get_where('datamhs', ['nrpmhs' => $this->session->userdata('nrp')])->row_array();
 
-        $submit = $this->db->get_where('submit_mhs_s2sipil_ganjil', ['nrpmhs' => $this->session->userdata('nrp')])->row_array();
+        $submit = $this->db->get_where('submit_mhs_s2_20211', ['nrpmhs' => $this->session->userdata('nrp')])->row_array();
 
         if ($submit != NULL) {
-            $data['matkul'] = $this->db->distinct()->select('jadwal_s2sipil_ganjil.*, matkul_s2sipil_ganjil.*, dosen.*')->from('datamhs')
-                ->join('jadwal_s2sipil_ganjil', 'jadwal_s2sipil_ganjil.nrpmhs = datamhs.nrpmhs', 'inner')
-                ->join('matkul_s2sipil_ganjil', 'matkul_s2sipil_ganjil.kode_mk = jadwal_s2sipil_ganjil.kode_mk', 'left')
-                ->join('dosen', 'dosen.id_dsn = jadwal_s2sipil_ganjil.id_dsn', 'left')
-                ->join('submit_mhs_s2sipil_ganjil', 'submit_mhs_s2sipil_ganjil.nrpmhs = datamhs.nrpmhs')
+            $data['matkul'] = $this->db->distinct()->select('jadwal_s2_20211.*, matkul_s2_20211.*, dosen.*')->from('datamhs')
+                ->join('jadwal_s2_20211', 'jadwal_s2_20211.nrpmhs = datamhs.nrpmhs', 'inner')
+                ->join('matkul_s2_20211', 'matkul_s2_20211.kode_mk = jadwal_s2_20211.kode_mk', 'left')
+                ->join('dosen', 'dosen.id_dsn = jadwal_s2_20211.id_dsn', 'left')
+                ->join('submit_mhs_s2_20211', 'submit_mhs_s2_20211.nrpmhs = datamhs.nrpmhs')
                 ->where('datamhs.nrpmhs=' . $this->session->userdata('nrp') . '')
                 // ->where("dosen.nama_dsn != 'DOSEN BARU/DOSEN BELUM ADA'")
-                ->where("jadwal_s2sipil_ganjil.kode_mk NOT IN (SELECT submit_mhs_s2sipil_ganjil.kode_mk FROM submit_mhs_s2sipil_ganjil WHERE submit_mhs_s2sipil_ganjil.nrpmhs = " . $this->session->userdata('nrp') . ")")
+                ->where("jadwal_s2_20211.kode_mk NOT IN (SELECT submit_mhs_s2_20211.kode_mk FROM submit_mhs_s2_20211 WHERE submit_mhs_s2_20211.nrpmhs = " . $this->session->userdata('nrp') . ")")
                 ->get()->result();
         } else {
-            $data['matkul'] = $this->db->distinct()->select('jadwal_s2sipil_ganjil.*, matkul_s2sipil_ganjil.*, dosen.*')->from('datamhs')
-                ->join('jadwal_s2sipil_ganjil', 'jadwal_s2sipil_ganjil.nrpmhs = datamhs.nrpmhs', 'inner')
-                ->join('matkul_s2sipil_ganjil', 'matkul_s2sipil_ganjil.kode_mk = jadwal_s2sipil_ganjil.kode_mk', 'left')
-                ->join('dosen', 'dosen.id_dsn = jadwal_s2sipil_ganjil.id_dsn', 'left')
-                ->join('submit_mhs_s2sipil_ganjil', 'submit_mhs_s2sipil_ganjil.nrpmhs = datamhs.nrpmhs', 'left')
+            $data['matkul'] = $this->db->distinct()->select('jadwal_s2_20211.*, matkul_s2_20211.*, dosen.*')->from('datamhs')
+                ->join('jadwal_s2_20211', 'jadwal_s2_20211.nrpmhs = datamhs.nrpmhs', 'inner')
+                ->join('matkul_s2_20211', 'matkul_s2_20211.kode_mk = jadwal_s2_20211.kode_mk', 'left')
+                ->join('dosen', 'dosen.id_dsn = jadwal_s2_20211.id_dsn', 'left')
+                ->join('submit_mhs_s2_20211', 'submit_mhs_s2_20211.nrpmhs = datamhs.nrpmhs', 'left')
                 ->where('datamhs.nrpmhs=' . $this->session->userdata('nrp') . '')
                 // ->where("dosen.nama_dsn != 'DOSEN BARU/DOSEN BELUM ADA'")
                 ->get()->result();
         }
-        // $matkul = $this->db->distinct()->select('jadwal.*, matkul.*, dosen.*')->from('datamhs')
-        // ->join('jadwal', 'jadwal.nrpmhs = datamhs.nrpmhs', 'inner')
-        // ->join('matkul', 'matkul.kode_mk = jadwal.kode_mk', 'left')
-        // ->join('dosen', 'dosen.id_dsn = jadwal.id_dsn', 'left')
-        // ->join('submit_mhs', 'submit_mhs.nrpmhs = datamhs.nrpmhs', 'left')
-        // ->where('datamhs.nrpmhs=' . $this->session->userdata('nrp') . '')
-        // ->where("dosen.nama_dsn != 'DOSEN BARU/DOSEN BELUM ADA'")
-        // ->get()->result();
-        // var_dump($this->db->last_query());
-        // die();
         $data['pertanyaan'] = $this->db->select('*')
             ->from('pertanyaan')->where('level', 'mahasiswa')
             ->get()->result_array();
@@ -226,7 +216,7 @@ class User extends CI_Controller
             $this->form_validation->set_rules('jwb' . $i, 'Pertanyaan ' . $i, 'required');
         }
         if ($this->form_validation->run() == false) {
-            $this->load->view('user/kuesioner_mhs_s2sipil_ganjil', $data);
+            $this->load->view('user/kuesioner_mhs_s2_ganjil', $data);
         } else {
             $jml = $this->input->post('jwb1') + $this->input->post('jwb2') + $this->input->post('jwb3') + $this->input->post('jwb4') + $this->input->post('jwb5') + $this->input->post('jwb6') +
                 $this->input->post('jwb7') + $this->input->post('jwb8') + $this->input->post('jwb9') + $this->input->post('jwb10') + $this->input->post('jwb11') + $this->input->post('jwb12') + $this->input->post('jwb13') + $this->input->post('jwb14') + $this->input->post('jwb15');
@@ -253,14 +243,14 @@ class User extends CI_Controller
                 'indeks_kml' => $indeks_kml,
                 'saran' => $this->input->post('saran'),
             ];
-            $this->db->insert('submit_mhs_s2sipil_ganjil', $data);
+            $this->db->insert('submit_mhs_s2_20211', $data);
 
             $this->session->set_flashdata('message_kuesionermhs', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
-            redirect('user/kuesioner_mhs_s2sipil_ganjil');
+            redirect('user/kuesioner_mhs_s2_ganjil');
         }
     }
 
-    public function kuesioner_mhs_s2sipil_genap()
+    public function kuesioner_mhs_s2_genap()
     {
         if ($this->session->userdata('status') !== "mahasiswa") {
             redirect($_SERVER['HTTP_REFERER']);
@@ -269,38 +259,28 @@ class User extends CI_Controller
 
         $data['user'] = $this->db->get_where('datamhs', ['nrpmhs' => $this->session->userdata('nrp')])->row_array();
 
-        $submit = $this->db->get_where('submit_mhs', ['nrpmhs' => $this->session->userdata('nrp')])->row_array();
+        $submit = $this->db->get_where('submit_mhs_s2_20212', ['nrpmhs' => $this->session->userdata('nrp')])->row_array();
 
         if ($submit != NULL) {
-            $data['matkul'] = $this->db->distinct()->select('jadwal.*, matkul.*, dosen.*')->from('datamhs')
-                ->join('jadwal', 'jadwal.nrpmhs = datamhs.nrpmhs', 'inner')
-                ->join('matkul', 'matkul.kode_mk = jadwal.kode_mk', 'left')
-                ->join('dosen', 'dosen.id_dsn = jadwal.id_dsn', 'left')
-                ->join('submit_mhs', 'submit_mhs.nrpmhs = datamhs.nrpmhs')
+            $data['matkul'] = $this->db->distinct()->select('jadwal_s2_20212.*, matkul_s2_20212.*, dosen.*')->from('datamhs')
+                ->join('jadwal_s2_20212', 'jadwal_s2_20212.nrpmhs = datamhs.nrpmhs', 'inner')
+                ->join('matkul_s2_20212', 'matkul_s2_20212.kode_mk = jadwal_s2_20212.kode_mk', 'left')
+                ->join('dosen', 'dosen.id_dsn = jadwal_s2_20212.id_dsn', 'left')
+                ->join('submit_mhs_s2_20212', 'submit_mhs_s2_20212.nrpmhs = datamhs.nrpmhs')
                 ->where('datamhs.nrpmhs=' . $this->session->userdata('nrp') . '')
                 // ->where("dosen.nama_dsn != 'DOSEN BARU/DOSEN BELUM ADA'")
-                ->where("jadwal.kode_mk NOT IN (SELECT submit_mhs.kode_mk FROM submit_mhs WHERE submit_mhs.nrpmhs = " . $this->session->userdata('nrp') . ")")
+                ->where("jadwal_s2_20212.kode_mk NOT IN (SELECT submit_mhs_s2_20212.kode_mk FROM submit_mhs_s2_20212 WHERE submit_mhs_s2_20212.nrpmhs = " . $this->session->userdata('nrp') . ")")
                 ->get()->result();
         } else {
-            $data['matkul'] = $this->db->distinct()->select('jadwal.*, matkul.*, dosen.*')->from('datamhs')
-                ->join('jadwal', 'jadwal.nrpmhs = datamhs.nrpmhs', 'inner')
-                ->join('matkul', 'matkul.kode_mk = jadwal.kode_mk', 'left')
-                ->join('dosen', 'dosen.id_dsn = jadwal.id_dsn', 'left')
-                ->join('submit_mhs', 'submit_mhs.nrpmhs = datamhs.nrpmhs', 'left')
+            $data['matkul'] = $this->db->distinct()->select('jadwal_s2_20212.*, matkul_s2_20212.*, dosen.*')->from('datamhs')
+                ->join('jadwal_s2_20212', 'jadwal_s2_20212.nrpmhs = datamhs.nrpmhs', 'inner')
+                ->join('matkul_s2_20212', 'matkul_s2_20212.kode_mk = jadwal_s2_20212.kode_mk', 'left')
+                ->join('dosen', 'dosen.id_dsn = jadwal_s2_20212.id_dsn', 'left')
+                ->join('submit_mhs_s2_20212', 'submit_mhs_s2_20212.nrpmhs = datamhs.nrpmhs', 'left')
                 ->where('datamhs.nrpmhs=' . $this->session->userdata('nrp') . '')
                 // ->where("dosen.nama_dsn != 'DOSEN BARU/DOSEN BELUM ADA'")
                 ->get()->result();
         }
-        // $matkul = $this->db->distinct()->select('jadwal.*, matkul.*, dosen.*')->from('datamhs')
-        // ->join('jadwal', 'jadwal.nrpmhs = datamhs.nrpmhs', 'inner')
-        // ->join('matkul', 'matkul.kode_mk = jadwal.kode_mk', 'left')
-        // ->join('dosen', 'dosen.id_dsn = jadwal.id_dsn', 'left')
-        // ->join('submit_mhs', 'submit_mhs.nrpmhs = datamhs.nrpmhs', 'left')
-        // ->where('datamhs.nrpmhs=' . $this->session->userdata('nrp') . '')
-        // ->where("dosen.nama_dsn != 'DOSEN BARU/DOSEN BELUM ADA'")
-        // ->get()->result();
-        // var_dump($this->db->last_query());
-        // die();
         $data['pertanyaan'] = $this->db->select('*')
             ->from('pertanyaan')->where('level', 'mahasiswa')
             ->get()->result_array();
@@ -315,7 +295,7 @@ class User extends CI_Controller
             $this->form_validation->set_rules('jwb' . $i, 'Pertanyaan ' . $i, 'required');
         }
         if ($this->form_validation->run() == false) {
-            $this->load->view('user/kuesioner_mhs_s2sipil_genap', $data);
+            $this->load->view('user/kuesioner_mhs_s2_genap', $data);
         } else {
             $jml = $this->input->post('jwb1') + $this->input->post('jwb2') + $this->input->post('jwb3') + $this->input->post('jwb4') + $this->input->post('jwb5') + $this->input->post('jwb6') +
                 $this->input->post('jwb7') + $this->input->post('jwb8') + $this->input->post('jwb9') + $this->input->post('jwb10') + $this->input->post('jwb11') + $this->input->post('jwb12') + $this->input->post('jwb13') + $this->input->post('jwb14') + $this->input->post('jwb15');
@@ -342,10 +322,10 @@ class User extends CI_Controller
                 'indeks_kml' => $indeks_kml,
                 'saran' => $this->input->post('saran'),
             ];
-            $this->db->insert('submit_mhs', $data);
+            $this->db->insert('submit_mhs_s2_20212', $data);
 
             $this->session->set_flashdata('message_kuesionermhs', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
-            redirect('user/kuesioner_mhs_s2sipil_genap');
+            redirect('user/kuesioner_mhs_s2_genap');
         }
     }
 
@@ -424,7 +404,7 @@ class User extends CI_Controller
         }
     }
 
-    public function kuesioner_dsn_s2sipil_ganjil()
+    public function kuesioner_dsn_s2_ganjil()
     {
         if ($this->session->userdata('status') !== "dosen") {
             redirect($_SERVER['HTTP_REFERER']);
@@ -435,21 +415,21 @@ class User extends CI_Controller
         //$data['title'] = 'Edit Profil';
         $data['user'] = $this->db->get_where('dosen', ['id_dsn' => $this->session->userdata('nip')])->row_array();
 
-        $submit = $this->db->get_where('submit_dsn_s2sipil_ganjil', ['id_dsn' => $this->session->userdata('nip')])->row_array();
+        $submit = $this->db->get_where('submit_dsn_s2_20211', ['id_dsn' => $this->session->userdata('nip')])->row_array();
 
         if ($submit != NULL) {
-            $data['matkul'] = $this->db->distinct()->select('jadwal_s2sipil_ganjil.kode_mk, jadwal_s2sipil_ganjil.kelas')->from('jadwal_s2sipil_ganjil')
-                ->where('jadwal_s2sipil_ganjil.id_dsn=' . $this->session->userdata('nip') . '')
+            $data['matkul'] = $this->db->distinct()->select('jadwal_s2_20211.kode_mk, jadwal_s2_20211.kelas')->from('jadwal_s2_20211')
+                ->where('jadwal_s2_20211.id_dsn=' . $this->session->userdata('nip') . '')
                 ->where("NOT EXISTS 
-                (SELECT submit_dsn_s2sipil_ganjil.kode_mk, submit_dsn_s2sipil_ganjil.kelas from submit_dsn_s2sipil_ganjil 
-                WHERE submit_dsn_s2sipil_ganjil.kelas = jadwal_s2sipil_ganjil.kelas AND submit_dsn_s2sipil_ganjil.kode_mk = jadwal_s2sipil_ganjil.kode_mk AND jadwal_s2sipil_ganjil.id_dsn=" . $this->session->userdata('nip') . ")")
+                (SELECT submit_dsn_s2_20211.kode_mk, submit_dsn_s2_20211.kelas from submit_dsn_s2_20211 
+                WHERE submit_dsn_s2_20211.kelas = jadwal_s2_20211.kelas AND submit_dsn_s2_20211.kode_mk = jadwal_s2_20211.kode_mk AND jadwal_s2_20211.id_dsn=" . $this->session->userdata('nip') . ")")
                 ->get()->result();
         } else {
-            $data['matkul'] = $this->db->select('matkul_s2sipil_ganjil.nama_mk, matkul_s2sipil_ganjil.kode_mk, jadwal_s2sipil_ganjil.kelas')->from('matkul_s2sipil_ganjil')
-                ->join('jadwal_s2sipil_ganjil', 'jadwal_s2sipil_ganjil.kode_mk = matkul_s2sipil_ganjil.kode_mk', 'left')
-                ->where('jadwal_s2sipil_ganjil.id_dsn=' . $this->session->userdata('nip') . '')
-                ->group_by('matkul_s2sipil_ganjil.kode_mk, jadwal_s2sipil_ganjil.kelas')
-                ->order_by('matkul_s2sipil_ganjil.kode_mk, jadwal_s2sipil_ganjil.kelas')
+            $data['matkul'] = $this->db->select('matkul_s2_20211.nama_mk, matkul_s2_20211.kode_mk, jadwal_s2_20211.kelas')->from('matkul_s2_20211')
+                ->join('jadwal_s2_20211', 'jadwal_s2_20211.kode_mk = matkul_s2_20211.kode_mk', 'left')
+                ->where('jadwal_s2_20211.id_dsn=' . $this->session->userdata('nip') . '')
+                ->group_by('matkul_s2_20211.kode_mk, jadwal_s2_20211.kelas')
+                ->order_by('matkul_s2_20211.kode_mk, jadwal_s2_20211.kelas')
                 ->get()->result();
         }
 
@@ -466,7 +446,7 @@ class User extends CI_Controller
             $this->form_validation->set_rules('jwb' . $i, 'Pertanyaan ' . $i, 'required');
         }
         if ($this->form_validation->run() == false) {
-            $this->load->view('user/kuesioner_dsn_s2sipil_ganjil', $data);
+            $this->load->view('user/kuesioner_dsn_s2_ganjil', $data);
         } else {
             $jml_dsn = $this->input->post('jwb1') + $this->input->post('jwb2') + $this->input->post('jwb3') + $this->input->post('jwb4') + $this->input->post('jwb5') + $this->input->post('jwb6') +
                 $this->input->post('jwb7') + $this->input->post('jwb8') + $this->input->post('jwb9') + $this->input->post('jwb10') + $this->input->post('jwb11') + $this->input->post('jwb12') + $this->input->post('jwb13') + $this->input->post('jwb14') + $this->input->post('jwb15');
@@ -493,14 +473,14 @@ class User extends CI_Controller
                 'indeks_kml' => $indeks_kml_dsn,
                 'saran' => $this->input->post('saran'),
             ];
-            $this->db->insert('submit_dsn_s2sipil_ganjil', $data);
+            $this->db->insert('submit_dsn_s2_20211', $data);
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
-            redirect('user/kuesioner_dsn_s2sipil_ganjil');
+            redirect('user/kuesioner_dsn_s2_ganjil');
         }
     }
 
-    public function kuesioner_dsn_s2sipil_genap()
+    public function kuesioner_dsn_s2_genap()
     {
         if ($this->session->userdata('status') !== "dosen") {
             redirect($_SERVER['HTTP_REFERER']);
@@ -511,21 +491,21 @@ class User extends CI_Controller
         //$data['title'] = 'Edit Profil';
         $data['user'] = $this->db->get_where('dosen', ['id_dsn' => $this->session->userdata('nip')])->row_array();
 
-        $submit = $this->db->get_where('submit_dsn', ['id_dsn' => $this->session->userdata('nip')])->row_array();
+        $submit = $this->db->get_where('submit_dsn_s2_20212', ['id_dsn' => $this->session->userdata('nip')])->row_array();
 
         if ($submit != NULL) {
-            $data['matkul'] = $this->db->distinct()->select('jadwal.kode_mk, jadwal.kelas')->from('jadwal')
-                ->where('jadwal.id_dsn=' . $this->session->userdata('nip') . '')
+            $data['matkul'] = $this->db->distinct()->select('jadwal_s2_20212.kode_mk, jadwal_s2_20212.kelas')->from('jadwal_s2_20212')
+                ->where('jadwal_s2_20212.id_dsn=' . $this->session->userdata('nip') . '')
                 ->where("NOT EXISTS 
-                (SELECT submit_dsn.kode_mk, submit_dsn.kelas from submit_dsn 
-                WHERE submit_dsn.kelas = jadwal.kelas AND submit_dsn.kode_mk = jadwal.kode_mk AND jadwal.id_dsn=" . $this->session->userdata('nip') . ")")
+                (SELECT submit_dsn_s2_20212.kode_mk, submit_dsn_s2_20212.kelas from submit_dsn_s2_20212 
+                WHERE submit_dsn_s2_20212.kelas = jadwal_s2_20212.kelas AND submit_dsn_s2_20212.kode_mk = jadwal_s2_20212.kode_mk AND jadwal_s2_20212.id_dsn=" . $this->session->userdata('nip') . ")")
                 ->get()->result();
         } else {
-            $data['matkul'] = $this->db->select('matkul.nama_mk, matkul.kode_mk, jadwal.kelas')->from('matkul')
-                ->join('jadwal', 'jadwal.kode_mk = matkul.kode_mk', 'left')
-                ->where('jadwal.id_dsn=' . $this->session->userdata('nip') . '')
-                ->group_by('matkul.kode_mk, jadwal.kelas')
-                ->order_by('matkul.kode_mk, jadwal.kelas')
+            $data['matkul'] = $this->db->select('matkul_s2_20212.nama_mk, matkul_s2_20212.kode_mk, jadwal_s2_20212.kelas')->from('matkul_s2_20212')
+                ->join('jadwal_s2_20212', 'jadwal_s2_20212.kode_mk = matkul_s2_20212.kode_mk', 'left')
+                ->where('jadwal_s2_20212.id_dsn=' . $this->session->userdata('nip') . '')
+                ->group_by('matkul_s2_20212.kode_mk, jadwal_s2_20212.kelas')
+                ->order_by('matkul_s2_20212.kode_mk, jadwal_s2_20212.kelas')
                 ->get()->result();
         }
 
@@ -542,7 +522,7 @@ class User extends CI_Controller
             $this->form_validation->set_rules('jwb' . $i, 'Pertanyaan ' . $i, 'required');
         }
         if ($this->form_validation->run() == false) {
-            $this->load->view('user/kuesioner_dsn_s2sipil_genap', $data);
+            $this->load->view('user/kuesioner_dsn_s2_genap', $data);
         } else {
             $jml_dsn = $this->input->post('jwb1') + $this->input->post('jwb2') + $this->input->post('jwb3') + $this->input->post('jwb4') + $this->input->post('jwb5') + $this->input->post('jwb6') +
                 $this->input->post('jwb7') + $this->input->post('jwb8') + $this->input->post('jwb9') + $this->input->post('jwb10') + $this->input->post('jwb11') + $this->input->post('jwb12') + $this->input->post('jwb13') + $this->input->post('jwb14') + $this->input->post('jwb15');
@@ -569,10 +549,10 @@ class User extends CI_Controller
                 'indeks_kml' => $indeks_kml_dsn,
                 'saran' => $this->input->post('saran'),
             ];
-            $this->db->insert('submit_dsn', $data);
+            $this->db->insert('submit_dsn_s2_20212', $data);
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
-            redirect('user/kuesioner_dsn_s2sipil_genap');
+            redirect('user/kuesioner_dsn_s2_genap');
         }
     }
 
@@ -630,7 +610,7 @@ class User extends CI_Controller
         }
     }
 
-    public function kuelp2m_dsn_s2sipil_ganjil()
+    public function kuelp2m_dsn_s2_ganjil()
     {
         if ($this->session->userdata('status') !== "dosen") {
             redirect($_SERVER['HTTP_REFERER']);
@@ -639,7 +619,7 @@ class User extends CI_Controller
 
         $data['user'] = $this->db->get_where('dosen', ['id_dsn' => $this->session->userdata('nip')])->row_array();
 
-        $submit = $this->db->get_where('submit_lp2m_s2sipil_ganjil', ['id_dsn' => $this->session->userdata('nip')])->row_array();
+        $submit = $this->db->get_where('submit_lp2m_s2_20211', ['id_dsn' => $this->session->userdata('nip')])->row_array();
 
         $data['pertanyaan_lp2m'] = $this->db->select('*')
             ->from('pertanyaan_lp2m')->where('level', 'dosen')
@@ -651,7 +631,7 @@ class User extends CI_Controller
             $this->form_validation->set_rules('jwb' . $i, 'Pertanyaan ' . $i, 'required');
         }
         if ($this->form_validation->run() == false) {
-            $this->load->view('user/kuelp2m_dsn_s2sipil_ganjil', $data);
+            $this->load->view('user/kuelp2m_dsn_s2_ganjil', $data);
         } else {
             $jml_lp2m = $this->input->post('jwb1') + $this->input->post('jwb2') + $this->input->post('jwb3') + $this->input->post('jwb4') + $this->input->post('jwb5') + $this->input->post('jwb6') +
                 $this->input->post('jwb7') + $this->input->post('jwb8') + $this->input->post('jwb9') + $this->input->post('jwb10') + $this->input->post('jwb11') + $this->input->post('jwb12') + $this->input->post('jwb13') + $this->input->post('jwb14') + $this->input->post('jwb15');
@@ -676,15 +656,15 @@ class User extends CI_Controller
                 'indeks_kml' => $indeks_kml_lp2m,
                 'saran' => $this->input->post('saran'),
             ];
-            $this->db->insert('submit_lp2m_s2sipil_ganjil', $data);
+            $this->db->insert('submit_lp2m_s2_20211', $data);
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
 
-            redirect('user/kuelp2m_dsn_s2sipil_ganjil');
+            redirect('user/kuelp2m_dsn_s2_ganjil');
         }
     }
 
-    public function kuelp2m_dsn_s2sipil_genap()
+    public function kuelp2m_dsn_s2_genap()
     {
         if ($this->session->userdata('status') !== "dosen") {
             redirect($_SERVER['HTTP_REFERER']);
@@ -705,7 +685,7 @@ class User extends CI_Controller
             $this->form_validation->set_rules('jwb' . $i, 'Pertanyaan ' . $i, 'required');
         }
         if ($this->form_validation->run() == false) {
-            $this->load->view('user/kuelp2m_dsn_s2sipil_genap', $data);
+            $this->load->view('user/kuelp2m_dsn_s2_genap', $data);
         } else {
             $jml_lp2m = $this->input->post('jwb1') + $this->input->post('jwb2') + $this->input->post('jwb3') + $this->input->post('jwb4') + $this->input->post('jwb5') + $this->input->post('jwb6') +
                 $this->input->post('jwb7') + $this->input->post('jwb8') + $this->input->post('jwb9') + $this->input->post('jwb10') + $this->input->post('jwb11') + $this->input->post('jwb12') + $this->input->post('jwb13') + $this->input->post('jwb14') + $this->input->post('jwb15');
@@ -730,11 +710,11 @@ class User extends CI_Controller
                 'indeks_kml' => $indeks_kml_lp2m,
                 'saran' => $this->input->post('saran'),
             ];
-            $this->db->insert('submit_lp2m', $data);
+            $this->db->insert('submit_lp2m_s2_20212', $data);
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
 
-            redirect('user/kuelp2m_dsn_s2sipil_genap');
+            redirect('user/kuelp2m_dsn_s2_genap');
         }
     }
 
@@ -808,7 +788,7 @@ class User extends CI_Controller
         }
     }
 
-    public function kuefkl_dsn_s2sipil_ganjil()
+    public function kuefkl_dsn_s2_ganjil()
     {
         if ($this->session->userdata('status') !== "dosen") {
             redirect($_SERVER['HTTP_REFERER']);
@@ -817,7 +797,7 @@ class User extends CI_Controller
 
         $data['user'] = $this->db->get_where('dosen', ['id_dsn' => $this->session->userdata('nip')])->row_array();
 
-        $submit = $this->db->get_where('submit_fkl_s2sipil_ganjil', ['id_dsn' => $this->session->userdata('nip')])->row_array();
+        $submit = $this->db->get_where('submit_fkl_s2_20211', ['id_dsn' => $this->session->userdata('nip')])->row_array();
 
         $data['pertanyaan_fkl'] = $this->db->select('*')
             ->from('pertanyaan_fkl')->where('level', 'dosen')
@@ -829,7 +809,7 @@ class User extends CI_Controller
             $this->form_validation->set_rules('jwb' . $i, 'Pertanyaan ' . $i, 'required');
         }
         if ($this->form_validation->run() == false) {
-            $this->load->view('user/kuefkl_dsn_s2sipil_ganjil', $data);
+            $this->load->view('user/kuefkl_dsn_s2_ganjil', $data);
         } else {
             $jml_fkl = $this->input->post('jwb1') + $this->input->post('jwb2') + $this->input->post('jwb3') + $this->input->post('jwb4') + $this->input->post('jwb5') + $this->input->post('jwb6') +
                 $this->input->post('jwb7') + $this->input->post('jwb8') + $this->input->post('jwb9') + $this->input->post('jwb10') + $this->input->post('jwb11') + $this->input->post('jwb12') +
@@ -872,13 +852,13 @@ class User extends CI_Controller
                 'indeks_kml' => $indeks_kml_fkl,
                 'saran' => $this->input->post('saran'),
             ];
-            $this->db->insert('submit_fkl_s2sipil_ganjil', $data);
+            $this->db->insert('submit_fkl_s2_20211', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
-            redirect('user/kuefkl_dsn_s2sipil_ganjil');
+            redirect('user/kuefkl_dsn_s2_ganjil');
         }
     }
 
-    public function kuefkl_dsn_s2sipil_genap()
+    public function kuefkl_dsn_s2_genap()
     {
         if ($this->session->userdata('status') !== "dosen") {
             redirect($_SERVER['HTTP_REFERER']);
@@ -899,7 +879,7 @@ class User extends CI_Controller
             $this->form_validation->set_rules('jwb' . $i, 'Pertanyaan ' . $i, 'required');
         }
         if ($this->form_validation->run() == false) {
-            $this->load->view('user/kuefkl_dsn_s2sipil_genap', $data);
+            $this->load->view('user/kuefkl_dsn_s2_genap', $data);
         } else {
             $jml_fkl = $this->input->post('jwb1') + $this->input->post('jwb2') + $this->input->post('jwb3') + $this->input->post('jwb4') + $this->input->post('jwb5') + $this->input->post('jwb6') +
                 $this->input->post('jwb7') + $this->input->post('jwb8') + $this->input->post('jwb9') + $this->input->post('jwb10') + $this->input->post('jwb11') + $this->input->post('jwb12') +
@@ -942,9 +922,9 @@ class User extends CI_Controller
                 'indeks_kml' => $indeks_kml_fkl,
                 'saran' => $this->input->post('saran'),
             ];
-            $this->db->insert('submit_fkl', $data);
+            $this->db->insert('submit_fkl_s2_20212', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
-            redirect('user/kuefkl_dsn_s2sipil_genap');
+            redirect('user/kuefkl_dsn_s2_genap');
         }
     }
 
@@ -1097,7 +1077,7 @@ class User extends CI_Controller
         }
     }
 
-    public function kuebku_dsn_s2sipil_ganjil()
+    public function kuebku_dsn_s2_ganjil()
     {
         if ($this->session->userdata('status') !== "dosen") {
             redirect($_SERVER['HTTP_REFERER']);
@@ -1110,7 +1090,7 @@ class User extends CI_Controller
             $this->form_validation->set_rules('jwb_' . $i, 'Pertanyaan ' . $i, 'required');
         }
         if ($this->form_validation->run() == false) {
-            $this->load->view('user/kuebku_dsn_s2sipil_ganjil', $data);
+            $this->load->view('user/kuebku_dsn_s2_ganjil', $data);
         } else {
             // var_dump($this->input->post());
             // die();
@@ -1197,13 +1177,13 @@ class User extends CI_Controller
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ];
-            $this->db->insert('sarpras_dosen_s2sipil_ganjil', $data);
+            $this->db->insert('sarpras_dosen_s2_20211', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
-            redirect('user/kuebku_dsn_s2sipil_ganjil');
+            redirect('user/kuebku_dsn_s2_ganjil');
         }
     }
 
-    public function kuebku_dsn_s2sipil_genap()
+    public function kuebku_dsn_s2_genap()
     {
         if ($this->session->userdata('status') !== "dosen") {
             redirect($_SERVER['HTTP_REFERER']);
@@ -1216,7 +1196,7 @@ class User extends CI_Controller
             $this->form_validation->set_rules('jwb_' . $i, 'Pertanyaan ' . $i, 'required');
         }
         if ($this->form_validation->run() == false) {
-            $this->load->view('user/kuebku_dsn_s2sipil_genap', $data);
+            $this->load->view('user/kuebku_dsn_s2_genap', $data);
         } else {
             // var_dump($this->input->post());
             // die();
@@ -1303,9 +1283,9 @@ class User extends CI_Controller
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ];
-            $this->db->insert('sarpras_dosen', $data);
+            $this->db->insert('sarpras_dosen_s2_20212', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
-            redirect('user/kuebku_dsn_s2sipil_genap');
+            redirect('user/kuebku_dsn_s2_ganjil');
         }
     }
 
@@ -1411,7 +1391,7 @@ class User extends CI_Controller
         }
     }
 
-    public function kuebku_mhs_s2sipil_ganjil()
+    public function kuebku_mhs_s2_ganjil()
     {
         if ($this->session->userdata('status') !== "mahasiswa") {
             redirect($_SERVER['HTTP_REFERER']);
@@ -1424,7 +1404,7 @@ class User extends CI_Controller
             $this->form_validation->set_rules('jwb_' . $i, 'Pertanyaan ' . $i, 'required');
         }
         if ($this->form_validation->run() == false) {
-            $this->load->view('user/kuebku_mhs_s2sipil_ganjil', $data);
+            $this->load->view('user/kuebku_mhs_s2_ganjil', $data);
         } else {
             $jml_dsn = $this->input->post('jwb_1') + $this->input->post('jwb_2') + $this->input->post('jwb_3') + $this->input->post('jwb_4') + $this->input->post('jwb_5') + $this->input->post('jwb_6') +
                 $this->input->post('jwb_7') + $this->input->post('jwb_8') + $this->input->post('jwb_9') + $this->input->post('jwb_10') + $this->input->post('jwb_11') + $this->input->post('jwb_12')
@@ -1507,13 +1487,13 @@ class User extends CI_Controller
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ];
-            $this->db->insert('sarpras_mahasiswa_s2sipil_ganjil', $data);
+            $this->db->insert('sarpras_mhs_s2_20211', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
-            redirect('user/kuebku_mhs_s2sipil_ganjil');
+            redirect('user/kuebku_mhs_s2_ganjil');
         }
     }
 
-    public function kuebku_mhs_s2sipil_genap()
+    public function kuebku_mhs_s2_genap()
     {
         if ($this->session->userdata('status') !== "mahasiswa") {
             redirect($_SERVER['HTTP_REFERER']);
@@ -1526,7 +1506,7 @@ class User extends CI_Controller
             $this->form_validation->set_rules('jwb_' . $i, 'Pertanyaan ' . $i, 'required');
         }
         if ($this->form_validation->run() == false) {
-            $this->load->view('user/kuebku_mhs_s2sipil_genap', $data);
+            $this->load->view('user/kuebku_mhs_s2_genap', $data);
         } else {
             $jml_dsn = $this->input->post('jwb_1') + $this->input->post('jwb_2') + $this->input->post('jwb_3') + $this->input->post('jwb_4') + $this->input->post('jwb_5') + $this->input->post('jwb_6') +
                 $this->input->post('jwb_7') + $this->input->post('jwb_8') + $this->input->post('jwb_9') + $this->input->post('jwb_10') + $this->input->post('jwb_11') + $this->input->post('jwb_12')
@@ -1609,9 +1589,9 @@ class User extends CI_Controller
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ];
-            $this->db->insert('sarpras_mahasiswa', $data);
+            $this->db->insert('sarpras_mahasiswa_s2_20212', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
-            redirect('user/kuebku_mhs_s2sipil_genap');
+            redirect('user/kuebku_mhs_s2_genap');
         }
     }
 
@@ -1649,7 +1629,7 @@ class User extends CI_Controller
         }
     }
 
-    public function kuevimi_mhs_s2sipil_ganjil()
+    public function kuevimi_mhs_s2_ganjil()
     {
         if ($this->session->userdata('status') !== "mahasiswa") {
             redirect($_SERVER['HTTP_REFERER']);
@@ -1659,19 +1639,19 @@ class User extends CI_Controller
             ->get()->result_array();
         $this->form_validation->set_rules('1', 'NRP', 'required|trim');
         if ($this->form_validation->run() == false) {
-            $this->load->view('user/kuevimi_mhs_s2sipil_ganjil', $data);
+            $this->load->view('user/kuevimi_mhs_s2_ganjil', $data);
         } else {
             foreach ($this->input->post() as $key => $value) {
                 if ($key == 3) {
                     foreach ($this->input->post('3') as $key2 => $value2) {
-                        $this->db->insert('submit_vimi_s2sipil_ganjil', [
+                        $this->db->insert('submit_vimi_mhs_s2_20211', [
                             'nrpmhs' => $this->input->post('nrpmhs'),
                             'id_pertanyaan' => $key,
                             'id_jawaban' => $value2,
                         ]);
                     }
                 } elseif ($key != "nrpmhs") {
-                    $this->db->insert('submit_vimi_s2sipil_ganjil', [
+                    $this->db->insert('submit_vimi_mhs_s2_20211', [
                         'nrpmhs' => $this->input->post('nrpmhs'),
                         'id_pertanyaan' => $key,
                         'id_jawaban' => $value,
@@ -1679,11 +1659,11 @@ class User extends CI_Controller
                 }
             }
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
-            redirect('user/kuevimi_mhs_s2sipil_ganjil');
+            redirect('user/kuevimi_mhs_s2_ganjil');
         }
     }
 
-    public function kuevimi_mhs_s2sipil_genap()
+    public function kuevimi_mhs_s2_genap()
     {
         if ($this->session->userdata('status') !== "mahasiswa") {
             redirect($_SERVER['HTTP_REFERER']);
@@ -1693,19 +1673,19 @@ class User extends CI_Controller
             ->get()->result_array();
         $this->form_validation->set_rules('1', 'NRP', 'required|trim');
         if ($this->form_validation->run() == false) {
-            $this->load->view('user/kuevimi_mhs_s2sipil_genap', $data);
+            $this->load->view('user/kuevimi_mhs_s2_genap', $data);
         } else {
             foreach ($this->input->post() as $key => $value) {
                 if ($key == 3) {
                     foreach ($this->input->post('3') as $key2 => $value2) {
-                        $this->db->insert('submit_vimi', [
+                        $this->db->insert('submit_vimi_mhs_s2_20212', [
                             'nrpmhs' => $this->input->post('nrpmhs'),
                             'id_pertanyaan' => $key,
                             'id_jawaban' => $value2,
                         ]);
                     }
                 } elseif ($key != "nrpmhs") {
-                    $this->db->insert('submit_vimi', [
+                    $this->db->insert('submit_vimi_mhs_s2_20212', [
                         'nrpmhs' => $this->input->post('nrpmhs'),
                         'id_pertanyaan' => $key,
                         'id_jawaban' => $value,
@@ -1713,7 +1693,7 @@ class User extends CI_Controller
                 }
             }
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
-            redirect('user/kuevimi_mhs_s2sipil_genap');
+            redirect('user/kuevimi_mhs_s2_genap');
         }
     }
 
@@ -1751,7 +1731,7 @@ class User extends CI_Controller
         }
     }
 
-    public function kuevimi_dsn_s2sipil_ganjil()
+    public function kuevimi_dsn_s2_ganjil()
     {
         if ($this->session->userdata('status') !== "dosen") {
             redirect($_SERVER['HTTP_REFERER']);
@@ -1761,19 +1741,19 @@ class User extends CI_Controller
             ->get()->result_array();
         $this->form_validation->set_rules('1', 'NIP', 'required|trim');
         if ($this->form_validation->run() == false) {
-            $this->load->view('user/kuevimi_dsn_s2sipil_ganjil', $data);
+            $this->load->view('user/kuevimi_dsn_s2_ganjil', $data);
         } else {
             foreach ($this->input->post() as $key => $value) {
                 if ($key == 3) {
                     foreach ($this->input->post('3') as $key2 => $value2) {
-                        $this->db->insert('submit_vimi_dsn_s2sipil_ganjil', [
+                        $this->db->insert('submit_vimi_dsn_s2_20211', [
                             'nip' => $this->input->post('nip'),
                             'id_pertanyaan' => $key,
                             'id_jawaban' => $value2,
                         ]);
                     }
                 } elseif ($key != "nip") {
-                    $this->db->insert('submit_vimi_dsn_s2sipil_ganjil', [
+                    $this->db->insert('submit_vimi_dsn_s2_20211', [
                         'nip' => $this->input->post('nip'),
                         'id_pertanyaan' => $key,
                         'id_jawaban' => $value,
@@ -1781,11 +1761,11 @@ class User extends CI_Controller
                 }
             }
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
-            redirect('user/kuevimi_dsn_s2sipil_ganjil');
+            redirect('user/kuevimi_dsn_s2_ganjil');
         }
     }
 
-    public function kuevimi_dsn_s2sipil_genap()
+    public function kuevimi_dsn_s2_genap()
     {
         if ($this->session->userdata('status') !== "dosen") {
             redirect($_SERVER['HTTP_REFERER']);
@@ -1795,19 +1775,19 @@ class User extends CI_Controller
             ->get()->result_array();
         $this->form_validation->set_rules('1', 'NIP', 'required|trim');
         if ($this->form_validation->run() == false) {
-            $this->load->view('user/kuevimi_dsn_s2sipil_genap', $data);
+            $this->load->view('user/kuevimi_dsn_s2_genap', $data);
         } else {
             foreach ($this->input->post() as $key => $value) {
                 if ($key == 3) {
                     foreach ($this->input->post('3') as $key2 => $value2) {
-                        $this->db->insert('submit_vimi_dsn', [
+                        $this->db->insert('submit_vimi_dsn_s2_20212', [
                             'nip' => $this->input->post('nip'),
                             'id_pertanyaan' => $key,
                             'id_jawaban' => $value2,
                         ]);
                     }
                 } elseif ($key != "nip") {
-                    $this->db->insert('submit_vimi_dsn', [
+                    $this->db->insert('submit_vimi_dsn_s2_20212', [
                         'nip' => $this->input->post('nip'),
                         'id_pertanyaan' => $key,
                         'id_jawaban' => $value,
@@ -1815,7 +1795,7 @@ class User extends CI_Controller
                 }
             }
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
-            redirect('user/kuevimi_dsn_s2sipil_genap');
+            redirect('user/kuevimi_dsn_s2_genap');
         }
     }
 
@@ -2043,13 +2023,23 @@ class User extends CI_Controller
         echo json_encode($matakuliah);
     }
 
-    public function getNamaMatkul_s2sipil_ganjil()
+    public function getNamaMatkul_s2_ganjil()
     {
         $idmatkul = $this->input->post('idmatkul');
-        $matakuliah = $this->db->select('*')->from('matkul_s2sipil_ganjil')
-            ->join('jadwal_s2sipil_ganjil', 'jadwal_s2sipil_ganjil.kode_mk=matkul_s2sipil_ganjil.kode_mk')
-            ->join('datamhs', 'datamhs.nrpmhs = jadwal_s2sipil_ganjil.nrpmhs')
-            ->where('jadwal_s2sipil_ganjil.kode_mk', $idmatkul)->where('jadwal_s2sipil_ganjil.nrpmhs', $this->session->userdata('nrp'))->get()->first_row();
+        $matakuliah = $this->db->select('*')->from('matkul_s2_20211')
+            ->join('jadwal_s2_20211', 'jadwal_s2_20211.kode_mk=matkul_s2_20211.kode_mk')
+            ->join('datamhs', 'datamhs.nrpmhs = jadwal_s2_20211.nrpmhs')
+            ->where('jadwal_s2_20211.kode_mk', $idmatkul)->where('jadwal_s2_20211.nrpmhs', $this->session->userdata('nrp'))->get()->first_row();
+        echo json_encode($matakuliah);
+    }
+
+    public function getNamaMatkul_s2_genap()
+    {
+        $idmatkul = $this->input->post('idmatkul');
+        $matakuliah = $this->db->select('*')->from('matkul_s2_20212')
+            ->join('jadwal_s2_20212', 'jadwal_s2_20212.kode_mk=matkul_s2_20212.kode_mk')
+            ->join('datamhs', 'datamhs.nrpmhs = jadwal_s2_20212.nrpmhs')
+            ->where('jadwal_s2_20212.kode_mk', $idmatkul)->where('jadwal_s2_20212.nrpmhs', $this->session->userdata('nrp'))->get()->first_row();
         echo json_encode($matakuliah);
     }
 
@@ -2066,16 +2056,29 @@ class User extends CI_Controller
         echo json_encode($matakuliah);
     }
 
-    public function getNamaMatkul_dsn_s2sipil_ganjil()
+    public function getNamaMatkul_dsn_s2_ganjil()
     {
         $idmatkul = $this->input->post('idmatkul');
         $string = explode('-', $idmatkul);
         $kode_mk = $string[0];
         $kelas_mk = $string[1];
-        $matakuliah = $this->db->select('*')->from('matkul_s2sipil_ganjil')
-            ->join('jadwal_s2sipil_ganjil', 'jadwal_s2sipil_ganjil.kode_mk=matkul_s2sipil_ganjil.kode_mk')
-            ->join('dosen', 'dosen.id_dsn = jadwal_s2sipil_ganjil.id_dsn')
-            ->where('jadwal_s2sipil_ganjil.kode_mk', $kode_mk)->where('jadwal_s2sipil_ganjil.kelas', $kelas_mk)->where('jadwal_s2sipil_ganjil.id_dsn', $this->session->userdata('nip'))->get()->first_row();
+        $matakuliah = $this->db->select('*')->from('matkul_s2_20211')
+            ->join('jadwal_s2_20211', 'jadwal_s2_20211.kode_mk=matkul_s2_20211.kode_mk')
+            ->join('dosen', 'dosen.id_dsn = jadwal_s2_20211.id_dsn')
+            ->where('jadwal_s2_20211.kode_mk', $kode_mk)->where('jadwal_s2_20211.kelas', $kelas_mk)->where('jadwal_s2_20211.id_dsn', $this->session->userdata('nip'))->get()->first_row();
+        echo json_encode($matakuliah);
+    }
+
+    public function getNamaMatkul_dsn_s2_genap()
+    {
+        $idmatkul = $this->input->post('idmatkul');
+        $string = explode('-', $idmatkul);
+        $kode_mk = $string[0];
+        $kelas_mk = $string[1];
+        $matakuliah = $this->db->select('*')->from('matkul_s2_20212')
+            ->join('jadwal_s2_20212', 'jadwal_s2_20212.kode_mk=matkul_s2_20212.kode_mk')
+            ->join('dosen', 'dosen.id_dsn = jadwal_s2_20212.id_dsn')
+            ->where('jadwal_s2_20212.kode_mk', $kode_mk)->where('jadwal_s2_20212.kelas', $kelas_mk)->where('jadwal_s2_20212.id_dsn', $this->session->userdata('nip'))->get()->first_row();
         echo json_encode($matakuliah);
     }
 

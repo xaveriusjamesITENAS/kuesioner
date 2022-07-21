@@ -79,6 +79,10 @@ $db['default'] = array(
 	// 'username' => 'root',
 	// 'password' => '',
 	// 'database' => 'kuesioner_20211_uas',
+	'hostname' => '192.168.204.175',
+	'username' => 'infodata',
+	'password' => 'infodata2021',
+	'database' => 'kuesioner',
 	// 'username' => 'kuesioner_user',
 	// 'password' => 'F}zjZVs#an^]',
 
@@ -87,9 +91,9 @@ $db['default'] = array(
 	// 'username' => 'kuesioner_20211',
 	// 'password' => 'eY=x&sHIcF?T',
 	## DB Hosting 20212
-	'database' => 'kuesioner_20212',
-	'username' => 'kuesioner_20212',
-	'password' => 'Ic;wJ)24aP{P',
+	// 'database' => 'kuesioner_20212',
+	// 'username' => 'kuesioner_20212',
+	// 'password' => 'Ic;wJ)24aP{P',
 	###
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

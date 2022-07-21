@@ -105,9 +105,9 @@ class Auth extends CI_Controller
                     'nohp' => $user['nohpmhs'],
                     'status' => 'mahasiswa'
                 ];
-                if ("63" == substr($nrpmhs, 0, 2)) {
+                if ("6" == substr($nrpmhs, 0, 1)) {
                     $this->session->set_userdata($data);
-                    redirect('user/editprofil_mhs_s2sipil');
+                    redirect('user/editprofil_mhs_s2');
                 } else {
                     $this->session->set_userdata($data);
                     redirect('user/editprofil_mhs');
@@ -143,7 +143,7 @@ class Auth extends CI_Controller
                 ];
                 $this->session->set_userdata($data);
                 if (in_array($id_dsn, array(11055, 11062, 11063, 11434, 11609, 11733))) {
-                    redirect('user/kuesioner_dsn_s2sipil_ganjil');
+                    redirect('user/kuesioner_dsn_s2_ganjil');
                 } else {
                     redirect('user/kuesioner_dsn');
                 }

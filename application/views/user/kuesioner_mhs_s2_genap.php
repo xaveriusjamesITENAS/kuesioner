@@ -58,19 +58,19 @@
 				<div class="container-fluid">
 					<ul class="navbar-mobile__list list-unstyled">
 						<li class="has-sub">
-							<a href="<?= base_url('user/editprofil_mhs_s2sipil'); ?>">
+							<a href="<?= base_url('user/editprofil_mhs_s2'); ?>">
 								<i class="far fa-id-card"></i></i>Profil Mahasiswa</a>
 						</li>
 						<li class="active">
-							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs_s2sipil_ganjil'); ?>">
+							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs_s2_ganjil'); ?>">
 								<i class="far fa-file-alt"></i></i>Kuesioner (Ganjil)</a>
 						</li>
 						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs_s2sipil_ganjil'); ?>">
+							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs_s2_ganjil'); ?>">
 								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana (Ganjil)</a>
 						</li>
 						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs_s2sipil_ganjil'); ?>">
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs_s2_ganjil'); ?>">
 								<i class="fas fa-thumbs-up"></i>Visi Misi (Ganjil)</a>
 						</li>
 					</ul>
@@ -80,15 +80,15 @@
 				<div class="container-fluid">
 					<ul class="navbar-mobile__list list-unstyled">
 						<li class="has-sub">
-							<a href="<?= base_url('user/kuesioner_mhs_s2sipil_genap'); ?>">
+							<a href="<?= base_url('user/kuesioner_mhs_s2_genap'); ?>">
 								<i class="far fa-file-alt"></i>Kuesioner (Genap)</a>
 						</li>
 						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs_s2sipil_genap'); ?>">
+							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs_s2_genap'); ?>">
 								<i class="fas fa-copy"></i>Sarana/ Pra Sarana (Genap)</a>
 						</li>
 						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs_s2sipil_genap'); ?>">
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs_s2_genap'); ?>">
 								<i class="fas fa-thumbs-up"></i>Visi Misi (Genap)</a>
 						</li>
 					</ul>
@@ -108,35 +108,35 @@
 				<nav class="navbar-sidebar">
 					<ul class="list-unstyled navbar__list">
 						<li class="has-sub">
-							<a href="<?= base_url('user/editprofil_mhs_s2sipil'); ?>">
+							<a href="<?= base_url('user/editprofil_mhs_s2'); ?>">
 								<i class="far fa-id-card"></i></i>Profil Mahasiswa</a>
 						</li>
-						<li class="active">
-							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs_s2sipil_ganjil'); ?>">
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs_s2_ganjil'); ?>">
 								<i class="far fa-file-alt"></i></i>Kuesioner (Ganjil)</a>
 						</li>
 						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs_s2sipil_ganjil'); ?>">
+							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs_s2_ganjil'); ?>">
 								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana (Ganjil)</a>
 						</li>
 						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs_s2sipil_ganjil'); ?>">
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs_s2_ganjil'); ?>">
 								<i class="fas fa-thumbs-up"></i>Visi Misi (Ganjil)</a>
 						</li>
 					</ul>
 				</nav>
 				<nav class="navbar-sidebar">
 					<ul class="list-unstyled navbar__list">
-						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs_s2sipil_genap'); ?>">
+						<li class="active">
+							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs_s2_genap'); ?>">
 								<i class="far fa-file-alt"></i></i>Kuesioner (Genap)</a>
 						</li>
 						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs_s2sipil_genap'); ?>">
+							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs_s2_genap'); ?>">
 								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana (Genap)</a>
 						</li>
 						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs_s2sipil_genap'); ?>">
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs_s2_genap'); ?>">
 								<i class="fas fa-thumbs-up"></i>Visi Misi (Genap)</a>
 						</li>
 					</ul>
@@ -231,7 +231,7 @@
 										</div>
 									</div>
 									<div class="card-body card-block">
-										<?= form_open('user/kuesioner_mhs_s2sipil_ganjil'); ?>
+										<?= form_open('user/kuesioner_mhs_s2_genap'); ?>
 										<div class="row form-group">
 											<div class="col col-md-3">
 												<label class=" form-control-label">NRP Mahasiswa</label>
@@ -477,7 +477,7 @@
 					e.preventDefault();
 					let idmatkul = $(this).val();
 					$.ajax({
-						url: "<?php echo site_url('user/getNamaMatkul_s2sipil_ganjil'); ?>",
+						url: "<?php echo site_url('user/getNamaMatkul_s2_genap'); ?>",
 						type: 'POST',
 						data: {
 							idmatkul: idmatkul,

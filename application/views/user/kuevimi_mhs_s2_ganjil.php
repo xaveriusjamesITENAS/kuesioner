@@ -15,30 +15,21 @@
 
 	<!-- Fontfaces CSS-->
 	<link href="<?= base_url('assets/'); ?>vendor/theme/css/font-face.css" rel="stylesheet" media="all">
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/font-awesome-4.7/css/font-awesome.min.css"
-		rel="stylesheet" media="all">
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/font-awesome-5/css/fontawesome-all.min.css"
-		rel="stylesheet" media="all">
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/mdi-font/css/material-design-iconic-font.min.css"
-		rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 
 	<!-- Bootstrap CSS-->
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet"
-		media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
 	<!-- Vendor CSS-->
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/animsition/animsition.min.css" rel="stylesheet"
-		media="all">
-	<link
-		href="<?= base_url('assets/'); ?>vendor/theme/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css"
-		rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
 	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/wow/animate.css" rel="stylesheet" media="all">
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet"
-		media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
 	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/slick/slick.css" rel="stylesheet" media="all">
 	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet"
-		media="all">
+	<link href="<?= base_url('assets/'); ?>vendor/theme/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
 	<!-- Main CSS-->
 	<link href="<?= base_url('assets/'); ?>vendor/theme/css/theme.css" rel="stylesheet" media="all">
@@ -67,19 +58,19 @@
 				<div class="container-fluid">
 					<ul class="navbar-mobile__list list-unstyled">
 						<li class="has-sub">
-							<a href="<?= base_url('user/editprofil_mhs_s2sipil'); ?>">
+							<a href="<?= base_url('user/editprofil_mhs_s2'); ?>">
 								<i class="far fa-id-card"></i></i>Profil Mahasiswa</a>
 						</li>
 						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs_s2sipil_ganjil'); ?>">
+							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs_s2_ganjil'); ?>">
 								<i class="far fa-file-alt"></i></i>Kuesioner (Ganjil)</a>
 						</li>
-						<li class="active">
-							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs_s2sipil_ganjil'); ?>">
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs_s2_ganjil'); ?>">
 								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana (Ganjil)</a>
 						</li>
-						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs_s2sipil_ganjil'); ?>">
+						<li class="active">
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs_s2_ganjil'); ?>">
 								<i class="fas fa-thumbs-up"></i>Visi Misi (Ganjil)</a>
 						</li>
 					</ul>
@@ -88,16 +79,16 @@
 			<nav class="navbar-mobile">
 				<div class="container-fluid">
 					<ul class="navbar-mobile__list list-unstyled">
-						<li>
-							<a href="<?= base_url('user/kuesioner_mhs_s2sipil_genap'); ?>">
+						<li class="has-sub">
+							<a href="<?= base_url('user/kuesioner_mhs_s2_genap'); ?>">
 								<i class="far fa-file-alt"></i>Kuesioner (Genap)</a>
 						</li>
-						<li>
-							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs_s2sipil_genap'); ?>">
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs_s2_genap'); ?>">
 								<i class="fas fa-copy"></i>Sarana/ Pra Sarana (Genap)</a>
 						</li>
 						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs_s2sipil_genap'); ?>">
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs_s2_genap'); ?>">
 								<i class="fas fa-thumbs-up"></i>Visi Misi (Genap)</a>
 						</li>
 					</ul>
@@ -117,19 +108,19 @@
 				<nav class="navbar-sidebar">
 					<ul class="list-unstyled navbar__list">
 						<li class="has-sub">
-							<a href="<?= base_url('user/editprofil_mhs_s2sipil'); ?>">
+							<a href="<?= base_url('user/editprofil_mhs_s2'); ?>">
 								<i class="far fa-id-card"></i></i>Profil Mahasiswa</a>
 						</li>
 						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs_s2sipil_ganjil'); ?>">
+							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs_s2_ganjil'); ?>">
 								<i class="far fa-file-alt"></i></i>Kuesioner (Ganjil)</a>
 						</li>
-						<li class="active">
-							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs_s2sipil_ganjil'); ?>">
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs_s2_ganjil'); ?>">
 								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana (Ganjil)</a>
 						</li>
-						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs_s2sipil_ganjil'); ?>">
+						<li class="active">
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs_s2_ganjil'); ?>">
 								<i class="fas fa-thumbs-up"></i>Visi Misi (Ganjil)</a>
 						</li>
 					</ul>
@@ -137,15 +128,15 @@
 				<nav class="navbar-sidebar">
 					<ul class="list-unstyled navbar__list">
 						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs_s2sipil_genap'); ?>">
+							<a class="js-arrow" href="<?= base_url('user/kuesioner_mhs_s2_genap'); ?>">
 								<i class="far fa-file-alt"></i></i>Kuesioner (Genap)</a>
 						</li>
 						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs_s2sipil_genap'); ?>">
+							<a class="js-arrow" href="<?= base_url('user/kuebku_mhs_s2_genap'); ?>">
 								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana (Genap)</a>
 						</li>
 						<li class="has-sub">
-							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs_s2sipil_genap'); ?>">
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_mhs_s2_genap'); ?>">
 								<i class="fas fa-thumbs-up"></i>Visi Misi (Genap)</a>
 						</li>
 					</ul>
@@ -170,8 +161,7 @@
 								<div class="account-wrap">
 									<div class="account-item clearfix js-item-menu">
 										<div class="image">
-											<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png"
-												alt="John Doe" />
+											<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png" alt="John Doe" />
 										</div>
 										<div class="content">
 											<a class="js-acc-btn" href="#"><?= $this->session->userdata('nrp'); ?></a>
@@ -180,8 +170,7 @@
 											<div class="info clearfix">
 												<div class="image">
 													<a href="#">
-														<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png"
-															alt="John Doe" />
+														<img src="<?= base_url('assets/'); ?>vendor/theme/images/icon/user1.png" alt="John Doe" />
 													</a>
 												</div>
 												<div class="content">
@@ -213,13 +202,14 @@
 							<div class="col-md-12">
 								<div class="card">
 									<div class="card-header">
-										<strong class="card-title">Kuesioner Pelayanan Sarana/ Pra Sarana Umum</strong>
+										<strong class="card-title">Kuesioner Pemahaman Visi, Misi, dan Tujuan
+											Itenas</strong>
 									</div>
 									<?= $this->session->flashdata('message'); ?>
 									<div class="card-body">
 										<div class="typo-headers">
-											<h1 class="pb-2 display-5" style="font-size: 25px;">KUESIONER KEPUASAN
-												PENGGUNA LAYANAN BIDANG KEUANGAN DAN SARANA-PRASARANA DI ITENAS</h1>
+											<h1 class="pb-2 display-5" style="font-size: 25px;">Kuesioner Pemahaman
+												Visi, Misi, dan Tujuan Itenas</h1>
 										</div>
 										<div class="typo-articles">
 											<p>
@@ -228,140 +218,62 @@
 												bertujuan mengukur keefektifan pelayanan fakultas yang telah dilakukan.
 												Berikan tanggapan berdasarkan pendapat sendiri dan bukan
 												pandangan/pendapat orang lain. -->
-												<p></p>
-												<br>Pertanyaan untuk Dosen dan Tenaga Kependidikan</br>
+											<p></p>
+											<br>Pertanyaan untuk Mahasiswa, Dosen dan Tenaga Kependidikan</br>
 											</p>
 										</div>
 									</div>
 									<div class="card-body card-block">
-										<?= form_open('user/kuebku_mhs_s2sipil_ganjil'); ?>
-										<input type="hidden" class="form-control" readonly placeholder="NRP"
-											name="nrpmhs" value="<?= $this->session->userdata('nrp'); ?>">
-										<div class="row form-group">
-											<div class="col col-md-3">
-												<label class=" form-control-label"
-													style="color:green; font-weight:bold">Petunjuk Pengisian</label>
-											</div>
-											<div class="col-12 col-md-9">
-												<p class="form-control-static" style="color:green">Kuesioner ini terdiri
-													dari 12 butir pertanyaan dengan bentuk jawaban pilihan ganda yang
-													terdiri dari 4 (empat) pilihan jawaban. Anda dapat memilih satu
-													pilihan sesuai pendapat pribadi.</p>
-											</div>
-										</div>
-										<div class="row form-group">
-											<div class="col col-md-3">
-											</div>
-											<div class="col-12 col-md-9">
-												<div class="form-check">
-													<div class="radio">
-														<label for="radio1" class="form-check-label "
-															style="color:green">
-															<input type="radio" id="radio1" name="radios"
-																value="option1" class="form-check-input" disabled>Kurang
-															(Tidak Puas)
-														</label>
-													</div>
-													<div class="radio">
-														<label for="radio2" class="form-check-label "
-															style="color:green">
-															<input type="radio" id="radio2" name="radios"
-																value="option2" class="form-check-input" disabled>Cukup
-															(Kurang Puas)
-														</label>
-													</div>
-													<div class="radio">
-														<label for="radio3" class="form-check-label "
-															style="color:green">
-															<input type="radio" id="radio3" name="radios"
-																value="option3" class="form-check-input" checked
-																disabled>Baik (Puas)
-														</label>
-													</div>
-													<div class="radio">
-														<label for="radio3" class="form-check-label "
-															style="color:green">
-															<input type="radio" id="radio4" name="radios"
-																value="option4" class="form-check-input" disabled>Sangat
-															Baik (Sangat Puas)
-														</label>
-													</div>
-												</div>
-											</div>
-										</div>
+										<?= form_open('user/kuevimi_mhs_s2_ganjil'); ?>
+										<input type="hidden" class="form-control" readonly placeholder="NRP" name="nrpmhs" value="<?= $this->session->userdata('nrp'); ?>">
+
 										<?php
 										$no = 1;
-										$no_radio1 = 1;
-										$no_radio2 = 1;
-										$no_radio3 = 1;
-										$no_radio4 = 1;
-										$no_set1 = 1;
-										$no_set2 = 1;
-										$no_set3 = 1;
-										$no_set4 = 1;
-										$no_error = 1;
-										$name = 'jwb_';
-										foreach ($pertanyaan_sarpras as $prt) : ?>
-										<div class="form-group row">
-											<div class="col col-md-3">
-												<label class="form-control-label" style="font-weight:bold">Pertanyaan
-													<?= $no++ ?></label>
-											</div>
-											<div class="col-12 col-md-9">
-												<p class="form-control-static" aria-label="Disabled input example">
-													<?= $prt['pertanyaan']; ?></p>
-											</div>
-										</div>
-										<div class="row form-group">
-											<div class="col col-md-3">
-											</div>
-											<div class="col-12 col-md-9">
-												<div class="form-check">
-													<input class="form-check-input" type="radio"
-														name="<?= $name . $no_radio1++ ?>" id="flexRadioDisabled"
-														value="1" <?php if (set_value($name . $no_set1++) == "1") : ?>
-														checked <?php endif; ?>>
-													<label class="form-check-label" for="flexRadioDisabled">
-														Sangat Tidak Puas
-													</label>
+										foreach ($pertanyaan_visimisi as $prt) : ?>
+											<div class="form-group row">
+												<div class="col col-md-3">
+													<label class="form-control-label" style="font-weight:bold">Pertanyaan
+														<?= $no++ ?></label>
 												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="radio"
-														name="<?= $name . $no_radio2++ ?>" id="flexRadioCheckedDisabled"
-														value="2" <?php if (set_value($name . $no_set2++) == "2") : ?>
-														checked <?php endif; ?>>
-													<label class="form-check-label" for="flexRadioCheckedDisabled">
-														Tidak Puas
-													</label>
-												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="radio"
-														name="<?= $name . $no_radio3++ ?>" id="flexRadioDisabled"
-														value="3" <?php if (set_value($name . $no_set3++) == "3") : ?>
-														checked <?php endif; ?>>
-													<label class="form-check-label" for="flexRadioDisabled">
-														Puas
-													</label>
-												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="radio"
-														name="<?= $name . $no_radio4++ ?>" id="flexRadioCheckedDisabled"
-														value="4" <?php if (set_value($name . $no_set4++) == "4") : ?>
-														checked <?php endif; ?>>
-													<label class="form-check-label" for="flexRadioCheckedDisabled">
-														Sangat Puas
-													</label>
-												</div>
-												<div>
-													<?= form_error(
-															$name . $no_error++,
-															'<small class="text-danger pl-3">',
-															'</small>'
-														); ?>
+												<div class="col-12 col-md-9">
+													<p class="form-control-static" aria-label="Disabled input example">
+														<?= $prt['pertanyaan']; ?></p>
 												</div>
 											</div>
-										</div>
+											<div class="row form-group">
+												<div class="col col-md-3">
+												</div>
+												<div class="col-12 col-md-9">
+													<?php
+													$jawaban = $this->db->select('*')
+														->from('jawaban_visimisi')
+														->where('jawaban_visimisi.id_pertanyaan', $prt['id'])
+														->get()->result_array();
+
+													foreach ($jawaban as $key => $jwb) :
+													?>
+														<?php if ($jwb['id_pertanyaan'] == 3) : ?>
+															<div class="form-check">
+																<input class="form-check-input" type="checkbox" value="<?= $jwb['id'] ?>" name="3[]" id="defaultCheck1">
+																<label class="form-check-label" for="defaultCheck1">
+																	<?= $jwb['jawaban'] ?>
+																</label>
+															</div>
+														<?php elseif ($jwb['id_pertanyaan'] == 8) : ?>
+															<textarea name="8" id="textarea-input" rows="9" placeholder="Mohon tuliskan saran terkait Visi, Misi, Tujuan Itenas:" class="form-control"></textarea>
+														<?php else : ?>
+															<div class="form-check">
+																<input class="form-check-input" type="radio" name="<?= $prt['id'] ?>" id="flexRadioDisabled" value="<?= $jwb['id'] ?>">
+																<label class="form-check-label" for="flexRadioDisabled">
+																	<?= $jwb['jawaban'] ?>
+																</label>
+															</div>
+														<?php endif; ?>
+													<?php endforeach; ?>
+												</div>
+											</div>
 										<?php endforeach; ?>
+
 									</div>
 									<div class="card-footer">
 										<button type="submit" class="btn btn-success btn-sm">
@@ -387,8 +299,7 @@
 			</script>
 			<script src="<?= base_url('assets/'); ?>vendor/theme/vendor/wow/wow.min.js"></script>
 			<script src="<?= base_url('assets/'); ?>vendor/theme/vendor/animsition/animsition.min.js"></script>
-			<script
-				src="<?= base_url('assets/'); ?>vendor/theme/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+			<script src="<?= base_url('assets/'); ?>vendor/theme/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
 			</script>
 			<script src="<?= base_url('assets/'); ?>vendor/theme/vendor/counter-up/jquery.waypoints.min.js"></script>
 			<script src="<?= base_url('assets/'); ?>vendor/theme/vendor/counter-up/jquery.counterup.min.js">
