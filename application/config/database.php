@@ -85,8 +85,8 @@ $db['default'] = array(
 	// 'database' => 'kuesioner',
 	'hostname' => '192.168.255.44',
 	'database' => 'kuesioner_s2',
-	'username' => 'kuesioner_20212',
-	'password' => 'Ic;wJ)24aP{P',
+	'username' => 'kuesioner_kuesioner',
+	'password' => 'AGX=(m@MZSVz',
 	// 'username' => 'kuesioner_user',
 	// 'password' => 'F}zjZVs#an^]',
 
