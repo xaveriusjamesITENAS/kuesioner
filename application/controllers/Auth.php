@@ -142,11 +142,12 @@ class Auth extends CI_Controller
                     'status' => 'dosen'
                 ];
                 $this->session->set_userdata($data);
-                if (in_array($id_dsn, array(11055, 11062, 11063, 11434, 11609, 11733))) {
-                    redirect('user/kuesioner_dsn_s2_ganjil');
-                } else {
-                    redirect('user/kuesioner_dsn');
-                }
+                // if (in_array($id_dsn, array(11055, 11062, 11063, 11434, 11609, 11733))) {
+                //     redirect('user/kuesioner_dsn_s2_ganjil');
+                // } else {
+                //     redirect('user/kuesioner_dsn');
+                // }
+                redirect('user/kuesioner_dsn_s2_ganjil');
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" style="max-width:326px" role="alert">Password salah.</div>');
                 redirect('auth/index_dsn');

@@ -11,7 +11,7 @@
 	<meta name="keywords" content="au theme template">
 
 	<!-- Title Page-->
-	<title>Kuesioner Mahasiswa | Institut Teknologi Nasional</title>
+	<title>Kuesioner Mahasiswa S2 2021/2 | Institut Teknologi Nasional</title>
 
 	<!-- Fontfaces CSS-->
 	<link href="<?= base_url('assets/'); ?>vendor/theme/css/font-face.css" rel="stylesheet" media="all">
