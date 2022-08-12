@@ -369,9 +369,9 @@
 									</div>
 									<div class="card-footer">
 										<button type="submit" class="btn btn-success btn-sm">
-											<i type="submit" class=""></i>Submit</button>
-										</form>
+											Submit</button>
 									</div>
+									</form>
 								</div>
 							</div>
 						</div>

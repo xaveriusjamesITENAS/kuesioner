@@ -673,7 +673,7 @@ class User extends CI_Controller
 
         $data['user'] = $this->db->get_where('dosen', ['id_dsn' => $this->session->userdata('nip')])->row_array();
 
-        $submit = $this->db->get_where('submit_lp2m', ['id_dsn' => $this->session->userdata('nip')])->row_array();
+        $submit = $this->db->get_where('submit_lp2m_s2_20212', ['id_dsn' => $this->session->userdata('nip')])->row_array();
 
         $data['pertanyaan_lp2m'] = $this->db->select('*')
             ->from('pertanyaan_lp2m')->where('level', 'dosen')
@@ -852,6 +852,8 @@ class User extends CI_Controller
                 'indeks_kml' => $indeks_kml_fkl,
                 'saran' => $this->input->post('saran'),
             ];
+            var_dump($data);
+            die();
             $this->db->insert('submit_fkl_s2_20211', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
             redirect('user/kuefkl_dsn_s2_ganjil');
@@ -867,7 +869,7 @@ class User extends CI_Controller
 
         $data['user'] = $this->db->get_where('dosen', ['id_dsn' => $this->session->userdata('nip')])->row_array();
 
-        $submit = $this->db->get_where('submit_fkl', ['id_dsn' => $this->session->userdata('nip')])->row_array();
+        $submit = $this->db->get_where('submit_fkl_s2_20212', ['id_dsn' => $this->session->userdata('nip')])->row_array();
 
         $data['pertanyaan_fkl'] = $this->db->select('*')
             ->from('pertanyaan_fkl')->where('level', 'dosen')
