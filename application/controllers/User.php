@@ -1472,7 +1472,7 @@ class User extends CI_Controller
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ];
-            $this->db->insert('sarpras_dosen', $data);
+            $this->db->insert('sarpras_dsn', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
             redirect('user/kuebku_dsn');
         }
@@ -1578,7 +1578,7 @@ class User extends CI_Controller
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ];
-            $this->db->insert('sarpras_dosen_s1_20211', $data);
+            $this->db->insert('sarpras_dsn_s1_20211', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
             redirect('user/kuebku_dsn_s1_ganjil');
         }
@@ -1684,7 +1684,7 @@ class User extends CI_Controller
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ];
-            $this->db->insert('sarpras_dosen_s1_20212', $data);
+            $this->db->insert('sarpras_dsn_s1_20212', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
             redirect('user/kuebku_dsn_s1_ganjil');
         }
@@ -1790,7 +1790,7 @@ class User extends CI_Controller
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ];
-            $this->db->insert('sarpras_dosen_s2_20211', $data);
+            $this->db->insert('sarpras_dsn_s2_20211', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
             redirect('user/kuebku_dsn_s2_ganjil');
         }
@@ -1896,7 +1896,7 @@ class User extends CI_Controller
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ];
-            $this->db->insert('sarpras_dosen_s2_20212', $data);
+            $this->db->insert('sarpras_dsn_s2_20212', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
             redirect('user/kuebku_dsn_s2_ganjil');
         }
