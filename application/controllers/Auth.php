@@ -44,7 +44,7 @@ class Auth extends CI_Controller
     public function index_dsn()
     {
         if ($this->session->has_userdata('nip')) {
-            redirect('user/kuesioner_dsn');
+            redirect('user/kuesioner_dsn_s1_ganjil');
         }
         $this->form_validation->set_rules('nip', 'NIP', 'required|trim');
         $this->form_validation->set_rules('pin', 'PIN', 'required|trim');
