@@ -11,7 +11,7 @@
 	<meta name="keywords" content="au theme template">
 
 	<!-- Title Page-->
-	<title>Kuesioner Dosen S2 2021/1 | Institut Teknologi Nasional</title>
+	<title>Kuesioner Dosen S2 2021/2 | Institut Teknologi Nasional</title>
 
 	<!-- Fontfaces CSS-->
 	<link href="<?= base_url('assets/'); ?>vendor/theme/css/font-face.css" rel="stylesheet" media="all">
@@ -61,7 +61,7 @@
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn_s2_ganjil'); ?>">
 								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik (Ganjil)</a>
 						</li>
-						<li class="active">
+						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuelp2m_dsn_s2_ganjil'); ?>">
 								<i class="fas fa-copy"></i>Pelayanan LP2M (Ganjil)</a>
 						</li>
@@ -95,7 +95,7 @@
 							<a class="js-arrow" href="<?= base_url('user/kuefkl_dsn_s2_genap'); ?>">
 								<i class="fas fa-university"></i>Pelayanan Fakultas (Genap)</a>
 						</li>
-						<li class="has-sub">
+						<li class="active">
 							<a class="js-arrow" href="<?= base_url('user/kuebku_dsn_s2_genap'); ?>">
 								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana (Genap)</a>
 						</li>
@@ -157,7 +157,7 @@
 							<a class="js-arrow" href="<?= base_url('user/kuefkl_dsn_s1_genap'); ?>">
 								<i class="fas fa-university"></i>Pelayanan Fakultas (Genap)</a>
 						</li>
-						<li class="has-sub">
+						<li class="active">
 							<a class="js-arrow" href="<?= base_url('user/kuebku_dsn_s1_genap'); ?>">
 								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana (Genap)</a>
 						</li>
@@ -174,7 +174,7 @@
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn_s2_ganjil'); ?>">
 								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik (Ganjil)</a>
 						</li>
-						<li class="active">
+						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuelp2m_dsn_s2_ganjil'); ?>">
 								<i class="fas fa-copy"></i>Pelayanan LP2M (Ganjil)</a>
 						</li>
@@ -229,6 +229,7 @@
 					<div class="container-fluid">
 						<div class="header-wrap">
 							<form class="" action="" method="">
+
 							</form>
 							<div class="header-button">
 								<div class="noti-wrap">
@@ -277,29 +278,28 @@
 							<div class="col-md-12">
 								<div class="card">
 									<div class="card-header">
-										<strong class="card-title">Kuesioner Pelayanan LP2M</strong>
+										<strong class="card-title">Kuesioner Pelayanan Sarana/ Pra Sarana Umum</strong>
 									</div>
 									<?= $this->session->flashdata('message'); ?>
 									<div class="card-body">
 										<div class="typo-headers">
-											<h1 class="pb-2 display-5" style="font-size: 25px;">Instrumen Penilaian
-												Pelayanan LP2M Terhadap Dosen</h1>
+											<h1 class="pb-2 display-5" style="font-size: 25px;">KUESIONER KEPUASAN
+												PENGGUNA LAYANAN BIDANG KEUANGAN DAN SARANA-PRASARANA DI ITENAS</h1>
 										</div>
 										<div class="typo-articles">
 											<p>
-												Kuesioner ini menanyakan pendapat anda mengenai pelayanan LP2M terhadap
-												tenaga pendidik. Pengumpulan data menggunakan kuesioner ini bertujuan
-												mengukur keefektifan pelayanan LP2M yang telah dilakukan. Berikan
-												tanggapan berdasarkan pendapat sendiri dan bukan pandangan/pendapat
-												orang lain.
+												<!-- Kuesioner ini menanyakan pendapat anda mengenai pelayanan fakultas
+												terhadap tenaga pendidik. Pengumpulan data menggunakan kuesioner ini
+												bertujuan mengukur keefektifan pelayanan fakultas yang telah dilakukan.
+												Berikan tanggapan berdasarkan pendapat sendiri dan bukan
+												pandangan/pendapat orang lain. -->
 											<p></p>
-											<br>Kami mengucapkan banyak terima kasih atas partisipasinya dalam
-											pengisian kuesioner ini.</br>
+											<br>Pertanyaan untuk Dosen dan Tenaga Kependidikan</br>
 											</p>
 										</div>
 									</div>
 									<div class="card-body card-block">
-										<?= form_open('user/kuelp2m_dsn_s2_ganjil'); ?>
+										<?= form_open('user/kuebku_dsn_s1_genap'); ?>
 										<input type="hidden" name="id_dsn" value="<?= $this->session->userdata('nip') ?>" />
 										<div class="row form-group">
 											<div class="col col-md-3">
@@ -354,8 +354,8 @@
 										$no_set3 = 1;
 										$no_set4 = 1;
 										$no_error = 1;
-										$name = 'jwb';
-										foreach ($pertanyaan_lp2m as $prt) : ?>
+										$name = 'jwb_';
+										foreach ($pertanyaan_sarpras as $prt) : ?>
 											<div class="form-group row">
 												<div class="col col-md-3">
 													<label class="form-control-label" style="font-weight:bold">Pertanyaan
@@ -404,19 +404,6 @@
 												</div>
 											</div>
 										<?php endforeach; ?>
-										<div class="row form-group">
-											<div class="col col-md-3">
-												<label for="textarea-input" class=" form-control-label" style="font-weight:bold">Saran</label>
-											</div>
-											<div class="col-12 col-md-9">
-												<textarea name="saran" id="textarea-input" rows="9" value="saran" placeholder="Berikan saran anda mengenai kendala utama dalam pelayanan LP2M." class="form-control"><?= set_value('saran') ?></textarea>
-												<?= form_error(
-													'saran',
-													'<small class="text-danger pl-3">',
-													'</small>'
-												); ?>
-											</div>
-										</div>
 									</div>
 									<div class="card-footer">
 										<button type="submit" class="btn btn-success btn-sm">

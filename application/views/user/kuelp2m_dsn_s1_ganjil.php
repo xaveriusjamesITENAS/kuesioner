@@ -11,7 +11,7 @@
 	<meta name="keywords" content="au theme template">
 
 	<!-- Title Page-->
-	<title>Kuesioner Dosen S2 2021/1 | Institut Teknologi Nasional</title>
+	<title>Kuesioner Dosen S1 2021/1 | Institut Teknologi Nasional</title>
 
 	<!-- Fontfaces CSS-->
 	<link href="<?= base_url('assets/'); ?>vendor/theme/css/font-face.css" rel="stylesheet" media="all">
@@ -124,7 +124,7 @@
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn_s1_ganjil'); ?>">
 								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik (Ganjil)</a>
 						</li>
-						<li class="has-sub">
+						<li class="active">
 							<a class="js-arrow" href="<?= base_url('user/kuelp2m_dsn_s1_ganjil'); ?>">
 								<i class="fas fa-copy"></i>Pelayanan LP2M (Ganjil)</a>
 						</li>
@@ -174,7 +174,7 @@
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn_s2_ganjil'); ?>">
 								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik (Ganjil)</a>
 						</li>
-						<li class="active">
+						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuelp2m_dsn_s2_ganjil'); ?>">
 								<i class="fas fa-copy"></i>Pelayanan LP2M (Ganjil)</a>
 						</li>
@@ -277,7 +277,7 @@
 							<div class="col-md-12">
 								<div class="card">
 									<div class="card-header">
-										<strong class="card-title">Kuesioner Pelayanan LP2M</strong>
+										<strong class="card-title">Kuesioner Pelayanan LP2M S1 Ganjil</strong>
 									</div>
 									<?= $this->session->flashdata('message'); ?>
 									<div class="card-body">
@@ -299,7 +299,7 @@
 										</div>
 									</div>
 									<div class="card-body card-block">
-										<?= form_open('user/kuelp2m_dsn_s2_ganjil'); ?>
+										<?= form_open('user/kuelp2m_dsn_s1_ganjil'); ?>
 										<input type="hidden" name="id_dsn" value="<?= $this->session->userdata('nip') ?>" />
 										<div class="row form-group">
 											<div class="col col-md-3">

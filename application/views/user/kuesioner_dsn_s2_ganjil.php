@@ -118,6 +118,57 @@
 			</div>
 			<div class="menu-sidebar__content js-scrollbar1">
 				<nav class="navbar-sidebar">
+					<h4>Untuk S1 Ganjil</h4>
+					<ul class="list-unstyled navbar__list">
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn_s1_ganjil'); ?>">
+								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik (Ganjil)</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuelp2m_dsn_s1_ganjil'); ?>">
+								<i class="fas fa-copy"></i>Pelayanan LP2M (Ganjil)</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuefkl_dsn_s1_ganjil'); ?>">
+								<i class="fas fa-university"></i>Pelayanan Fakultas (Ganjil)</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuebku_dsn_s1_ganjil'); ?>">
+								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana (Ganjil)</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_dsn_s1_ganjil'); ?>">
+								<i class="fas fa-thumbs-up"></i>Visi Misi (Ganjil)</a>
+						</li>
+					</ul>
+				</nav>
+				<nav class="navbar-sidebar">
+					<h4>Untuk S1 Genap</h4>
+					<ul class="list-unstyled navbar__list">
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn_s1_genap'); ?>">
+								<i class="fas fa-graduation-cap"></i>Pembelajaran dan Suasana Akademik (Genap)</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuelp2m_dsn_s1_genap'); ?>">
+								<i class="fas fa-copy"></i>Pelayanan LP2M (Genap)</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuefkl_dsn_s1_genap'); ?>">
+								<i class="fas fa-university"></i>Pelayanan Fakultas (Genap)</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuebku_dsn_s1_genap'); ?>">
+								<i class="fas fa-shopping-cart"></i>Sarana/ Pra Sarana (Genap)</a>
+						</li>
+						<li class="has-sub">
+							<a class="js-arrow" href="<?= base_url('user/kuevimi_dsn_s1_genap'); ?>">
+								<i class="fas fa-thumbs-up"></i>Visi Misi (Genap)</a>
+						</li>
+					</ul>
+				</nav>
+				<nav class="navbar-sidebar">
+					<h4>Untuk S2 Ganjil</h4>
 					<ul class="list-unstyled navbar__list">
 						<li class="active">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn_s2_ganjil'); ?>">
@@ -142,6 +193,7 @@
 					</ul>
 				</nav>
 				<nav class="navbar-sidebar">
+					<h4>Untuk S2 Genap</h4>
 					<ul class="list-unstyled navbar__list">
 						<li class="has-sub">
 							<a class="js-arrow" href="<?= base_url('user/kuesioner_dsn_s2_genap'); ?>">

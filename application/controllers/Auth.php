@@ -147,7 +147,7 @@ class Auth extends CI_Controller
                 // } else {
                 //     redirect('user/kuesioner_dsn');
                 // }
-                redirect('user/kuesioner_dsn_s2_ganjil');
+                redirect('user/kuesioner_dsn_s1_ganjil');
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" style="max-width:326px" role="alert">Password salah.</div>');
                 redirect('auth/index_dsn');
