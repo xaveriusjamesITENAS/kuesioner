@@ -773,7 +773,7 @@ class User extends CI_Controller
 
         $data['user'] = $this->db->get_where('dosen', ['id_dsn' => $this->session->userdata('nip')])->row_array();
 
-        $submit = $this->db->get_where('submit_lp2m_s1_20211', ['id_dsn' => $this->session->userdata('nip')])->row_array();
+        $data['submit'] = $this->db->get_where('submit_lp2m_s1_20211', ['id_dsn' => $this->session->userdata('nip')])->row_array();
 
         $data['pertanyaan_lp2m'] = $this->db->select('*')
             ->from('pertanyaan_lp2m')->where('level', 'dosen')
@@ -827,7 +827,7 @@ class User extends CI_Controller
 
         $data['user'] = $this->db->get_where('dosen', ['id_dsn' => $this->session->userdata('nip')])->row_array();
 
-        $submit = $this->db->get_where('submit_lp2m_s1_20212', ['id_dsn' => $this->session->userdata('nip')])->row_array();
+        $data['submit'] = $this->db->get_where('submit_lp2m_s1_20212', ['id_dsn' => $this->session->userdata('nip')])->row_array();
 
         $data['pertanyaan_lp2m'] = $this->db->select('*')
             ->from('pertanyaan_lp2m')->where('level', 'dosen')
@@ -1998,7 +1998,7 @@ class User extends CI_Controller
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ];
-            $this->db->insert('sarpras_mahasiswa', $data);
+            $this->db->insert('sarpras_mhs', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
             redirect('user/kuebku_mhs');
         }
@@ -2202,7 +2202,7 @@ class User extends CI_Controller
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ];
-            $this->db->insert('sarpras_mahasiswa_s2_20212', $data);
+            $this->db->insert('sarpras_mhs_s2_20212', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Anda telah berhasil di Submit.</div>');
             redirect('user/kuebku_mhs_s2_genap');
         }

@@ -355,74 +355,78 @@
 										$no_set4 = 1;
 										$no_error = 1;
 										$name = 'jwb';
-										foreach ($pertanyaan_lp2m as $prt) : ?>
-											<div class="form-group row">
-												<div class="col col-md-3">
-													<label class="form-control-label" style="font-weight:bold">Pertanyaan
-														<?= $no++ ?></label>
+										if ($submit == null) :
+											foreach ($pertanyaan_lp2m as $prt) : ?>
+												<div class="form-group row">
+													<div class="col col-md-3">
+														<label class="form-control-label" style="font-weight:bold">Pertanyaan
+															<?= $no++ ?></label>
+													</div>
+													<div class="col-12 col-md-9">
+														<p class="form-control-static" aria-label="Disabled input example">
+															<?= $prt['pertanyaan']; ?></p>
+													</div>
 												</div>
-												<div class="col-12 col-md-9">
-													<p class="form-control-static" aria-label="Disabled input example">
-														<?= $prt['pertanyaan']; ?></p>
+												<div class="row form-group">
+													<div class="col col-md-3">
+													</div>
+													<div class="col-12 col-md-9">
+														<div class="form-check">
+															<input class="form-check-input" type="radio" name="<?= $name . $no_radio1++ ?>" id="flexRadioDisabled" value="1" <?php if (set_value($name . $no_set1++) == "1") : ?> checked <?php endif; ?>>
+															<label class="form-check-label" for="flexRadioDisabled">
+																Sangat Tidak Puas
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="radio" name="<?= $name . $no_radio2++ ?>" id="flexRadioCheckedDisabled" value="2" <?php if (set_value($name . $no_set2++) == "2") : ?> checked <?php endif; ?>>
+															<label class="form-check-label" for="flexRadioCheckedDisabled">
+																Tidak Puas
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="radio" name="<?= $name . $no_radio3++ ?>" id="flexRadioDisabled" value="3" <?php if (set_value($name . $no_set3++) == "3") : ?> checked <?php endif; ?>>
+															<label class="form-check-label" for="flexRadioDisabled">
+																Puas
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="radio" name="<?= $name . $no_radio4++ ?>" id="flexRadioCheckedDisabled" value="4" <?php if (set_value($name . $no_set4++) == "4") : ?> checked <?php endif; ?>>
+															<label class="form-check-label" for="flexRadioCheckedDisabled">
+																Sangat Puas
+															</label>
+														</div>
+														<div>
+															<?= form_error(
+																$name . $no_error++,
+																'<small class="text-danger pl-3">',
+																'</small>'
+															); ?>
+														</div>
+													</div>
 												</div>
-											</div>
+											<?php endforeach; ?>
 											<div class="row form-group">
 												<div class="col col-md-3">
+													<label for="textarea-input" class=" form-control-label" style="font-weight:bold">Saran</label>
 												</div>
 												<div class="col-12 col-md-9">
-													<div class="form-check">
-														<input class="form-check-input" type="radio" name="<?= $name . $no_radio1++ ?>" id="flexRadioDisabled" value="1" <?php if (set_value($name . $no_set1++) == "1") : ?> checked <?php endif; ?>>
-														<label class="form-check-label" for="flexRadioDisabled">
-															Sangat Tidak Puas
-														</label>
-													</div>
-													<div class="form-check">
-														<input class="form-check-input" type="radio" name="<?= $name . $no_radio2++ ?>" id="flexRadioCheckedDisabled" value="2" <?php if (set_value($name . $no_set2++) == "2") : ?> checked <?php endif; ?>>
-														<label class="form-check-label" for="flexRadioCheckedDisabled">
-															Tidak Puas
-														</label>
-													</div>
-													<div class="form-check">
-														<input class="form-check-input" type="radio" name="<?= $name . $no_radio3++ ?>" id="flexRadioDisabled" value="3" <?php if (set_value($name . $no_set3++) == "3") : ?> checked <?php endif; ?>>
-														<label class="form-check-label" for="flexRadioDisabled">
-															Puas
-														</label>
-													</div>
-													<div class="form-check">
-														<input class="form-check-input" type="radio" name="<?= $name . $no_radio4++ ?>" id="flexRadioCheckedDisabled" value="4" <?php if (set_value($name . $no_set4++) == "4") : ?> checked <?php endif; ?>>
-														<label class="form-check-label" for="flexRadioCheckedDisabled">
-															Sangat Puas
-														</label>
-													</div>
-													<div>
-														<?= form_error(
-															$name . $no_error++,
-															'<small class="text-danger pl-3">',
-															'</small>'
-														); ?>
-													</div>
+													<textarea name="saran" id="textarea-input" rows="9" value="saran" placeholder="Berikan saran anda mengenai kendala utama dalam pelayanan LP2M." class="form-control"><?= set_value('saran') ?></textarea>
+													<?= form_error(
+														'saran',
+														'<small class="text-danger pl-3">',
+														'</small>'
+													); ?>
 												</div>
 											</div>
-										<?php endforeach; ?>
-										<div class="row form-group">
-											<div class="col col-md-3">
-												<label for="textarea-input" class=" form-control-label" style="font-weight:bold">Saran</label>
-											</div>
-											<div class="col-12 col-md-9">
-												<textarea name="saran" id="textarea-input" rows="9" value="saran" placeholder="Berikan saran anda mengenai kendala utama dalam pelayanan LP2M." class="form-control"><?= set_value('saran') ?></textarea>
-												<?= form_error(
-													'saran',
-													'<small class="text-danger pl-3">',
-													'</small>'
-												); ?>
-											</div>
-										</div>
 									</div>
 									<div class="card-footer">
 										<button type="submit" class="btn btn-success btn-sm">
 											<i type="submit" class=""></i>Submit</button>
 										</form>
 									</div>
+								<?php else : ?>
+									<h2 class="mt-3 text-center">Anda sudah mengisi kuesioner!</h2>
+								<?php endif; ?>
 								</div>
 							</div>
 						</div>
